@@ -1,0 +1,261 @@
+{
+    "title": "运算符",
+    "questions": [
+        {
+            "id": 1,
+            "question": "想要在列表末尾添加\"苹果\"，应该用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "add(\"苹果\")",
+                "列表名+\"苹果\"",
+                "append(\"苹果\")",
+                "insert(\"苹果\")"
+            ],
+            "answer": 2,
+            "explanation": "append()是专门在列表末尾添加元素的方法，其他选项语法错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "列表colors = [\"红\",\"绿\",\"蓝\"]，如何获取\"绿\"？",
+            "type": "multiple-choice",
+            "options": [
+                "colors[0]",
+                "colors[1]",
+                "colors[2]",
+                "colors[3]"
+            ],
+            "answer": 1,
+            "explanation": "列表索引从0开始，\"绿\"是第二个元素，对应索引1。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "pop()方法的作用是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "删除第一个元素",
+                "获取并删除最后一个元素",
+                "添加新元素",
+                "修改中间元素"
+            ],
+            "answer": 1,
+            "explanation": "pop()会返回最后一个元素，并把它从列表中删除。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "修改列表nums = [10,20,30]中的20为50，正确的代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "nums[2] = 50",
+                "nums[1] = 50",
+                "nums.append(50)",
+                "nums.pop(1)"
+            ],
+            "answer": 1,
+            "explanation": "索引1对应第二个元素20，直接赋值即可修改。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "执行以下代码后，列表的值是？\nanimals = [\"猫\"]\nanimals.append(\"狗\")\nanimals.pop()\n",
+            "type": "multiple-choice",
+            "options": [
+                "[\"猫\",\"狗\"]",
+                "[\"狗\"]",
+                "[\"猫\"]",
+                "空列表"
+            ],
+            "answer": 2,
+            "explanation": "先添加\"狗\"变为[\"猫\",\"狗\"]，再pop()删除最后一个元素，只剩[\"猫\"]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "执行以下代码后，列表的值是？\nlist = [5,6]\nlist[0]=7;\nlist.append(8)",
+            "type": "multiple-choice",
+            "options": [
+                "[7,6,8]",
+                "[5,7,8]",
+                "[7,6]",
+                "[5,8]"
+            ],
+            "answer": 0,
+            "explanation": "修改索引0为7，添加8到末尾，最终为[7,6,8]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "pos()方法可以获取画笔当前的位置，属于列表操作的方法。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "pos()是turtle模块的方法，和列表无关。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "numbers = [1,2,3]; numbers.pop()可以删除列表最后一个元素。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "pop()不加参数时默认删除最后一个元素。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "执行以下代码后，列表的值是______。\nfruits = [\"香蕉\"]\nfruits.append(\"苹果\")\nfruits.pop()",
+            "type": "fill-in",
+            "answer": [
+                "[\"香蕉\"]"
+            ],
+            "explanation": "先添加\"苹果\"变成[\"香蕉\",\"苹果\"]，再pop()删除最后一个元素。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "修改代码data = [10,20]; data[□] = 30，使得列表变为[10,30]，空格应填的数字是______。",
+            "type": "fill-in",
+            "answer": [
+                "1"
+            ],
+            "explanation": "索引1对应第二个元素20，修改为30后列表变为[10,30]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "哪个函数能让用户从键盘输入数据？",
+            "type": "multiple-choice",
+            "options": [
+                "input()",
+                "print()",
+                "type()",
+                "read()"
+            ],
+            "answer": 0,
+            "explanation": "input()用于接收用户输入，例如 name = input(\"请输入名字：\"）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "print(\"3+5=\", 3+5) 的输出结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "8",
+                "3+5=8",
+                "\"3+5=\",8",
+                "报错"
+            ],
+            "answer": 1,
+            "explanation": "print()会自动用空格分隔多个参数，并输出为完整字符串。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "type(100) 的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "int",
+                "str",
+                "float",
+                "bool"
+            ],
+            "answer": 0,
+            "explanation": "数字100是整数类型，用type()检测会返回int。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "如何将用户输入的\"88\"转换为整数？",
+            "type": "multiple-choice",
+            "options": [
+                "input(88)",
+                "int(\"88\")",
+                "str(88)",
+                "input(int(\"88\"))"
+            ],
+            "answer": 1,
+            "explanation": "int()可以将纯数字组成的字符串（如\"88\"）转为整数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "表达式 (10 > 5) 的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "True",
+                "False",
+                "10",
+                "5"
+            ],
+            "answer": 0,
+            "explanation": "10确实大于5，条件成立时结果为True。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "哪个代码能正确判断年龄是否满12岁？ \nage = int(input()) \nif __________: \n    print(\"可以参加活动\") \nelse: \n    print(\"年龄不足\")",
+            "type": "multiple-choice",
+            "options": [
+                "age < 12",
+                "age >= 12",
+                "age == 12",
+                "age != 12"
+            ],
+            "answer": 1,
+            "explanation": ">=12表示年龄满足条件，可以执行对应分支。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "input()函数接收的内容默认是字符串类型。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "无论输入什么内容，input()都会返回字符串，需要用int()等转换。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "想要计算两个输入数字的和，必须先用int()转换类型。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "输入的数字是字符串类型，直接相加会拼接（如\"3\"+\"5\"=\"35\"），必须转成整数再计算。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "补全代码：输出变量score的值。 \nscore = 95 \nprint(\"你的分数是：\", _____)",
+            "type": "fill-in",
+            "answer": [
+                "score"
+            ],
+            "explanation": "变量名直接放在print()中即可输出其值。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "补全条件判断：如果温度≥30度，输出“高温预警”。 \ntemperature = 32 \nif temperature ___ 30: \n    print(\"高温预警\")",
+            "type": "fill-in",
+            "answer": [
+                ">="
+            ],
+            "explanation": ">=表示“大于或等于”，符合题目条件。",
+            "preserveFormat": true
+        }
+    ]
+}

@@ -1,0 +1,255 @@
+{
+    "title": "模块导入",
+    "questions": [
+        {
+            "id": 1,
+            "question": "下列哪个是合法的Python变量名？",
+            "type": "multiple-choice",
+            "options": [
+                "3students",
+                "student_name",
+                "student-name",
+                "Student name"
+            ],
+            "answer": 1,
+            "explanation": "变量名不能以数字开头，不能包含空格和连字符，下划线是允许的连接符。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "print(\"5\"+\"3\") 的输出结果是53？",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "字符串相加会进行拼接，\"5\"+\"3\"得到字符串\"53\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "for i in range(5): 这个循环会执行______次？",
+            "type": "fill-in",
+            "answer": [
+                "5"
+            ],
+            "explanation": "range(5)生成0-4共5个数字，循环会执行5次。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "以下哪个是字符串类型？",
+            "type": "multiple-choice",
+            "options": [
+                "3.14",
+                "True",
+                "\"128\"",
+                "2024"
+            ],
+            "answer": 2,
+            "explanation": "用双引号包裹的内容是字符串类型，其他选项分别是浮点型、布尔型和整型。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "if 3 >= 5: 这个条件判断结果为真？",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "3不大于等于5，条件不成立。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "input()函数接收到的用户输入默认是______类型？",
+            "type": "fill-in",
+            "answer": [
+                "字符串"
+            ],
+            "explanation": "无论输入什么内容，input()都会以字符串形式返回。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "列表colors=[\"red\",\"green\",\"blue\"]，colors[1]是？",
+            "type": "multiple-choice",
+            "options": [
+                "red",
+                "green",
+                "blue",
+                "报错"
+            ],
+            "answer": 1,
+            "explanation": "列表索引从0开始，索引1对应第二个元素\"green\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "\"hello\"*3 的结果是\"hellohellohello\"？",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "字符串乘法操作会将字符串重复指定次数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "要判断两个条件都成立，应该使用______逻辑运算符？",
+            "type": "fill-in",
+            "answer": [
+                "and"
+            ],
+            "explanation": "and运算符用于两个条件同时成立的情况。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "下列哪个符号用于字符串拼接？",
+            "type": "multiple-choice",
+            "options": [
+                ",",
+                "-",
+                "+",
+                "&"
+            ],
+            "answer": 2,
+            "explanation": "加号+在Python中可以连接字符串，如\"a\"+\"b\"得到\"ab\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "RGBA颜色模式中的\"A\"代表什么？",
+            "type": "multiple-choice",
+            "options": [
+                "亮度",
+                "Alpha通道（透明度）",
+                "角度",
+                "面积"
+            ],
+            "answer": 1,
+            "explanation": "A代表Alpha通道，控制透明度。0是完全透明，255或1.0是完全不透明。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "使用putalpha()函数设置透明度时，参数0.5表示？",
+            "type": "multiple-choice",
+            "options": [
+                "完全透明",
+                "半透明",
+                "完全不透明",
+                "随机透明度"
+            ],
+            "answer": 1,
+            "explanation": "putalpha()参数范围是0.0-1.0，0.5表示50%半透明效果。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "ellipse()函数绘制椭圆时，参数顺序正确的是？",
+            "type": "multiple-choice",
+            "options": [
+                "中心坐标+宽高",
+                "左上角坐标+宽高",
+                "右下角坐标+宽高",
+                "旋转角度+宽高"
+            ],
+            "answer": 1,
+            "explanation": "标准用法是ellipse( (x,y,width,height) )，x,y是左上角坐标。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "制作圆形头像最关键的操作是？",
+            "type": "multiple-choice",
+            "options": [
+                "调整图片亮度",
+                "创建圆形蒙版",
+                "旋转图片45度",
+                "添加文字水印"
+            ],
+            "answer": 1,
+            "explanation": "通过圆形蒙版可以将图片裁剪为圆形，这是制作圆形头像的核心步骤。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "在RGBA模式中，纯白色完全透明的表示是？",
+            "type": "multiple-choice",
+            "options": [
+                "(255,255,255,0)",
+                "(0,0,0,1)",
+                "(128,128,128,0.5)",
+                "(255,255,255,255)"
+            ],
+            "answer": 0,
+            "explanation": "RGB三个255是白色，A通道0表示完全透明。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "用ellipse()绘制正圆形需要？",
+            "type": "multiple-choice",
+            "options": [
+                "宽高随机",
+                "宽高相等",
+                "宽是高的两倍",
+                "高是宽的三倍"
+            ],
+            "answer": 1,
+            "explanation": "当宽度和高度相等时，椭圆就会变成正圆形。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "putalpha(255)可以正确设置完全不透明",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "putalpha()通常接受0.0-1.0的浮点数，255是整数格式错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "RGBA颜色模式比RGB多了一个透明度通道",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "RGBA在RGB基础上增加了Alpha（透明度）通道。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "putalpha()函数的主要作用是设置图像的______",
+            "type": "fill-in",
+            "answer": [
+                "透明度"
+            ],
+            "explanation": "这个函数专门用于调整图像的透明程度。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "图像蒙版就像个______，决定显示哪些区域",
+            "type": "fill-in",
+            "answer": [
+                "形状模具/透明滤镜"
+            ],
+            "explanation": "蒙版通过形状控制图像显示范围，就像用模具盖住不需要的部分。",
+            "preserveFormat": true
+        }
+    ]
+}

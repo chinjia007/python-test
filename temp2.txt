@@ -1,0 +1,1279 @@
+            box-shadow: 0 3px 15px rgba(255, 159, 10, 0.4);
+            z-index: 5;
+            display: none;
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed rgba(255, 215, 0, 0.7);
+            transform: rotate(-8deg);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: score-shine 3s infinite alternate, score-rotate 10s infinite linear;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+        }
+
+        .score-value {
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-bottom: 2px;
+            color: #FFF;
+            text-shadow: 0 0 5px rgba(255, 69, 0, 0.7);
+            letter-spacing: -0.5px;
+        }
+
+        .score-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* 添加印章发光效果动画 */
+        @keyframes score-shine {
+            0% {
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+                text-shadow: 0 0 3px rgba(255, 215, 0, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 69, 0, 0.3);
+                text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        /* 添加印章缓慢旋转和浮动动画 */
+        @keyframes score-rotate {
+            0% {
+                transform: rotate(-8deg) translateY(0px);
+            }
+            25% {
+                transform: rotate(-3deg) translateY(-2px);
+            }
+            50% {
+                transform: rotate(-8deg) translateY(0px);
+            }
+            75% {
+                transform: rotate(-13deg) translateY(2px);
+            }
+            100% {
+                transform: rotate(-8deg) translateY(0px);
+            }
+        }
+
+        /* 添加印章悬停效果 */
+        .level-card:hover .level-score {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), inset 0 0 15px rgba(255, 69, 0, 0.4);
+            border: 2px solid rgba(255, 215, 0, 0.9);
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.7) 0%, rgba(255, 159, 10, 0.6) 60%, rgba(255, 99, 71, 0.4) 100%);
+            animation-play-state: paused;
+        }
+
+        /* 添加印章内部结构 */
+        .level-score::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 64px;
+            height: 64px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            box-sizing: border-box;
+            z-index: -1;
+        }
+
+        .level-score::after {
+            content: '🏆';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+        }
+
+        .completed-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(50, 215, 75, 0.25);
+            color: var(--status-completed);
+            border: 1px solid rgba(50, 215, 75, 0.5);
+            text-shadow: 0 0 5px rgba(50, 215, 75, 0.4);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .completed-status::before {
+            content: '✅';
+            font-size: 1em;
+            filter: drop-shadow(0 0 2px rgba(50, 215, 75, 0.4));
+        }
+
+        /* 标题样式 */
+        h1, h2, h3 {
+            color: var(--text-color);
+        }
+        
+        /* 强制修复悬浮蒙层样式 */
+        .hover-overlay {
+            position: absolute !important;
+            inset: 0 !important;
+            background: rgba(0, 0, 0, 0.8) !important;
+            border-radius: 10px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            opacity: 0 !important;
+            pointer-events: auto !important;
+            transition: all 0.3s ease !important;
+            z-index: 100 !important; /* 确保在所有内容之上 */
+        }
+        
+        .level-card:hover .hover-overlay {
+            opacity: 1 !important;
+        }
+        
+        .overlay-button {
+            margin: 5px 0;
+            padding: 12px 24px !important;
+            border-radius: 8px !important;
+            background: linear-gradient(135deg, #FF9F0A, #FF375F) !important;
+            color: white !important;
+            font-weight: bold !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            border: none !important;
+            transition: all 0.3s ease !important;
+            z-index: 101 !important;
+        }
+        
+        .overlay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 55, 95, 0.3);
+        }
+        
+        .overlay-button.wrong-answers {
+            background: linear-gradient(135deg, #FF9800, #FF5722);
+        }
+        
+        .lock-message {
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* 可答题卡片（橙色发光效果） */
+        .level-card.unlocked:not(.completed) {
+            box-shadow: 0 0 25px rgba(255, 159, 10, 0.4);
+            border: 1px solid rgba(255, 159, 10, 0.6);
+            animation: pulsing-orange 2s infinite alternate;
+        }
+        
+        .level-card.unlocked:not(.completed)::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 159, 10, 0.25), transparent 70%);
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        @keyframes pulsing-orange {
+            0% { box-shadow: 0 0 15px rgba(255, 159, 10, 0.4); }
+            100% { box-shadow: 0 0 30px rgba(255, 159, 10, 0.7); }
+        }
+        
+        /* 已完成卡片（绿色发光效果） */
+        .level-card.completed {
+            box-shadow: 0 8px 30px rgba(50, 215, 75, 0.15); /* 减少外发光 */
+            border: 2px solid rgba(50, 215, 75, 0.4); /* 减少边框亮度 */
+            background: linear-gradient(145deg, rgba(50, 215, 75, 0.12), rgba(40, 160, 60, 0.12)) !important; /* 降低亮度 */
+            position: relative;
+            transform: translateY(-2px);
+        }
+        
+        .level-card.completed::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="%2332D74B" stroke="white" stroke-width="2"/><path d="M20 30 L28 38 L40 22" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            z-index: 10;
+            transform: rotate(15deg);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(15deg) translateY(-5px); }
+            100% { transform: rotate(15deg) translateY(0px); }
+        }
+        
+        .level-card.completed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(50, 215, 75, 0.4);
+        }
+
+        /* 增强状态标签视觉效果 */
+        .level-status.locked {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--status-locked);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .level-status.locked::before {
+            content: '🔒';
+            font-size: 1em;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+        }
+        
+        .level-status.unlocked {
+            background: rgba(255, 159, 10, 0.25);
+            color: var(--status-available);
+            border: 1px solid rgba(255, 159, 10, 0.5);
+            text-shadow: 0 0 5px rgba(255, 159, 10, 0.6);
+            animation: glow-orange 2s infinite alternate;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .level-status.unlocked::before {
+            content: '🎯';
+            font-size: 1em;
+            filter: drop-shadow(0 0 2px rgba(255, 159, 10, 0.5));
+        }
+        
+        .level-status.completed {
+            background: rgba(50, 215, 75, 0.25);
+            color: var(--status-completed);
+            border: 1px solid rgba(50, 215, 75, 0.5);
+            text-shadow: 0 0 5px rgba(50, 215, 75, 0.6);
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(50, 215, 75, 0.4);
+        }
+        
+        @keyframes glow-orange {
+            0% { box-shadow: 0 0 5px rgba(255, 159, 10, 0.4); }
+            100% { box-shadow: 0 0 15px rgba(255, 159, 10, 0.8); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加背景光斑效果 -->
+    <div class="background-effects">
+        <div class="light-spot"></div>
+        <div class="light-spot"></div>
+        <div class="light-spot"></div>
+        <div class="light-spot"></div>
+                </div>
+                
+    <div class="container">
+        <header>
+            <h1>神奇喵喵Python训练营<div class="title-glow"></div></h1>
+            <div class="header-actions">
+                <a href="wrong-answers.html?level=1&source=home" class="wrong-answers-button">查看错题集</a>
+                <a href="quiz-editor.html" class="wrong-answers-button" style="margin-left: 10px; background: linear-gradient(135deg, rgba(191, 90, 242, 0.2), rgba(64, 200, 224, 0.2)); border: 1px solid rgba(191, 90, 242, 0.3);">题库编辑器</a>
+            </div>
+        </header>
+        
+        <!-- 添加大容器 -->
+        <div class="levels-container">
+            <!-- 关卡网格 - 这里的内容将被JavaScript动态生成 -->
+            <div class="levels-grid"></div>
+        </div>
+    </div>
+
+    <script>
+        // 游戏状态管理
+        const gameState = {
+            currentLevel: 1,
+            completedLevels: [],
+            answers: {},
+            unlockedLevels: [1]
+        };
+        
+        // 关卡配置
+        let levelsConfig = {
+            totalLevels: 25,
+            levels: []
+        };
+        
+        // 从本地存储加载游戏状态
+        function loadGameState() {
+            console.log("从localStorage加载游戏状态...");
+            
+            const savedState = localStorage.getItem('pythonQuizState');
+            if (savedState) {
+                try {
+                    console.log("找到已保存的状态");
+                const parsedState = JSON.parse(savedState);
+                    
+                    // 首先检查状态数据完整性
+                    if (!parsedState.completedLevels || !Array.isArray(parsedState.completedLevels)) {
+                        console.warn("已保存状态中的completedLevels不是有效数组，重置为[]");
+                        parsedState.completedLevels = [];
+                    }
+                    
+                    if (!parsedState.unlockedLevels || !Array.isArray(parsedState.unlockedLevels)) {
+                        console.warn("已保存状态中的unlockedLevels不是有效数组，重置为[1]");
+                        parsedState.unlockedLevels = [1];
+                    }
+                    
+                    if (!parsedState.answers || typeof parsedState.answers !== 'object') {
+                        console.warn("已保存状态中的answers不是有效对象，重置为{}");
+                        parsedState.answers = {};
+                    }
+                    
+                    // 将加载的状态更新到gameState
+                gameState.currentLevel = parsedState.currentLevel || 1;
+                    gameState.completedLevels = parsedState.completedLevels;
+                    gameState.answers = parsedState.answers;
+                    gameState.unlockedLevels = parsedState.unlockedLevels;
+                    
+                    console.log("成功加载状态:");
+                    console.log("- 当前关卡:", gameState.currentLevel);
+                    console.log("- 已完成关卡:", gameState.completedLevels);
+                    console.log("- 已解锁关卡:", gameState.unlockedLevels);
+                } catch (error) {
+                    console.error("解析游戏状态出错:", error);
+                    resetGameState();
+                }
+            } else {
+                console.log("localStorage中没有保存的游戏状态，重置为默认状态");
+                resetGameState();
+            }
+        }
+        
+        // 加载关卡配置文件
+        function loadLevelsConfig() {
+            console.log("开始加载关卡配置文件...");
+            
+            // 返回promise对象以便跟踪加载状态
+            return fetch('levels-config.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`配置文件加载失败: ${response.status} ${response.statusText}`);
+                    }
+                    console.log("配置文件请求成功，开始解析...");
+                    return response.json();
+                })
+                .then(config => {
+                    console.log("成功加载关卡配置:", config);
+                    
+                    // 检查配置文件格式
+                    if (!config.totalLevels || !Array.isArray(config.levels)) {
+                        console.error("配置文件格式不正确:", config);
+                        throw new Error("配置文件格式不正确");
+                    }
+                    
+                    // 确认每个关卡都有正确的属性
+                    const validLevels = config.levels.every(level => 
+                        level.level && level.title && level.description);
+                    
+                    if (!validLevels) {
+                        console.error("配置文件中存在格式不正确的关卡数据");
+                        throw new Error("配置文件中存在格式不正确的关卡数据");
+                    }
+                    
+                    // 更新全局配置
+                    levelsConfig = config;
+                    console.log(`已加载${config.levels.length}个关卡配置，总关卡数：${config.totalLevels}`);
+                    
+                    // 打印几个关卡的标题和描述，检查是否正确
+                    console.log("配置示例(关卡1):", {
+                        level: 1,
+                        title: getLevelTitle(1),
+                        description: getLevelDescription(1)
+                    });
+                    
+                    if (config.levels.length > 1) {
+                        console.log("配置示例(关卡2):", {
+                            level: 2,
+                            title: getLevelTitle(2),
+                            description: getLevelDescription(2)
+                        });
+                    }
+                    
+                    // 配置加载完成后创建关卡卡片
+                    createLevelCards();
+                    
+                    // 加载已完成关卡分数
+                    loadCompletedLevels();
+                    
+                    return config;
+                })
+                .catch(error => {
+                    console.error("加载关卡配置失败:", error);
+                    console.log("使用默认配置...");
+                    
+                    // 出错时使用默认硬编码配置
+                    initDefaultLevelsConfig();
+                    
+                    // 使用默认配置创建卡片
+                    createLevelCards();
+                    loadCompletedLevels();
+                    
+                    return levelsConfig; // 返回默认配置
+                });
+        }
+        
+        // 初始化默认关卡配置（当配置文件加载失败时使用）
+        function initDefaultLevelsConfig() {
+            levelsConfig = {
+                totalLevels: 25,
+                levels: []
+            };
+            
+            // 生成默认关卡配置
+            for (let i = 1; i <= 25; i++) {
+                levelsConfig.levels.push({
+                    level: i,
+                    title: getDefaultLevelTitle(i),
+                    description: getDefaultLevelDescription(i)
+                });
+            }
+        }
+        
+        // 默认关卡标题（备用）
+        function getDefaultLevelTitle(level) {
+            const titles = {
+                1: "Python简介",
+                2: "变量与赋值",
+                3: "基本输入输出",
+                4: "运算符",
+                5: "注释与文档",
+                6: "数字类型",
+                7: "字符串操作",
+                8: "列表与元组",
+                9: "字典",
+                10: "集合",
+                11: "条件语句",
+                12: "for循环",
+                13: "while循环",
+                14: "循环控制",
+                15: "异常处理",
+                16: "函数定义",
+                17: "参数与返回值",
+                18: "作用域",
+                19: "模块导入",
+                20: "包管理",
+                21: "类与对象",
+                22: "继承与多态",
+                23: "装饰器",
+                24: "生成器",
+                25: "文件处理"
+            };
+            return titles[level] || `关卡 ${level}`;
+        }
+        
+        // 默认关卡描述（备用）
+        function getDefaultLevelDescription(level) {
+            const descriptions = {
+                1: "了解Python的历史、特性和应用场景。",
+                2: "学习如何声明变量并为其赋值。",
+                3: "掌握基本的输入输出操作。",
+                4: "了解Python中的各种运算符和表达式。",
+                5: "学习如何添加注释和生成文档。",
+                6: "掌握Python中的各种数字类型和操作。",
+                7: "学习字符串的切片、连接和格式化。",
+                8: "掌握列表和元组的创建与操作。",
+                9: "学习字典的创建、访问和修改。",
+                10: "了解集合类型及其操作方法。",
+                11: "掌握if, elif, else条件结构。",
+                12: "学习如何使用for循环遍历序列。",
+                13: "掌握while循环及其用法。",
+                14: "学习break、continue和pass语句。",
+                15: "掌握try/except异常处理机制。",
+                16: "学习如何定义和调用函数。",
+                17: "掌握函数参数和返回值的使用。",
+                18: "了解变量作用域和命名空间。",
+                19: "学习如何导入和使用模块。",
+                20: "掌握包的概念和使用方法。",
+                21: "学习面向对象编程的基础概念。",
+                22: "掌握面向对象的高级特性。",
+                23: "学习装饰器的原理和应用。",
+                24: "了解生成器和yield语句。",
+                25: "掌握文件的读写和管理。"
+            };
+            return descriptions[level] || "完成这个关卡的挑战。";
+        }
+        
+        // 获取关卡标题
+        function getLevelTitle(level) {
+            // 从配置文件中查找对应关卡
+            const levelConfig = levelsConfig.levels.find(l => l.level === level);
+            return levelConfig ? levelConfig.title : getDefaultLevelTitle(level);
+        }
+        
+        // 获取关卡描述
+        function getLevelDescription(level) {
+            // 从配置文件中查找对应关卡
+            const levelConfig = levelsConfig.levels.find(l => l.level === level);
+            return levelConfig ? levelConfig.description : getDefaultLevelDescription(level);
+        }
+        
+        // 重置游戏状态为默认值
+        function resetGameState() {
+            console.log("重置游戏状态为默认值");
+            gameState.currentLevel = 1;
+            gameState.completedLevels = [];
+            gameState.answers = {};
+            gameState.unlockedLevels = [1];
+            
+            // 直接保存重置后的状态
+            localStorage.setItem('pythonQuizState', JSON.stringify({
+                currentLevel: 1,
+                completedLevels: [],
+                answers: {},
+                unlockedLevels: [1]
+            }));
+            
+            console.log("游戏状态已重置为默认值");
+        }
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 先加载游戏状态
+            loadGameState();
+            
+            // 然后加载关卡配置 - 移除这里的createLevelCards调用，因为已经在loadLevelsConfig里面调用了
+            loadLevelsConfig()
+                .then(() => {
+                    console.log("配置加载完成，设置事件监听器");
+                    // 配置加载完成后设置事件监听器
+                    setupEventListeners();
+                })
+                .catch(err => {
+                    console.error("初始化过程出错:", err);
+                    // 即使出错也设置事件监听器
+                    setupEventListeners();
+                });
+            
+            // 添加测试按钮 (保留原有功能)
+            // 为测试添加一个清除状态的按钮
+            const testReset = document.createElement('button');
+            testReset.innerText = '清除游戏状态(测试)';
+            testReset.style.position = 'fixed';
+            testReset.style.bottom = '10px';
+            testReset.style.right = '10px';
+            testReset.style.zIndex = '9999';
+            testReset.style.padding = '10px';
+            testReset.style.background = 'rgba(255,0,0,0.5)';
+            testReset.style.color = 'white';
+            testReset.style.border = 'none';
+            testReset.style.borderRadius = '5px';
+            testReset.style.cursor = 'pointer';
+            testReset.addEventListener('click', function() {
+                if (confirm('确定要清除所有游戏状态吗？')) {
+                    resetGameState();
+                    location.reload();
+                }
+            });
+            document.body.appendChild(testReset);
+            
+            // 添加一个查看游戏状态的按钮
+            const testViewState = document.createElement('button');
+            testViewState.innerText = '查看游戏状态(调试)';
+            testViewState.style.position = 'fixed';
+            testViewState.style.bottom = '50px';
+            testViewState.style.right = '10px';
+            testViewState.style.zIndex = '9999';
+            testViewState.style.padding = '10px';
+            testViewState.style.background = 'rgba(0,0,255,0.5)';
+            testViewState.style.color = 'white';
+            testViewState.style.border = 'none';
+            testViewState.style.borderRadius = '5px';
+            testViewState.style.cursor = 'pointer';
+            testViewState.addEventListener('click', function() {
+                const savedState = localStorage.getItem('pythonQuizState');
+                if (savedState) {
+                    try {
+                        const state = JSON.parse(savedState);
+                        alert(JSON.stringify(state, null, 2));
+                        console.log("当前游戏状态:", state);
+                    } catch (e) {
+                        alert("解析游戏状态失败: " + e.message);
+                    }
+                } else {
+                    alert("没有找到保存的游戏状态！");
+                }
+            });
+            document.body.appendChild(testViewState);
+            
+            // 添加强制解锁关卡2的按钮
+            const unlockLevel2 = document.createElement('button');
+            unlockLevel2.innerText = '强制解锁关卡2';
+            unlockLevel2.style.position = 'fixed';
+            unlockLevel2.style.bottom = '90px';
+            unlockLevel2.style.right = '10px';
+            unlockLevel2.style.zIndex = '9999';
+            unlockLevel2.style.padding = '10px';
+            unlockLevel2.style.background = 'rgba(0,255,0,0.5)';
+            unlockLevel2.style.color = 'white';
+            unlockLevel2.style.border = 'none';
+            unlockLevel2.style.borderRadius = '5px';
+            unlockLevel2.style.cursor = 'pointer';
+            unlockLevel2.addEventListener('click', function() {
+                // 读取当前状态
+                const savedState = localStorage.getItem('pythonQuizState');
+                if (savedState) {
+                    try {
+                        const state = JSON.parse(savedState);
+                        
+                        // 确保关卡2被解锁
+                        if (!state.unlockedLevels.includes(2)) {
+                            state.unlockedLevels.push(2);
+                            localStorage.setItem('pythonQuizState', JSON.stringify(state));
+                            alert("已成功解锁关卡2！页面将重新加载。");
+                            location.reload();
+                        } else {
+                            alert("关卡2已经解锁，无需再次解锁！");
+                        }
+                    } catch (e) {
+                        alert("修改游戏状态失败: " + e.message);
+                    }
+                } else {
+                    alert("没有找到保存的游戏状态！");
+                }
+            });
+            document.body.appendChild(unlockLevel2);
+        });
+
+        // 保存游戏状态
+        function saveGameState() {
+            console.log("保存游戏状态...");
+            localStorage.setItem('pythonQuizState', JSON.stringify({
+                currentLevel: gameState.currentLevel,
+                completedLevels: gameState.completedLevels,
+                answers: gameState.answers,
+                unlockedLevels: gameState.unlockedLevels
+            }));
+            console.log("保存完成");
+        }
+        
+        // 开始关卡
+        function startLevel(level) {
+            gameState.currentLevel = level;
+            saveGameState();
+            window.location.href = `quiz.html?level=${level}`;
+        }
+        
+        // 更新关卡UI
+        function updateLevelUI() {
+            const levelsContainer = document.getElementById('levels-container');
+            if (!levelsContainer) return;
+            
+            levelsContainer.innerHTML = '';
+            
+            // 获取关卡分数记录
+            const levelScores = {};
+            for (const levelStr in gameState.answers) {
+                const level = parseInt(levelStr);
+                if (!isNaN(level)) {
+                    let correctCount = 0;
+                    let totalQuestions = 0;
+                    
+                    for (const questionIndex in gameState.answers[level]) {
+                        totalQuestions++;
+                        if (gameState.answers[level][questionIndex].correct) {
+                            correctCount++;
+                        }
+                    }
+                    
+                    // 只有答完了所有15题才计算分数
+                    if (totalQuestions === 15) {
+                        levelScores[level] = correctCount * 10;
+                    }
+                }
+            }
+            
+            // 创建关卡卡片
+            for (let i = 1; i <= 25; i++) {
+                const isUnlocked = gameState.unlockedLevels.includes(i);
+                const isCompleted = gameState.completedLevels.includes(i);
+                const score = levelScores[i] || 0;
+                const moduleNum = Math.ceil(i / 5);  // 每5关一个模块
+                
+                console.log(`关卡 ${i} - 解锁: ${isUnlocked}, 完成: ${isCompleted}, 分数: ${score}`);
+                
+                // 检查是否有错题
+                const wrongAnswersKey = `wrongAnswers_level${i}`;
+                let hasWrongAnswers = false;
+                
+                // 尝试从JSON文件查询错题状态
+                fetch('wrong-questions.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        // 检查该关卡是否有错题
+                        const wrongAnswers = data.wrongQuestions && data.wrongQuestions[i];
+                        hasWrongAnswers = wrongAnswers && wrongAnswers.length > 0;
+                        
+                        // 如果没有从JSON获取到，再尝试从localStorage获取（兼容旧数据）
+                        if (!hasWrongAnswers) {
+                            const localWrongAnswers = JSON.parse(localStorage.getItem(wrongAnswersKey)) || [];
+                            hasWrongAnswers = localWrongAnswers.length > 0;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`获取关卡${i}错题状态失败:`, error);
+                        // 从localStorage获取（兼容旧数据）
+                        const localWrongAnswers = JSON.parse(localStorage.getItem(wrongAnswersKey)) || [];
+                        hasWrongAnswers = localWrongAnswers.length > 0;
+                    });
+                
+                const levelCard = document.createElement('div');
+                levelCard.className = `level-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+                
+                // 强制补充检查完成状态，以防completedLevels为undefined
+                const forceCheck = localStorage.getItem('pythonQuizState');
+                let reallyCompleted = isCompleted;
+                
+                if (forceCheck) {
+                    try {
+                        const state = JSON.parse(forceCheck);
+                        if (state.completedLevels && Array.isArray(state.completedLevels)) {
+                            reallyCompleted = state.completedLevels.includes(i);
+                            if (reallyCompleted !== isCompleted) {
+                                console.warn(`关卡${i}完成状态不一致，localStorage: ${reallyCompleted}, gameState: ${isCompleted}`);
+                            }
+                        }
+                    } catch (e) {
+                        console.error("检查完成状态出错:", e);
+                    }
+                }
+                
+                // 使用确认的完成状态
+                if (reallyCompleted) {
+                    levelCard.classList.add('completed');
+                    console.log(`关卡 ${i} 标记为已完成`);
+                }
+                
+                levelCard.dataset.level = i;
+                levelCard.dataset.module = moduleNum;
+                
+                // 添加分数显示
+                let scoreDisplay = '';
+                if (reallyCompleted) {
+                    // 创建分数元素，具体分数会在loadCompletedLevels中更新
+                    scoreDisplay = `
+                        <div class="level-score" style="display:block;">
+                            <span class="score-value">0分</span>
+                            <span class="score-label">积分</span>
+                        </div>
+                    `;
+                }
+                
+                // 卡片内容
+                let cardContent = '';
+                if (isUnlocked) {
+                    cardContent = `
+                        <div class="level-number">第${i}关</div>
+                        ${scoreDisplay}
+                        <div class="level-card-content">
+                            <h3 class="level-title">${getLevelTitle(i)}</h3>
+                            <p class="level-description">${getLevelDescription(i)}</p>
+                        </div>
+                        ${reallyCompleted ? 
+                            '<div class="completed-status" style="display:block;">已完成</div>' : 
+                            '<div class="level-status unlocked">可答题</div>'
+                        }
+                        
+                        <!-- 添加蒙层 -->
+                        <div class="hover-overlay">
+                            ${reallyCompleted ? 
+                                `<button class="overlay-button">再次挑战</button>` 
+                                : 
+                                `<button class="overlay-button">开始答题</button>`
+                            }
+                        </div>
+                    `;
+                } else {
+                    cardContent = `
+                        <div class="level-number">第${i}关</div>
+                        <div class="level-card-content">
+                            <h3 class="level-title">${getLevelTitle(i)}</h3>
+                            <p class="level-description">${getLevelDescription(i)}</p>
+                        </div>
+                        <div class="level-status locked">待解锁</div>
+                        
+                        <!-- 添加锁定蒙层 -->
+                        <div class="hover-overlay">
+                            <div class="lock-message">解锁规则：<br>上一关的分数大于或等于10分</div>
+                        </div>
+                    `;
+                }
+                
+                levelCard.innerHTML = cardContent;
+                
+                // 设置点击事件
+                if (isUnlocked) {
+                    // 整个卡片的点击事件，现在只排除按钮
+                    levelCard.addEventListener('click', function(e) {
+                        // 只有点击按钮时阻止默认行为
+                        if (e.target.tagName === 'BUTTON') {
+                            return;
+                        }
+                        startLevel(i);
+                    });
+                    
+                    // 蒙层层也添加点击事件
+                    const hoverOverlay = levelCard.querySelector('.hover-overlay');
+                    if (hoverOverlay) {
+                        hoverOverlay.addEventListener('click', function(e) {
+                            // 只有点击按钮时阻止默认行为
+                            if (e.target.tagName === 'BUTTON') {
+                                return;
+                            }
+                            // 点击蒙层也能进入答题界面
+                            startLevel(i);
+                        });
+                    }
+                    
+                    // 蒙层按钮事件
+                    const startButton = levelCard.querySelector('.overlay-button');
+                    if (startButton) {
+                        startButton.addEventListener('click', function(e) {
+                            e.stopPropagation(); // 阻止事件冒泡
+                            window.location.href = `quiz.html?level=${i}`;
+                        });
+                    }
+                }
+                
+                levelsContainer.appendChild(levelCard);
+            }
+        }
+        
+        // 创建关卡卡片
+        function createLevelCards() {
+            // 清除静态卡片，使用动态生成的卡片
+            const levelsGrid = document.querySelector('.levels-grid');
+            if (levelsGrid) {
+                // 清空现有的静态卡片
+                levelsGrid.innerHTML = '';
+                
+                console.log("已完成关卡:", gameState.completedLevels);
+                
+                // 获取关卡分数记录
+                const levelScores = {};
+                for (const levelStr in gameState.answers) {
+                    const level = parseInt(levelStr);
+                    if (!isNaN(level)) {
+                        let correctCount = 0;
+                        let totalQuestions = 0;
+                        
+                        for (const questionIndex in gameState.answers[level]) {
+                            totalQuestions++;
+                            if (gameState.answers[level][questionIndex].correct) {
+                                correctCount++;
+                            }
+                        }
+                        
+                        // 只有答完了所有15题才计算分数
+                        if (totalQuestions === 15) {
+                            levelScores[level] = correctCount * 10;
+                        }
+                    }
+                }
+                
+                // 创建关卡卡片 - 使用配置文件中的总关卡数
+                for (let i = 1; i <= levelsConfig.totalLevels; i++) {
+                    const isUnlocked = gameState.unlockedLevels.includes(i);
+                    const isCompleted = gameState.completedLevels && gameState.completedLevels.includes(i);
+                    const score = levelScores[i] || 0;
+                    const moduleNum = Math.ceil(i / 5);  // 每5关一个模块
+                    
+                    console.log(`关卡 ${i} - 解锁: ${isUnlocked}, 完成: ${isCompleted}`);
+                    
+                    // 检查是否有错题
+                    const wrongAnswersKey = `wrongAnswers_level${i}`;
+                    let hasWrongAnswers = false;
+                    
+                    // 尝试从JSON文件查询错题状态
+                    fetch('wrong-questions.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            // 检查该关卡是否有错题
+                            const wrongAnswers = data.wrongQuestions && data.wrongQuestions[i];
+                            hasWrongAnswers = wrongAnswers && wrongAnswers.length > 0;
+                            
+                            // 如果没有从JSON获取到，再尝试从localStorage获取（兼容旧数据）
+                            if (!hasWrongAnswers) {
+                                const localWrongAnswers = JSON.parse(localStorage.getItem(wrongAnswersKey)) || [];
+                                hasWrongAnswers = localWrongAnswers.length > 0;
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`获取关卡${i}错题状态失败:`, error);
+                            // 从localStorage获取（兼容旧数据）
+                            const localWrongAnswers = JSON.parse(localStorage.getItem(wrongAnswersKey)) || [];
+                            hasWrongAnswers = localWrongAnswers.length > 0;
+                        });
+                    
+                    const levelCard = document.createElement('div');
+                    levelCard.className = `level-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+                    
+                    // 强制补充检查完成状态，以防completedLevels为undefined
+                    const forceCheck = localStorage.getItem('pythonQuizState');
+                    let reallyCompleted = isCompleted;
+                    
+                    if (forceCheck) {
+                        try {
+                            const state = JSON.parse(forceCheck);
+                            if (state.completedLevels && Array.isArray(state.completedLevels)) {
+                                reallyCompleted = state.completedLevels.includes(i);
+                                if (reallyCompleted !== isCompleted) {
+                                    console.warn(`关卡${i}完成状态不一致，localStorage: ${reallyCompleted}, gameState: ${isCompleted}`);
+                                }
+                            }
+                        } catch (e) {
+                            console.error("检查完成状态出错:", e);
+                        }
+                    }
+                    
+                    // 使用确认的完成状态
+                    if (reallyCompleted) {
+                        levelCard.classList.add('completed');
+                        console.log(`关卡 ${i} 标记为已完成`);
+                    }
+                    
+                    levelCard.dataset.level = i;
+                    levelCard.dataset.module = moduleNum;
+                    
+                    // 添加分数显示
+                    let scoreDisplay = '';
+                    if (reallyCompleted) {
+                        // 创建分数元素，具体分数会在loadCompletedLevels中更新
+                        scoreDisplay = `
+                            <div class="level-score" style="display:block;">
+                                <span class="score-value">0分</span>
+                                <span class="score-label">积分</span>
+                            </div>
+                        `;
+                    }
+                    
+                    // 获取当前关卡的配置信息
+                    let levelTitle = "";
+                    let levelDesc = "";
+                    
+                    // 直接从配置数组中查找对应关卡
+                    const levelConfig = levelsConfig.levels.find(config => config.level === i);
+                    if (levelConfig) {
+                        levelTitle = levelConfig.title;
+                        levelDesc = levelConfig.description;
+                        console.log(`关卡${i}标题: ${levelTitle}`);
+                    } else {
+                        // 如果找不到配置，使用默认值
+                        levelTitle = getDefaultLevelTitle(i);
+                        levelDesc = getDefaultLevelDescription(i);
+                        console.log(`未找到关卡${i}配置，使用默认值: ${levelTitle}`);
+                    }
+                    
+                    // 卡片内容
+                    let cardContent = '';
+                    if (isUnlocked) {
+                        cardContent = `
+                            <div class="level-number">第${i}关</div>
+                            ${scoreDisplay}
+                            <div class="level-card-content">
+                                <h3 class="level-title">${levelTitle}</h3>
+                                <p class="level-description">${levelDesc}</p>
+                            </div>
+                            ${reallyCompleted ? 
+                                '<div class="completed-status" style="display:block;">已完成</div>' : 
+                                '<div class="level-status unlocked">可答题</div>'
+                            }
+                            
+                            <!-- 添加蒙层 -->
+                            <div class="hover-overlay">
+                                ${reallyCompleted ? 
+                                    `<button class="overlay-button">再次挑战</button>` 
+                                    : 
+                                    `<button class="overlay-button">开始答题</button>`
+                                }
+                            </div>
+                        `;
+                    } else {
+                        cardContent = `
+                            <div class="level-number">第${i}关</div>
+                            <div class="level-card-content">
+                                <h3 class="level-title">${levelTitle}</h3>
+                                <p class="level-description">${levelDesc}</p>
+                            </div>
+                            <div class="level-status locked">待解锁</div>
+                            
+                            <!-- 添加锁定蒙层 -->
+                            <div class="hover-overlay">
+                                <div class="lock-message">解锁规则：<br>上一关的分数大于或等于10分</div>
+                            </div>
+                        `;
+                    }
+                    
+                    levelCard.innerHTML = cardContent;
+                    
+                    // 设置点击事件
+                    if (isUnlocked) {
+                        // 整个卡片的点击事件，现在只排除按钮
+                        levelCard.addEventListener('click', function(e) {
+                            // 只有点击按钮时阻止默认行为
+                            if (e.target.tagName === 'BUTTON') {
+                        return;
+                    }
+                            startLevel(i);
+                        });
+                        
+                        // 蒙层层也添加点击事件
+                        const hoverOverlay = levelCard.querySelector('.hover-overlay');
+                        if (hoverOverlay) {
+                            hoverOverlay.addEventListener('click', function(e) {
+                                // 只有点击按钮时阻止默认行为
+                                if (e.target.tagName === 'BUTTON') {
+                                    return;
+                                }
+                                // 点击蒙层也能进入答题界面
+                                startLevel(i);
+                            });
+                        }
+                        
+                        // 蒙层按钮事件
+                        const startButton = levelCard.querySelector('.overlay-button');
+                        if (startButton) {
+                            startButton.addEventListener('click', function(e) {
+                                e.stopPropagation(); // 阻止事件冒泡
+                                window.location.href = `quiz.html?level=${i}`;
+                            });
+                        }
+                    }
+                    
+                    levelsGrid.appendChild(levelCard);
+                }
+            }
+        }
+        
+        // 初始化页面
+        function initPage() {
+            // 从本地存储中加载游戏状态
+            const savedState = localStorage.getItem('pythonQuizState');
+            if (savedState) {
+                try {
+                    const parsedState = JSON.parse(savedState);
+                    
+                    // 更新gameState
+                    if (parsedState.completedLevels) {
+                        gameState.completedLevels = parsedState.completedLevels;
+                    }
+                    if (parsedState.unlockedLevels) {
+                        gameState.unlockedLevels = parsedState.unlockedLevels;
+                    }
+                    if (parsedState.answers) {
+                        gameState.answers = parsedState.answers;
+                    }
+                    
+                    console.log("已加载游戏状态:", gameState);
+                    
+                    // 检查所有已完成关卡，判断是否需要解锁下一关
+                    if (parsedState.completedLevels && Array.isArray(parsedState.completedLevels)) {
+                        let autoUnlockedLevels = [];
+                        
+                        // 遍历所有已完成关卡（除了第25关）
+                        parsedState.completedLevels.forEach(level => {
+                            if (level < 25) { // 不处理最后一关
+                                const nextLevel = level + 1;
+                                
+                                // 检查下一关是否已解锁
+                                if (!parsedState.unlockedLevels.includes(nextLevel)) {
+                                    // 计算当前关卡得分
+                                    let correctCount = 0;
+                                    let totalCount = 0;
+                                    
+                                    if (parsedState.answers && parsedState.answers[level]) {
+                                        for (const questionIndex in parsedState.answers[level]) {
+                                            totalCount++;
+                                            if (parsedState.answers[level][questionIndex].correct) {
+                                                correctCount++;
+                                            }
+                                        }
+                                        
+                                        // 计算得分
+                                        const score = correctCount * 10;
+                                        console.log(`[自动检查] 关卡${level}得分: ${score}分 (${correctCount}/${totalCount})`);
+                                        
+                                        // 如果分数超过10分但下一关未解锁，则自动解锁
+                                        if (score >= 10) {
+                                            console.log(`[自动修复] 关卡${level}得分已达解锁标准，但关卡${nextLevel}未解锁，现在自动解锁关卡${nextLevel}`);
+                                            if (!parsedState.unlockedLevels.includes(nextLevel)) {
+                                                parsedState.unlockedLevels.push(nextLevel);
+                                                autoUnlockedLevels.push(nextLevel);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        
+                        // 如果有自动解锁的关卡，更新本地存储和全局状态
+                        if (autoUnlockedLevels.length > 0) {
+                            localStorage.setItem('pythonQuizState', JSON.stringify(parsedState));
+                            gameState.unlockedLevels = parsedState.unlockedLevels;
+                            
+                            console.log("[自动修复] 已成功解锁关卡: " + autoUnlockedLevels.join(", "));
+                            if (autoUnlockedLevels.length === 1) {
+                                alert(`检测到关卡${autoUnlockedLevels[0]-1}已获得足够分数，系统已自动解锁关卡${autoUnlockedLevels[0]}！`);
+                            } else if (autoUnlockedLevels.length > 1) {
+                                alert(`检测到多个关卡已获得足够分数，系统已自动解锁关卡: ${autoUnlockedLevels.join(", ")}！`);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error("解析游戏状态时出错:", error);
+                }
+            }
+            
+            // 创建关卡卡片
+            createLevelCards();
+            
+            // 加载已完成关卡分数
+            loadCompletedLevels();
+            
+            // 初始化事件监听器
+            setupEventListeners();
+        }
+        
+        // 获取已完成关卡列表
+        function getCompletedLevels() {
+            // 从gameState中获取完成的关卡列表
+            if (gameState.completedLevels && Array.isArray(gameState.completedLevels)) {
+                return gameState.completedLevels;
+            }
+            
+            // 如果gameState中没有，尝试从localStorage直接获取
+            try {
+                const savedState = localStorage.getItem('pythonQuizState');
+                if (savedState) {
+                    const parsedState = JSON.parse(savedState);
+                    if (parsedState.completedLevels && Array.isArray(parsedState.completedLevels)) {
+                        return parsedState.completedLevels;
+                    }
+                }
+            } catch (error) {
+                console.error("获取已完成关卡列表时出错:", error);
+            }
+            
+            // 都没有则返回空数组
+            return [];
+        }
+
+        // 加载已完成关卡的分数
+        function loadCompletedLevels() {
+            const completedLevels = getCompletedLevels();
+            console.log("正在加载已完成关卡分数...", completedLevels);
+            
+            completedLevels.forEach(level => {
+                // 获取关卡答案记录
+                const levelAnswers = gameState.answers[level] || {};
+                let correctCount = 0;
+                let totalCount = 15; // 总是使用15作为总题数
+                
+                // 计算正确答案数
+                for (const questionIndex in levelAnswers) {
+                    if (levelAnswers[questionIndex].correct) {
+                        correctCount++;
+                    }
+                }
+                
+                // 计算得分
+                const score = correctCount * 10;
+                console.log(`关卡${level}得分: ${score}分 (${correctCount}/${totalCount})`);
+                
+                // 更新卡片状态
+                const card = document.querySelector(`.level-card[data-level="${level}"]`);
+                if (card) {
+                    card.classList.add('completed');
+                    
+                    // 强制更新分数显示
+                    const scoreDisplay = card.querySelector('.level-score');
+                    if (scoreDisplay) {
+                        console.log(`更新关卡${level}分数显示为: ${score}分`);
+                        const scoreValue = scoreDisplay.querySelector('.score-value');
+                        if (scoreValue) {
+                            scoreValue.textContent = `${score}分`;
+                        } else {
+                            scoreDisplay.innerHTML = `
+                                <span class="score-value">${score}分</span>
+                                <span class="score-label">积分</span>
+                            `;
+                        }
+                        scoreDisplay.style.display = 'block';
+                } else {
+                        console.log(`为关卡${level}创建新的分数显示`);
+                        const newScoreDisplay = document.createElement('div');
+                        newScoreDisplay.className = 'level-score';
+                        newScoreDisplay.innerHTML = `
+                            <span class="score-value">${score}分</span>
+                            <span class="score-label">积分</span>
+                        `;
+                        newScoreDisplay.style.display = 'block';
+                        card.appendChild(newScoreDisplay);
+                    }
+                    
+                    // 强制更新完成状态显示
+                    const completedStatus = card.querySelector('.completed-status');
+                    if (completedStatus) {
+                        console.log(`更新关卡${level}完成状态显示`);
+                        completedStatus.style.display = 'block';
+            } else {
+                        console.log(`为关卡${level}创建新的完成状态显示`);
+                        const newStatusDiv = document.createElement('div');
+                        newStatusDiv.className = 'completed-status';
+                        newStatusDiv.textContent = '已完成';
+                        newStatusDiv.style.display = 'block';
+                        card.appendChild(newStatusDiv);
+                    }
+                } else {
+                    console.warn(`找不到关卡${level}的卡片元素`);
+                }
+            });
+        }
+
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 这里可以添加任何全局事件监听器
+            console.log("设置事件监听器");
+        }
+    </script>
+</body>
+</html>
+

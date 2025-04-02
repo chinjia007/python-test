@@ -1,0 +1,261 @@
+{
+    "title": "for循环",
+    "questions": [
+        {
+            "id": 1,
+            "question": "从工具库只导入柱状图工具的正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "import Bar from pyecharts",
+                "from pyecharts import Bar",
+                "from Bar import pyecharts",
+                "import pyecharts.Bar"
+            ],
+            "answer": 1,
+            "explanation": "from...import 语法是标准导入方式，正确写法是from pyecharts导入Bar工具。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "统计全班同学身高的平均值，应该用哪个函数？",
+            "type": "multiple-choice",
+            "options": [
+                "sum()",
+                "len()",
+                "mean()",
+                "max()"
+            ],
+            "answer": 2,
+            "explanation": "mean()是专门计算平均值的函数，sum用于求和，len用于统计数量。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "给柱状图添加标题的正确参数是？",
+            "type": "multiple-choice",
+            "options": [
+                "title=\"班级成绩\"",
+                "name=\"班级成绩\"",
+                "label=\"班级成绩\"",
+                "text=\"班级成绩\""
+            ],
+            "answer": 0,
+            "explanation": "title参数用于设置图表的主标题，其他参数名称不符合标准用法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "绘制完成的图表要生成网页文件，应该调用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "show()",
+                "draw()",
+                "render()",
+                "save()"
+            ],
+            "answer": 2,
+            "explanation": "render()方法会将图表渲染为独立的HTML文件，其他方法名称不符合pyecharts规范。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "要让柱子显示具体数值，需要设置哪个参数？",
+            "type": "multiple-choice",
+            "options": [
+                "is_label_show=True",
+                "show_value=True",
+                "display_number=yes",
+                "label_color=red"
+            ],
+            "answer": 0,
+            "explanation": "is_label_show是pyecharts控制数值标签显示的内置参数，需设为True。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "哪个选项能正确创建包含三个班级的柱状图数据？",
+            "type": "multiple-choice",
+            "options": [
+                "bar.add(\"人数\", [3,5,4])",
+                "bar.add([\"人数\"], (3,5,4))",
+                "bar.add(\"人数\", [\"三班\",\"四班\",\"五班\"], [3,5,4])",
+                "bar.add(x=[\"三班\",\"四班\",\"五班\"], y=[3,5,4])"
+            ],
+            "answer": 0,
+            "explanation": "add方法的标准参数顺序是（图例名称，数据列表），x轴标签应在初始化图表时设置。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "使用pyecharts前需要先用pip安装这个库",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "pyecharts属于第三方库，必须通过pip安装后才能导入使用。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "柱状图的x轴标签通过add()方法的categories参数设置",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "x轴标签应在初始化Bar对象时通过x_axis参数设置，而非add方法参数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "初始化柱状图对象的代码是：______ = Bar()",
+            "type": "fill-in",
+            "answer": [
+                "bar"
+            ],
+            "explanation": "创建Bar实例通常用bar = Bar()",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "设置柱状图宽度应该用bar.width = ______",
+            "type": "fill-in",
+            "answer": [
+                "800"
+            ],
+            "explanation": "图表宽度直接赋值像素值，例如800表示宽度为800像素。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "绘制折线图需要导入pyecharts.charts中的哪个模块？",
+            "type": "multiple-choice",
+            "options": [
+                "Pie",
+                "Bar",
+                "Line",
+                "Grid"
+            ],
+            "answer": 2,
+            "explanation": "Line是pyecharts中专门用于绘制折线图的类，其他选项分别对应饼图、柱状图和网格布局。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "创建折线图对象的正确代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "line = Line()",
+                "line = new Line()",
+                "line = create Line()",
+                "line = Line.create()"
+            ],
+            "answer": 0,
+            "explanation": "Python中通过类名加括号直接创建对象，例如Line()。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "给折线图添加x轴数据的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                ".add_xaxis([\"语文\", \"数学\", \"英语\"])",
+                ".x_data([\"语文\", \"数学\", \"英语\"])",
+                ".set_xaxis([\"语文\", \"数学\", \"英语\"])",
+                ".xaxis = [\"语文\", \"数学\", \"英语\"]"
+            ],
+            "answer": 0,
+            "explanation": "pyecharts规定使用.add_xaxis()方法添加x轴数据列表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "设置图表标题和坐标轴名称需要调用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                ".set_series_opts()",
+                ".set_global_opts()",
+                ".set_chart_opts()",
+                ".set_axis_opts()"
+            ],
+            "answer": 1,
+            "explanation": "set_global_opts()用于设置全局选项，包括标题、坐标轴名称等。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "将折线图保存为HTML文件的代码是？",
+            "type": "multiple-choice",
+            "options": [
+                ".save(\"score.html\")",
+                ".export(\"score.html\")",
+                ".write(\"score.html\")",
+                ".render(\"score.html\")"
+            ],
+            "answer": 3,
+            "explanation": "pyecharts统一使用.render()方法生成并保存HTML文件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "如何让折线图支持鼠标滚轮缩放？",
+            "type": "multiple-choice",
+            "options": [
+                "添加is_zoom=True参数",
+                "配置datazoom_opts=opts.DataZoomOpts()",
+                "使用enable_zoom()方法",
+                "设置interactive=True"
+            ],
+            "answer": 1,
+            "explanation": "DataZoomOpts是pyecharts中专门控制缩放功能的配置项。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "使用pyecharts前必须用pip install pyecharts安装库。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "pyecharts不是Python内置库，需要先安装才能导入使用。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "可以用matplotlib库直接绘制pyecharts的折线图。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "matplotlib和pyecharts是两个不同的绘图库，不能混用代码。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "创建折线图对象的代码是：line = ______()",
+            "type": "fill-in",
+            "answer": [
+                "Line"
+            ],
+            "explanation": "Line类的首字母要大写，这是创建折线图的起点。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "设置副标题应该在set_global_opts里使用______参数",
+            "type": "fill-in",
+            "answer": [
+                "title_opts"
+            ],
+            "explanation": "title_opts=opts.TitleOpts()可以设置主副标题，像给图表贴说明牌。",
+            "preserveFormat": true
+        }
+    ]
+}

@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python题库编辑器</title>
+    <!-- 添加代码格式化器 -->
+    <script src="js/code-formatter.js"></script>
+    <style>
+        /* 基本样式 */
+        :root {
+            --bg-color: #1c1c1e;
+            --card-bg: #2c2c2e;
+            --text-color: #ffffff;
+            --text-light: rgba(255, 255, 255, 0.7);
+            --primary-color: #FF9F0A;
+            --secondary-color: #BF5AF2;
+            --success-color: #32D74B;
+            --danger-color: #FF454A;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            background-color: rgba(30, 30, 32, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--text-color);
+            resize: vertical;
+        }
+
+        .format-example-container {
+            margin-bottom: 15px;
+        }
+
+        .format-toggle {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.15), rgba(255, 55, 95, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .format-toggle:hover {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.25), rgba(255, 55, 95, 0.25));
+        }
+
+        .format-toggle::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .format-toggle.collapsed::after {
+            transform: rotate(-90deg);
+        }
+
+        .format-example {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            margin-top: 0;
+        }
+
+        .format-example.expanded {
+            max-height: 1000px;
+            margin-top: 10px;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary-color), #FF375F);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 159, 10, 0.2);
+        }
+
+        button.secondary {
+            background: linear-gradient(135deg, var(--secondary-color), #8E8EDC);
+        }
+
+        button.success {
+            background: linear-gradient(135deg, var(--success-color), #66D4CF);
+        }
+
+        /* 预览区域样式 */
+        .preview-area {
+            background-color: rgba(30, 30, 32, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .question-preview {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: rgba(44, 44, 46, 0.8);
+        }
+
+        .question-preview h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .options {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .options li {
+            padding: 5px 0;
+        }
+
+        .correct-answer {
+            color: var(--success-color);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 标签页样式 */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 状态消息 */
+        .status {
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .status.success {
+            background-color: rgba(50, 215, 75, 0.2);
+            border: 1px solid rgba(50, 215, 75, 0.3);
+            color: var(--success-color);
+        }
+
+        .status.error {
+            background-color: rgba(255, 69, 58, 0.2);
+            border: 1px solid rgba(255, 69, 58, 0.3);
+            color: var(--danger-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.5), rgba(255, 55, 95, 0.5));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.8), rgba(255, 55, 95, 0.8));
+        }
+
+        /* 下拉菜单样式 */
+        select {
+            background-color: rgba(30, 30, 32, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-color);
+            width: 200px;
+            font-size: 16px;
+        }
+
+        /* 响应式样式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* 返回按钮样式 */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 159, 10, 0.15) 0%,
+                rgba(255, 55, 95, 0.15) 50%,
+                rgba(191, 90, 242, 0.15) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 159, 10, 0.2);
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 1.1em;
+        }
+
+        /* 增加配置相关样式 */
+        .config-input {
+            background-color: rgba(30, 30, 32, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-color);
+            width: 120px;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+        
+        .levels-config {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+        
+        .level-config-item {
+            background-color: rgba(44, 44, 46, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .level-config-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .level-config-item input, .level-config-item textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            height: auto;
+        }
+        
+        .level-config-item textarea {
+            height: 80px;
+        }
+
+        /* 确保选项预览中的代码块正确显示 */
+        .options li pre.code-block {
+            margin: 8px 0;
+            white-space: pre;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 10px;
+            border-radius: 4px;
+            line-height: 1.5;
+        }
+
+        /* 选项预览中的内联代码 */
+        .options li code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            white-space: pre-wrap;
+            background-color: #1e1e1e;
+            color: #4ec9b0;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* 编辑模式样式 */
+        .edit-mode .question-preview {
+            border: 2px dashed var(--primary-color);
+            position: relative;
+        }
+
+        .edit-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .edit-button {
+            background: linear-gradient(135deg, var(--secondary-color), #8E8EDC);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .save-edit-button {
+            background: linear-gradient(135deg, var(--success-color), #66D4CF);
+        }
+
+        .cancel-edit-button {
+            background: linear-gradient(135deg, var(--danger-color), #FF6B6B);
+        }
+
+        .editable-field {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .editable-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 159, 10, 0.2);
+        }
+
+        .edit-section {
+            margin-bottom: 15px;
+        }
+
+        .edit-section-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">返回首页</a>
+    <div class="container">
+        <header>
+            <h1>Python题库编辑器</h1>
+            <p class="subtitle">批量导入和编辑Python测试题目</p>
+        </header>
+
+        <div class="card">
+            <div class="tabs">
+                <div class="tab active" data-tab="import">批量导入</div>
+                <div class="tab" data-tab="preview">题目预览</div>
+                <div class="tab" data-tab="export">导出题库</div>
+                <div class="tab" data-tab="config">配置生成</div>
+            </div>
+
+            <div class="tab-content active" id="import">
+                <div class="status success" id="import-success">题目导入成功！</div>
+                <div class="status error" id="import-error">导入出错，请检查格式。</div>
+
+                <div class="form-group">
+                    <label for="level-select">选择关卡：</label>
+                    <select id="level-select">
+                        <!-- 动态生成关卡选项 -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="questions-input">粘贴题目：</label>
+                    <div class="format-example-container">
+                        <div class="format-toggle collapsed">查看题目格式示例</div>
+                        <div class="format-example">题目格式示例：
+
+【单选题】
+1. 这是一道单选题？
+A. 选项A
+B. 选项B
+C. 选项C
+D. 选项D
+答案：B
+类型：单选题
+解析：这里是题目解析内容，解释为什么B是正确答案。
+
+【多选题】
+2. 这是一道多选题？
+A. 选项A
+B. 选项B
+C. 选项C
+D. 选项D
+答案：AB
+类型：多选题
+解析：这里是对多选题的详细解析，解释为什么A和B是正确答案。
+
+【判断题】
+3. 这是一道判断题？
+A. 正确
+B. 错误
+答案：A
+类型：判断题
+解析：这里是对判断题的解析说明。
+
+【填空题】
+4. Python中用于格式化字符串的方法是__________和__________。
+答案：format,f-string
+类型：填空题
+解析：Python提供了format方法和f-string(格式化字符串字面量)两种主要的字符串格式化方法。</div>
+                    </div>
+                    <textarea id="questions-input" placeholder="请在此粘贴题目..."></textarea>
+                </div>
+
+                <button id="parse-btn" class="primary">解析题目</button>
+                <button id="clear-btn" class="secondary">清空内容</button>
+            </div>
+
+            <div class="tab-content" id="preview">
+                <div class="status success" id="preview-success">题目预览生成成功！</div>
+                <div class="status error" id="preview-error">没有可预览的题目，请先导入题目。</div>
+                
+                <div class="edit-controls">
+                    <button id="toggle-edit-mode" class="edit-button">启用编辑模式</button>
+                    <button id="apply-all-edits" class="edit-button save-edit-button" style="display: none;">应用所有修改</button>
+                </div>
+                
+                <div id="questions-preview" class="preview-area">
+                    <!-- 解析后的题目预览将在这里显示 -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="export">
+                <div class="status success" id="export-success">题库导出成功！</div>
+                <div class="status error" id="export-error">没有可导出的题目，请先导入并解析题目。</div>
+
+                <div class="form-group">
+                    <label>题库信息预览：</label>
+                    <div id="export-info" class="preview-area">
+                        <!-- 题库信息将在这里显示 -->
+                    </div>
+                </div>
+
+                <button id="export-btn" class="success">导出题库文件</button>
+                <button id="save-btn" class="primary">保存到本地存储</button>
+            </div>
+            
+            <div class="tab-content" id="config">
+                <div class="status success" id="config-success">配置保存成功！</div>
+                <div class="status error" id="config-error">配置生成失败，请检查内容。</div>
+                
+                <div class="form-group">
+                    <label for="levels-count">关卡数量：</label>
+                    <input type="number" id="levels-count" min="1" max="50" value="25" class="config-input">
+                    <button id="update-levels-btn" class="secondary">更新关卡数量</button>
+                </div>
+                
+                <div class="form-group">
+                    <label>关卡配置：</label>
+                    <div id="levels-config-container" class="levels-config">
+                        <!-- 关卡配置表单将在这里动态生成 -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>配置预览：</label>
+                    <div id="config-preview" class="preview-area">
+                        <!-- 配置预览将在这里显示 -->
+                    </div>
+                </div>
+                
+                <button id="export-config-btn" class="success">导出配置文件</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>使用说明</h2>
+            <ol>
+                <li>在"批量导入"标签页中，选择要编辑的关卡。</li>
+                <li>按照示例格式将题目粘贴到文本框中。系统支持以下题型：
+                    <ul>
+                        <li><strong>单选题</strong> - 仅一个选项是正确的，答案格式为单个字母，例如：B</li>
+                        <li><strong>多选题</strong> - 多个选项是正确的，答案格式为多个字母组合，例如：AB</li>
+                        <li><strong>判断题</strong> - 选项通常为"正确"和"错误"，答案格式与单选相同</li>
+                        <li><strong>填空题</strong> - 不需要选项，答案格式为逗号分隔的多个答案，例如：format,f-string</li>
+                    </ul>
+                </li>
+                <li>点击"解析题目"按钮，系统会自动解析您的题目。</li>
+                <li>在"题目预览"标签页中，检查解析后的题目是否正确。</li>
+                <li>在"导出题库"标签页中，可以将题库导出为JSON文件或保存到本地存储。</li>
+            </ol>
+            <p><strong>注意：</strong>导出的题库文件将替换当前关卡的所有题目。建议每个关卡准备20个题目，系统会随机抽取15道题目给学生作答。</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化变量
+            let parsedQuestions = [];
+            const totalLevels = 25;
+            const questionsPerLevel = 20;
+            const displayQuestionsCount = 15;
+
+            // DOM元素
+            const levelSelect = document.getElementById('level-select');
+            const questionsInput = document.getElementById('questions-input');
+            const parseBtn = document.getElementById('parse-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const questionsPreview = document.getElementById('questions-preview');
+            const exportBtn = document.getElementById('export-btn');
+            const saveBtn = document.getElementById('save-btn');
+            const exportInfo = document.getElementById('export-info');
+            
+            // 配置页面元素
+            const levelsCountInput = document.getElementById('levels-count');
+            const updateLevelsBtn = document.getElementById('update-levels-btn');
+            const levelsConfigContainer = document.getElementById('levels-config-container');
+            const configPreview = document.getElementById('config-preview');
+            const exportConfigBtn = document.getElementById('export-config-btn');
+            
+            // 状态消息元素
+            const importSuccess = document.getElementById('import-success');
+            const importError = document.getElementById('import-error');
+            const previewSuccess = document.getElementById('preview-success');
+            const previewError = document.getElementById('preview-error');
+            const exportSuccess = document.getElementById('export-success');
+            const exportError = document.getElementById('export-error');
+            const configSuccess = document.getElementById('config-success');
+            const configError = document.getElementById('config-error');
+
+            // 标签页切换
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // 如果切换到预览标签页，刷新预览
+                    if (tabId === 'preview' && parsedQuestions.length > 0) {
+                        refreshPreview();
+                        showStatus(previewSuccess, true);
+                    } else if (tabId === 'preview' && parsedQuestions.length === 0) {
+                        showStatus(previewError, true);
+                    }
+                    
+                    // 如果切换到导出标签页，刷新导出信息
+                    if (tabId === 'export' && parsedQuestions.length > 0) {
+                        refreshExportInfo();
+                        showStatus(exportSuccess, false);
+                    } else if (tabId === 'export' && parsedQuestions.length === 0) {
+                        showStatus(exportError, true);
+                    }
+                });
+            });
+
+            // 初始化关卡下拉框
+            for (let i = 1; i <= totalLevels; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `第${i}关`;
+                levelSelect.appendChild(option);
+            }
+
+            // 点击解析按钮
+            parseBtn.addEventListener('click', () => {
+                const text = questionsInput.value.trim();
+                if (!text) {
+                    showStatus(importError, true, '请输入题目内容');
+                    return;
+                }
+                
+                try {
+                    parsedQuestions = parseQuestions(text);
+                    refreshPreview();
+                    refreshExportInfo();
+                    
+                    // 切换到预览标签页
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    
+                    document.querySelector('[data-tab="preview"]').classList.add('active');
+                    document.getElementById('preview').classList.add('active');
+                    
+                    showStatus(importSuccess, true);
+                    showStatus(previewSuccess, true);
+                } catch (error) {
+                    console.error('解析出错:', error);
+                    // 提取错误信息中的题目序号
+                    const errorMessage = error.message;
+                    let detailedError = '导入出错，请检查以下题目格式：\n\n';
+                    
+                    // 如果错误信息包含题目内容，提取题号
+                    if (errorMessage.includes('题目格式不正确')) {
+                        const lines = text.split('\n');
+                        let questionNumber = null;
+                        
+                        // 在原始文本中查找出错的题目内容
+                        for (let i = 0; i < lines.length; i++) {
+                            const line = lines[i].trim();
+                            if (line && errorMessage.includes(line)) {
+                                // 向上查找最近的题号
+                                for (let j = i; j >= 0; j--) {
+                                    const match = lines[j].match(/^(\d+)\./);
+                                    if (match) {
+                                        questionNumber = match[1];
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        
+                        if (questionNumber) {
+                            detailedError += `第 ${questionNumber} 题\n`;
+                            detailedError += `错误详情：${errorMessage}\n`;
+                            detailedError += '\n请检查该题的：\n';
+                            detailedError += '- 题目格式是否完整\n';
+                            detailedError += '- 选项是否按A、B、C、D标注\n';
+                            detailedError += '- 是否包含答案和类型\n';
+                            detailedError += '- 多行代码是否使用```包裹';
+                        } else {
+                            detailedError += errorMessage;
+                        }
+                    } else {
+                        detailedError += errorMessage;
+                    }
+                    
+                    showStatus(importError, true, detailedError);
+                }
+            });
+
+            // 清空按钮点击事件
+            clearBtn.addEventListener('click', () => {
+                questionsInput.value = '';
+                parsedQuestions = [];
+                questionsPreview.innerHTML = '';
+                exportInfo.innerHTML = '';
+            });
+
+            // 导出按钮点击事件
+            exportBtn.addEventListener('click', () => {
+                if (parsedQuestions.length === 0) {
+                    showStatus(exportError, true);
+                    return;
+                }
+                
+                const levelNumber = parseInt(levelSelect.value);
+                
+                // 检查题目数量
+                if (parsedQuestions.length < questionsPerLevel) {
+                    if (!confirm(`当前只有 ${parsedQuestions.length} 个题目，而题库推荐存储 ${questionsPerLevel} 个题目（系统会随机抽取${displayQuestionsCount}题给学生）。确定要继续导出吗？`)) {
+                        return;
+                    }
+                }
+                
+                // 创建题库对象
+                const questionBank = {
+                    title: getLevelTitle(levelNumber),
+                    questions: parsedQuestions.map((q, index) => {
+                        // 将解析后的问题转换为题库文件格式
+                        let answer;
+                        let type;
+                        
+                        // 根据不同题型设置类型和答案格式
+                        if (q.type === '单选题') {
+                            type = 'multiple-choice';
+                            // 将A,B,C,D转换为0,1,2,3
+                            const optionIndex = q.correctAnswer.charCodeAt(0) - 'A'.charCodeAt(0);
+                            answer = optionIndex;
+                        } else if (q.type === '多选题') {
+                            type = 'multiple';
+                            // 将多个选项如AB转换为[0,1]
+                            answer = Array.from(q.correctAnswer).map(
+                                letter => letter.charCodeAt(0) - 'A'.charCodeAt(0)
+                            );
+                        } else if (q.type === '判断题') {
+                            type = 'true-false';
+                            // 如果答案是A（正确）则为true，否则为false
+                            answer = q.correctAnswer === 'A';
+                        } else if (q.type === '填空题') {
+                            type = 'fill-in';
+                            // 填空题答案为数组形式
+                            answer = q.correctAnswer.split(',').map(ans => ans.trim());
+                        }
+                        
+                        // 严格保留原始格式，包括代码块的缩进和换行
+                        // 不应用任何HTML格式化，确保JSON中保存的是原始文本格式
+                        return {
+                            id: index + 1,
+                            question: q.question,
+                            type: type,
+                            // 选项转换为数组格式，保留原始格式
+                            options: q.type !== '填空题' ? q.options.map(o => o.text) : undefined,
+                            answer: answer,
+                            explanation: q.explanation,
+                            // 添加原始格式标记，表示内容包含保留格式的代码
+                            preserveFormat: true
+                        };
+                    })
+                };
+                
+                // 导出JSON文件，使用更大的缩进确保格式一致性
+                const dataStr = JSON.stringify(questionBank, null, 4);
+                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                
+                const exportFileDefaultName = `level${levelNumber}.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+                
+                showStatus(exportSuccess, true);
+            });
+
+            // 保存到本地存储按钮点击事件
+            saveBtn.addEventListener('click', () => {
+                if (parsedQuestions.length === 0) {
+                    showStatus(exportError, true);
+                    return;
+                }
+                
+                const levelNumber = parseInt(levelSelect.value);
+                
+                // 检查题目数量
+                if (parsedQuestions.length < questionsPerLevel) {
+                    if (!confirm(`当前只有 ${parsedQuestions.length} 个题目，而题库推荐存储 ${questionsPerLevel} 个题目（系统会随机抽取${displayQuestionsCount}题给学生）。确定要继续保存吗？`)) {
+                        return;
+                    }
+                }
+                
+                // 获取当前题库
+                let allQuestions = {};
+                const savedQuestions = localStorage.getItem('pythonQuizQuestions');
+                
+                if (savedQuestions) {
+                    try {
+                        allQuestions = JSON.parse(savedQuestions);
+                    } catch (e) {
+                        console.error('解析本地存储题库失败:', e);
+                        allQuestions = {};
+                    }
+                }
+                
+                // 更新当前关卡的题目
+                allQuestions[levelNumber] = parsedQuestions;
+                
+                // 保存回本地存储
+                localStorage.setItem('pythonQuizQuestions', JSON.stringify(allQuestions));
+                
+                showStatus(exportSuccess, true);
+                alert(`第${levelNumber}关的题目已成功保存到本地存储！`);
+            });
+
+            // 解析文本为问题对象数组
+            function parseQuestions(text) {
+                const lines = text.split('\n');
+                const questions = [];
+                let currentQuestion = null;
+                let currentOption = null;
+                let inCodeBlock = false;
+                let codeBlockContent = [];
+                let lastOptionLetter = null;
+                let codeTarget = null; // 用于跟踪代码块应该添加到题目还是选项
+                
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+                    const trimmedLine = line.trim();
+                    
+                    if (!trimmedLine) continue; // 跳过空行
+                    
+                    // 检查是否是代码块标记
+                    if (trimmedLine.startsWith('```')) {
+                        inCodeBlock = !inCodeBlock;
+                        
+                        if (inCodeBlock) {
+                            // 开始新的代码块
+                            codeBlockContent = [];
+                            // 确定代码块属于题目还是选项
+                            codeTarget = lastOptionLetter ? 'option' : 'question';
+                        } else {
+                            // 代码块结束，将内容添加到目标位置
+                            const codeText = codeBlockContent.join('\n');
+                            
+                            if (currentQuestion) {
+                                if (codeTarget === 'option' && lastOptionLetter) {
+                                    // 添加到选项
+                                    const existingOption = currentQuestion.options.find(opt => opt.id === lastOptionLetter);
+                                    if (existingOption) {
+                                        existingOption.text += '\n' + codeText;
+                                    }
+                                } else if (codeTarget === 'question') {
+                                    // 添加到题干
+                                    currentQuestion.question += '\n' + codeText;
+                                } else if (currentQuestion.explanation) {
+                                    // 如果已经有解析内容，添加到解析
+                                    currentQuestion.explanation += '\n' + codeText;
+                                }
+                            }
+                        }
+                        continue;
+                    }
+                    
+                    // 如果在代码块内，收集代码内容
+                    if (inCodeBlock) {
+                        // 完全保留原始行，包括所有缩进和空格
+                        codeBlockContent.push(line);
+                        continue;
+                    }
+                    
+                    // 判断是否是题型标题行（如【单选题】）
+                    if (trimmedLine.match(/^【.+】$/)) {
+                        continue;
+                    }
+                    
+                    // 判断是否是新题目
+                    const questionMatch = trimmedLine.match(/^\d+\.\s+(.+)$/);
+                    if (questionMatch) {
+                        if (currentQuestion) {
+                            questions.push(currentQuestion);
+                        }
+                        
+                        currentQuestion = {
+                            question: questionMatch[1],
+                            options: [],
+                            correctAnswer: '',
+                            type: '单选题',
+                            explanation: ''
+                        };
+                        currentOption = null;
+                        lastOptionLetter = null;
+                        continue;
+                    }
+                    
+                    // 判断是否是选项
+                    const optionMatch = trimmedLine.match(/^([A-D])\.\s+(.+)$/);
+                    if (optionMatch && currentQuestion) {
+                        const optionLetter = optionMatch[1];
+                        const optionText = optionMatch[2];
+                        lastOptionLetter = optionLetter;
+                        
+                        currentQuestion.options.push({
+                            id: optionLetter,
+                            text: optionText
+                        });
+                        
+                        currentOption = optionLetter;
+                        continue;
+                    }
+                    
+                    // 判断是否是答案行
+                    const answerMatch = trimmedLine.match(/^(答案|ANSWER)[：:]\s*(.+)$/i);
+                    if (answerMatch && currentQuestion) {
+                        currentQuestion.correctAnswer = answerMatch[2];
+                        lastOptionLetter = null; // 重置选项跟踪，因为现在处理答案部分
+                        continue;
+                    }
+                    
+                    // 判断是否是类型行
+                    const typeMatch = trimmedLine.match(/^(类型|TYPE)[：:]\s*(.+)$/i);
+                    if (typeMatch && currentQuestion) {
+                        currentQuestion.type = typeMatch[2];
+                        continue;
+                    }
+                    
+                    // 判断是否是解析行
+                    const explanationMatch = trimmedLine.match(/^(解析|EXPLANATION)[：:]\s*(.+)$/i);
+                    if (explanationMatch && currentQuestion) {
+                        currentQuestion.explanation = explanationMatch[2];
+                        lastOptionLetter = null; // 重置选项跟踪，因为现在处理解析部分
+                        continue;
+                    }
+                    
+                    // 如果不在代码块中，且当前行不是以上任何格式，则可能是解析的续行
+                    if (currentQuestion) {
+                        if (currentQuestion.explanation) {
+                            // 添加到解析
+                            currentQuestion.explanation += ' ' + trimmedLine;
+                        } else if (lastOptionLetter) {
+                            // 添加到最后处理的选项
+                            const existingOption = currentQuestion.options.find(opt => opt.id === lastOptionLetter);
+                            if (existingOption) {
+                                existingOption.text += ' ' + trimmedLine;
+                            }
+                        } else {
+                            // 添加到题目
+                            currentQuestion.question += ' ' + trimmedLine;
+                        }
+                    }
+                }
+                
+                // 添加最后一个问题
+                if (currentQuestion) {
+                    questions.push(currentQuestion);
+                }
+                
+                // 验证问题格式
+                questions.forEach(q => {
+                    // 针对不同题型进行不同的验证
+                    if (q.type === '填空题') {
+                        // 填空题只需要有问题和答案，不需要选项
+                        if (!q.question || !q.correctAnswer) {
+                            throw new Error(`题目格式不正确: ${q.question}`);
+                        }
+                    } else {
+                        // 非填空题需要有问题、至少两个选项和答案
+                        if (!q.question || q.options.length < 2 || !q.correctAnswer) {
+                            throw new Error(`题目格式不正确: ${q.question}`);
+                        }
+                    }
+                });
+                
+                return questions;
+            }
+
+            // 刷新预览区域
+            function refreshPreview() {
+                questionsPreview.innerHTML = '';
+                
+                parsedQuestions.forEach((q, index) => {
+                    // 应用代码格式化
+                    let formattedQuestion = q;
+                    if (window.CodeFormatter) {
+                        formattedQuestion = {
+                            ...q,
+                            question: window.CodeFormatter.formatQuestionText(q.question),
+                            options: q.options.map(option => ({
+                                id: option.id,
+                                text: window.CodeFormatter.formatOptionText(option.text)
+                            })),
+                            explanation: window.CodeFormatter.formatQuestionText(q.explanation || '')
+                        };
+                    }
+                    
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-preview';
+                    
+                    const questionTitle = document.createElement('h3');
+                    // 使用innerHTML以支持代码格式化HTML标签
+                    questionTitle.innerHTML = `问题 ${index + 1}: ${formattedQuestion.question}`;
+                    questionDiv.appendChild(questionTitle);
+                    
+                    const questionType = document.createElement('div');
+                    questionType.style.color = 'var(--primary-color)';
+                    questionType.style.marginBottom = '10px';
+                    questionType.style.fontWeight = 'bold';
+                    questionType.textContent = `类型: ${formattedQuestion.type || '单选题'}`;
+                    questionDiv.appendChild(questionType);
+                    
+                    // 只有非填空题才显示选项列表
+                    if (q.type !== '填空题' && formattedQuestion.options.length > 0) {
+                        const optionsList = document.createElement('ul');
+                        optionsList.className = 'options';
+                        optionsList.style.whiteSpace = 'pre-wrap'; // 保留空格和换行
+                        
+                        formattedQuestion.options.forEach(option => {
+                            const optionItem = document.createElement('li');
+                            // 使用innerHTML以支持代码格式化HTML标签
+                            optionItem.innerHTML = `${option.id}. ${option.text}`;
+                            optionItem.style.fontFamily = 'monospace'; // 使用等宽字体显示代码
+                            
+                            // 单选题和判断题高亮单个正确答案
+                            if (q.type === '单选题' || q.type === '判断题') {
+                                if (option.id === q.correctAnswer) {
+                                    optionItem.style.color = 'var(--success-color)';
+                                    optionItem.style.fontWeight = 'bold';
+                                }
+                            } 
+                            // 多选题高亮多个正确答案
+                            else if (q.type === '多选题') {
+                                if (q.correctAnswer.includes(option.id)) {
+                                    optionItem.style.color = 'var(--success-color)';
+                                    optionItem.style.fontWeight = 'bold';
+                                }
+                            }
+                            
+                            optionsList.appendChild(optionItem);
+                        });
+                        
+                        questionDiv.appendChild(optionsList);
+                    }
+                    
+                    const correctAnswer = document.createElement('div');
+                    correctAnswer.className = 'correct-answer';
+                    correctAnswer.textContent = `正确答案: ${q.correctAnswer}`;
+                    
+                    // 对不同题型的答案展示格式做特殊处理
+                    if (q.type === '多选题') {
+                        const formattedAnswer = Array.from(q.correctAnswer).join(', ');
+                        correctAnswer.textContent = `正确答案: ${formattedAnswer}`;
+                    } else if (q.type === '填空题') {
+                        const blanks = q.correctAnswer.split(',');
+                        correctAnswer.textContent = `正确答案: ${blanks.join(', ')}`;
+                    }
+                    
+                    questionDiv.appendChild(correctAnswer);
+                    
+                    if (formattedQuestion.explanation) {
+                        const explanation = document.createElement('div');
+                        explanation.style.marginTop = '10px';
+                        explanation.style.padding = '10px';
+                        explanation.style.backgroundColor = 'rgba(255, 159, 10, 0.1)';
+                        explanation.style.borderLeft = '3px solid var(--primary-color)';
+                        explanation.style.borderRadius = '4px';
+                        explanation.style.whiteSpace = 'pre-wrap'; // 保留空格和换行
+                        
+                        const explTitle = document.createElement('strong');
+                        explTitle.textContent = '解析: ';
+                        explanation.appendChild(explTitle);
+                        
+                        const explContent = document.createElement('span');
+                        // 使用innerHTML以支持代码格式化HTML标签
+                        explContent.innerHTML = formattedQuestion.explanation;
+                        explanation.appendChild(explContent);
+                        
+                        questionDiv.appendChild(explanation);
+                    }
+                    
+                    questionsPreview.appendChild(questionDiv);
+                });
+            }
+
+            // 刷新导出信息
+            function refreshExportInfo() {
+                const levelNumber = parseInt(levelSelect.value);
+                
+                exportInfo.innerHTML = `
+                <h3>题库信息</h3>
+                <p><strong>关卡:</strong> 第${levelNumber}关</p>
+                <p><strong>标题:</strong> ${getLevelTitle(levelNumber)}</p>
+                <p><strong>题目数量:</strong> ${parsedQuestions.length}/${questionsPerLevel}</p>
+                ${parsedQuestions.length < questionsPerLevel ? `<p style="color: var(--danger-color)">警告: 题目数量不足${questionsPerLevel}题! 建议添加足够的题目以保证随机抽取时的多样性。</p>` : ''}
+                <p><strong>注意:</strong> 系统会从题库中随机抽取${displayQuestionsCount}道题目给学生作答。</p>
+                <p><strong>输出格式:</strong> 题库JSON将按照questions/levelX.json的标准格式导出，包含id、各种题型（multiple-choice、multiple、true-false、fill-in）及其对应答案格式。</p>
+                <p><strong>预览:</strong> 前3道题目</p>
+                <div style="margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                    ${parsedQuestions.slice(0, 3).map((q, i) => `
+                        <div style="margin-bottom: 15px;">
+                            <div><strong>题目${i+1}:</strong> ${q.question}</div>
+                            <div><strong>类型:</strong> ${q.type || '单选题'}</div>
+                            <div><strong>选项:</strong> ${q.options.map(o => `${o.id}.${o.text}`).join(' | ')}</div>
+                            <div><strong>答案:</strong> ${q.correctAnswer}</div>
+                            ${q.explanation ? `<div><strong>解析:</strong> ${q.explanation.length > 100 ? q.explanation.substring(0, 100) + '...' : q.explanation}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                `;
+            }
+
+            // 显示状态消息
+            function showStatus(element, autoHide = true, message = null) {
+                // 隐藏所有状态消息
+                document.querySelectorAll('.status').forEach(s => s.style.display = 'none');
+                
+                // 如果提供了自定义消息，更新元素内容
+                if (message) {
+                    element.textContent = message;
+                }
+                
+                // 显示指定的状态消息
+                element.style.display = 'block';
+                
+                // 自动隐藏
+                if (autoHide) {
+                    setTimeout(() => {
+                        element.style.display = 'none';
+                    }, 5000); // 增加显示时间到5秒，让用户有更多时间阅读错误信息
+                }
+            }
+
+            // 检查是否有已保存的题库文件可供加载
+            function tryLoadQuestionFile(levelNumber) {
+                fetch(`questions/level${levelNumber}.json`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('File not found');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (confirm(`找到第${levelNumber}关的现有题库文件，是否加载？`)) {
+                            if (data && data.questions && Array.isArray(data.questions)) {
+                                // 将题库格式转换为编辑器内部格式
+                                parsedQuestions = data.questions.map(q => {
+                                    // 根据题目类型处理答案和选项
+                                    let correctAnswer = '';
+                                    let type = '';
+                                    let options = [];
+                                    
+                                    if (q.type === 'multiple-choice') {
+                                        type = '单选题';
+                                        // 从数字索引转回字母选项
+                                        correctAnswer = String.fromCharCode('A'.charCodeAt(0) + q.answer);
+                                        // 转换选项格式
+                                        options = q.options.map((text, index) => ({
+                                            id: String.fromCharCode('A'.charCodeAt(0) + index),
+                                            text: text
+                                        }));
+                                    } else if (q.type === 'multiple') {
+                                        type = '多选题';
+                                        // 将数组索引转为字母组合
+                                        correctAnswer = q.answer.map(
+                                            idx => String.fromCharCode('A'.charCodeAt(0) + idx)
+                                        ).join('');
+                                        // 转换选项格式
+                                        options = q.options.map((text, index) => ({
+                                            id: String.fromCharCode('A'.charCodeAt(0) + index),
+                                            text: text
+                                        }));
+                                    } else if (q.type === 'true-false') {
+                                        type = '判断题';
+                                        correctAnswer = q.answer ? 'A' : 'B';
+                                        options = [
+                                            { id: 'A', text: '正确' },
+                                            { id: 'B', text: '错误' }
+                                        ];
+                                    } else if (q.type === 'fill-in') {
+                                        type = '填空题';
+                                        correctAnswer = Array.isArray(q.answer) ? q.answer.join(',') : q.answer;
+                                    }
+                                    
+                                    return {
+                                        question: q.question,
+                                        options: options,
+                                        correctAnswer: correctAnswer,
+                                        type: type,
+                                        explanation: q.explanation || ''
+                                    };
+                                });
+                                
+                                refreshPreview();
+                                refreshExportInfo();
+                                
+                                // 切换到预览标签页
+                                tabs.forEach(t => t.classList.remove('active'));
+                                tabContents.forEach(tc => tc.classList.remove('active'));
+                                
+                                document.querySelector('[data-tab="preview"]').classList.add('active');
+                                document.getElementById('preview').classList.add('active');
+                                
+                                showStatus(importSuccess, true);
+                                showStatus(previewSuccess, true);
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.log(`No existing file found for level ${levelNumber}: ${error.message}`);
+                    });
+            }
+
+            // 添加关卡选择变更事件
+            levelSelect.addEventListener('change', () => {
+                const selectedLevel = parseInt(levelSelect.value);
+                tryLoadQuestionFile(selectedLevel);
+            });
+
+            // 获取关卡标题
+            function getLevelTitle(level) {
+                const titles = {
+                    1: "Python简介",
+                    2: "变量与赋值",
+                    3: "基本输入输出",
+                    4: "运算符",
+                    5: "注释与文档",
+                    6: "数字类型",
+                    7: "字符串操作",
+                    8: "列表与元组",
+                    9: "字典",
+                    10: "集合",
+                    11: "条件语句",
+                    12: "for循环",
+                    13: "while循环",
+                    14: "循环控制",
+                    15: "异常处理",
+                    16: "函数定义",
+                    17: "参数与返回值",
+                    18: "作用域",
+                    19: "模块导入",
+                    20: "包管理",
+                    21: "类与对象",
+                    22: "继承与多态",
+                    23: "装饰器",
+                    24: "生成器",
+                    25: "文件处理"
+                };
+                return titles[level] || `关卡 ${level}`;
+            }
+
+            // 初始化关卡配置
+            function initLevelsConfig() {
+                // 获取当前关卡数量
+                const levelsCount = parseInt(levelsCountInput.value) || 25;
+                
+                // 清空容器
+                levelsConfigContainer.innerHTML = '';
+                
+                // 生成关卡配置表单
+                for (let i = 1; i <= levelsCount; i++) {
+                    const levelTitle = getLevelTitle(i);
+                    const levelDescription = getLevelDescription(i);
+                    
+                    const levelItem = document.createElement('div');
+                    levelItem.className = 'level-config-item';
+                    levelItem.dataset.level = i;
+                    
+                    levelItem.innerHTML = `
+                        <h3>第${i}关</h3>
+                        <div class="form-group">
+                            <label for="level-title-${i}">标题：</label>
+                            <input type="text" id="level-title-${i}" value="${levelTitle}" class="level-title">
+                        </div>
+                        <div class="form-group">
+                            <label for="level-desc-${i}">描述：</label>
+                            <textarea id="level-desc-${i}" class="level-desc">${levelDescription}</textarea>
+                        </div>
+                    `;
+                    
+                    levelsConfigContainer.appendChild(levelItem);
+                }
+                
+                // 更新预览
+                updateConfigPreview();
+            }
+            
+            // 更新配置预览
+            function updateConfigPreview() {
+                // 收集所有关卡配置
+                const levelsConfig = [];
+                const levelItems = levelsConfigContainer.querySelectorAll('.level-config-item');
+                
+                levelItems.forEach(item => {
+                    const level = parseInt(item.dataset.level);
+                    const title = item.querySelector('.level-title').value;
+                    const description = item.querySelector('.level-desc').value;
+                    
+                    levelsConfig.push({
+                        level: level,
+                        title: title,
+                        description: description
+                    });
+                });
+                
+                // 创建配置对象
+                const config = {
+                    totalLevels: levelsConfig.length,
+                    levels: levelsConfig
+                };
+                
+                // 显示预览
+                configPreview.innerHTML = `
+                <h3>配置信息</h3>
+                <p><strong>总关卡数:</strong> ${config.totalLevels}</p>
+                <div style="margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                    ${levelsConfig.slice(0, 5).map(level => `
+                        <div style="margin-bottom: 15px;">
+                            <div><strong>关卡${level.level}:</strong> ${level.title}</div>
+                            <div><strong>描述:</strong> ${level.description}</div>
+                        </div>
+                    `).join('')}
+                    ${levelsConfig.length > 5 ? '<p><em>... 更多关卡 ...</em></p>' : ''}
+                </div>
+                `;
+            }
+            
+            // 导出配置文件
+            function exportConfigFile() {
+                // 收集所有关卡配置
+                const levelsConfig = [];
+                const levelItems = levelsConfigContainer.querySelectorAll('.level-config-item');
+                
+                levelItems.forEach(item => {
+                    const level = parseInt(item.dataset.level);
+                    const title = item.querySelector('.level-title').value;
+                    const description = item.querySelector('.level-desc').value;
+                    
+                    levelsConfig.push({
+                        level: level,
+                        title: title,
+                        description: description
+                    });
+                });
+                
+                // 创建配置对象
+                const config = {
+                    totalLevels: levelsConfig.length,
+                    levels: levelsConfig
+                };
+                
+                // 导出JSON文件
+                const dataStr = JSON.stringify(config, null, 2);
+                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                
+                const exportFileDefaultName = `levels-config.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+                
+                showStatus(configSuccess, true);
+            }
+            
+            // 更新关卡数量事件
+            updateLevelsBtn.addEventListener('click', () => {
+                initLevelsConfig();
+            });
+            
+            // 导出配置文件事件
+            exportConfigBtn.addEventListener('click', () => {
+                exportConfigFile();
+            });
+
+            // 获取关卡描述
+            function getLevelDescription(level) {
+                const descriptions = {
+                    1: "了解Python的历史、特性和应用场景。",
+                    2: "学习如何声明变量并为其赋值。",
+                    3: "掌握基本的输入输出操作。",
+                    4: "了解Python中的各种运算符和表达式。",
+                    5: "学习如何添加注释和生成文档。",
+                    6: "掌握Python中的各种数字类型和操作。",
+                    7: "学习字符串的切片、连接和格式化。",
+                    8: "掌握列表和元组的创建与操作。",
+                    9: "学习字典的创建、访问和修改。",
+                    10: "了解集合类型及其操作方法。",
+                    11: "掌握if, elif, else条件结构。",
+                    12: "学习如何使用for循环遍历序列。",
+                    13: "掌握while循环及其用法。",
+                    14: "学习break、continue和pass语句。",
+                    15: "掌握try/except异常处理机制。",
+                    16: "学习如何定义和调用函数。",
+                    17: "掌握函数参数和返回值的使用。",
+                    18: "了解变量作用域和命名空间。",
+                    19: "学习如何导入和使用模块。",
+                    20: "掌握包的概念和使用方法。",
+                    21: "学习面向对象编程的基础概念。",
+                    22: "掌握面向对象的高级特性。",
+                    23: "学习装饰器的原理和应用。",
+                    24: "了解生成器和yield语句。",
+                    25: "掌握文件的读写和管理。"
+                };
+                return descriptions[level] || `完成这个关卡的挑战。`;
+            }
+
+            // 添加格式示例折叠功能
+            document.querySelector('.format-toggle').addEventListener('click', function() {
+                this.classList.toggle('collapsed');
+                const example = document.querySelector('.format-example');
+                example.classList.toggle('expanded');
+            });
+
+            // 添加编辑模式功能
+            const toggleEditBtn = document.getElementById('toggle-edit-mode');
+            const applyEditsBtn = document.getElementById('apply-all-edits');
+            let editMode = false;
+            
+            toggleEditBtn.addEventListener('click', function() {
+                editMode = !editMode;
+                
+                if (editMode) {
+                    // 启用编辑模式
+                    this.textContent = '退出编辑模式';
+                    applyEditsBtn.style.display = 'block';
+                    questionsPreview.classList.add('edit-mode');
+                    
+                    // 将所有问题转换为可编辑状态
+                    const questionPreviews = questionsPreview.querySelectorAll('.question-preview');
+                    questionPreviews.forEach((preview, index) => {
+                        convertToEditable(preview, index);
+                    });
+                } else {
+                    // 禁用编辑模式
+                    this.textContent = '启用编辑模式';
+                    applyEditsBtn.style.display = 'none';
+                    questionsPreview.classList.remove('edit-mode');
+                    
+                    // 刷新预览，恢复到原始状态
+                    refreshPreview();
+                }
+            });
+            
+            applyEditsBtn.addEventListener('click', function() {
+                // 应用所有编辑
+                const questionPreviews = questionsPreview.querySelectorAll('.question-preview');
+                questionPreviews.forEach((preview, index) => {
+                    updateQuestionFromEdit(preview, index);
+                });
+                
+                // 提示用户修改已应用
+                showStatus(previewSuccess, true, '修改已应用到题目中！现在可以导出或保存。');
+                
+                // 退出编辑模式
+                editMode = false;
+                toggleEditBtn.textContent = '启用编辑模式';
+                applyEditsBtn.style.display = 'none';
+                questionsPreview.classList.remove('edit-mode');
+                
+                // 刷新预览，显示应用修改后的状态
+                refreshPreview();
+            });
+            
+            // 将题目转换为可编辑状态
+            function convertToEditable(preview, index) {
+                const question = parsedQuestions[index];
+                
+                // 清空预览容器
+                preview.innerHTML = '';
+                
+                // 标题
+                const titleSection = document.createElement('div');
+                titleSection.className = 'edit-section';
+                
+                const titleLabel = document.createElement('div');
+                titleLabel.className = 'edit-section-label';
+                titleLabel.textContent = `问题 ${index + 1}:`;
+                titleSection.appendChild(titleLabel);
+                
+                const titleEditor = document.createElement('textarea');
+                titleEditor.className = 'editable-field question-editor';
+                titleEditor.value = question.question;
+                titleEditor.rows = Math.max(3, question.question.split('\n').length);
+                titleSection.appendChild(titleEditor);
+                
+                preview.appendChild(titleSection);
+                
+                // 题型
+                const typeSection = document.createElement('div');
+                typeSection.className = 'edit-section';
+                
+                const typeLabel = document.createElement('div');
+                typeLabel.className = 'edit-section-label';
+                typeLabel.textContent = '类型:';
+                typeSection.appendChild(typeLabel);
+                
+                const typeSelector = document.createElement('select');
+                typeSelector.className = 'editable-field type-selector';
+                
+                const types = ['单选题', '多选题', '判断题', '填空题'];
+                types.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    option.selected = type === question.type;
+                    typeSelector.appendChild(option);
+                });
+                
+                typeSection.appendChild(typeSelector);
+                preview.appendChild(typeSection);
+                
+                // 选项 (非填空题)
+                if (question.type !== '填空题') {
+                    const optionsSection = document.createElement('div');
+                    optionsSection.className = 'edit-section';
+                    
+                    const optionsLabel = document.createElement('div');
+                    optionsLabel.className = 'edit-section-label';
+                    optionsLabel.textContent = '选项:';
+                    optionsSection.appendChild(optionsLabel);
+                    
+                    question.options.forEach(option => {
+                        const optionEditor = document.createElement('div');
+                        optionEditor.className = 'option-editor';
+                        optionEditor.style.marginBottom = '8px';
+                        
+                        const optionLabel = document.createElement('strong');
+                        optionLabel.textContent = `${option.id}. `;
+                        optionEditor.appendChild(optionLabel);
+                        
+                        const optionInput = document.createElement('textarea');
+                        optionInput.className = `editable-field option-input option-${option.id}`;
+                        optionInput.value = option.text;
+                        optionInput.rows = Math.max(2, option.text.split('\n').length);
+                        optionEditor.appendChild(optionInput);
+                        
+                        optionsSection.appendChild(optionEditor);
+                    });
+                    
+                    preview.appendChild(optionsSection);
+                }
+                
+                // 答案
+                const answerSection = document.createElement('div');
+                answerSection.className = 'edit-section';
+                
+                const answerLabel = document.createElement('div');
+                answerLabel.className = 'edit-section-label';
+                answerLabel.textContent = '正确答案:';
+                answerSection.appendChild(answerLabel);
+                
+                const answerInput = document.createElement('input');
+                answerInput.type = 'text';
+                answerInput.className = 'editable-field answer-input';
+                answerInput.value = question.correctAnswer;
+                answerSection.appendChild(answerInput);
+                
+                preview.appendChild(answerSection);
+                
+                // 解析
+                const explanationSection = document.createElement('div');
+                explanationSection.className = 'edit-section';
+                
+                const explanationLabel = document.createElement('div');
+                explanationLabel.className = 'edit-section-label';
+                explanationLabel.textContent = '解析:';
+                explanationSection.appendChild(explanationLabel);
+                
+                const explanationEditor = document.createElement('textarea');
+                explanationEditor.className = 'editable-field explanation-editor';
+                explanationEditor.value = question.explanation || '';
+                explanationEditor.rows = Math.max(3, (question.explanation || '').split('\n').length);
+                explanationSection.appendChild(explanationEditor);
+                
+                preview.appendChild(explanationSection);
+            }
+            
+            // 从编辑器更新题目数据
+            function updateQuestionFromEdit(preview, index) {
+                const question = parsedQuestions[index];
+                
+                // 更新问题
+                const questionEditor = preview.querySelector('.question-editor');
+                question.question = questionEditor.value;
+                
+                // 更新类型
+                const typeSelector = preview.querySelector('.type-selector');
+                const newType = typeSelector.value;
+                const oldType = question.type;
+                question.type = newType;
+                
+                // 更新选项 (非填空题)
+                if (oldType !== '填空题' && newType !== '填空题') {
+                    // 只有在旧类型和新类型都不是填空题时才更新选项
+                    question.options.forEach(option => {
+                        const optionInput = preview.querySelector(`.option-${option.id}`);
+                        if (optionInput) {
+                            option.text = optionInput.value;
+                        }
+                    });
+                } else if (oldType !== '填空题' && newType === '填空题') {
+                    // 从其他类型转为填空题时，清空选项
+                    question.options = [];
+                } else if (oldType === '填空题' && newType !== '填空题') {
+                    // 从填空题转为其他类型时，创建默认选项
+                    question.options = [
+                        { id: 'A', text: '选项A' },
+                        { id: 'B', text: '选项B' },
+                        { id: 'C', text: '选项C' },
+                        { id: 'D', text: '选项D' }
+                    ];
+                }
+                
+                // 更新答案
+                const answerInput = preview.querySelector('.answer-input');
+                question.correctAnswer = answerInput.value;
+                
+                // 更新解析
+                const explanationEditor = preview.querySelector('.explanation-editor');
+                question.explanation = explanationEditor.value;
+            }
+
+            // 初始化页面时创建配置表单
+            initLevelsConfig();
+        });
+    </script>
+</body>
+</html> 

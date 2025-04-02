@@ -1,0 +1,261 @@
+{
+    "title": "基本输入输出",
+    "questions": [
+        {
+            "id": 1,
+            "question": "画正方形的双层循环中，外层循环控制什么？",
+            "type": "multiple-choice",
+            "options": [
+                "边长长度",
+                "旋转次数",
+                "线条颜色",
+                "线条粗细"
+            ],
+            "answer": 1,
+            "explanation": "外层循环通常控制图形重复的次数，比如画花瓣时转圈的次数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "设置画笔为红色的正确代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "pencolor(\"red\")",
+                "color(red)",
+                "set_color(255,0,0)",
+                "pencolor[red]"
+            ],
+            "answer": 0,
+            "explanation": "Python的turtle模块用pencolor(\"颜色名\")设置颜色，要加引号。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "以下代码画出的线条有多粗？ pensize(5)",
+            "type": "multiple-choice",
+            "options": [
+                "5厘米",
+                "5像素",
+                "5毫米",
+                "5英寸"
+            ],
+            "answer": 1,
+            "explanation": "pensize()参数的单位是像素，和屏幕分辨率有关。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "观察代码，回答：输出结果有几行？ \nfor i in range(3): \n    for j in range(2): \n        print(i,j)",
+            "type": "multiple-choice",
+            "options": [
+                "5",
+                "6",
+                "4",
+                "3"
+            ],
+            "answer": 1,
+            "explanation": "外层3次，内层每次2次，3×2=6次打印。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "以下哪个变量名在双层循环中容易混淆？",
+            "type": "multiple-choice",
+            "options": [
+                "外层用i，内层用j",
+                "外层用m，内层用n",
+                "外层用x，内层也用x",
+                "外层用row，内层用col"
+            ],
+            "answer": 2,
+            "explanation": "内外层变量名相同会导致内层覆盖外层值。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "画彩色同心圆时，应该把哪个操作放在最外层循环？",
+            "type": "multiple-choice",
+            "options": [
+                "画单个圆的代码",
+                "抬笔落笔",
+                "颜色和半径变化",
+                "旋转角度"
+            ],
+            "answer": 2,
+            "explanation": "外层循环控制整体属性变化，内层画具体图形。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "设置画笔粗细可以用 pensize() 和 width() 两个函数。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "这两个函数在 turtle 模块中功能完全相同。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "双层循环中内层循环必须完全执行完，才会回到外层循环。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "就像时钟分钟必须走满60格，小时才会加1。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "设置画笔为3像素粗的代码是_________。",
+            "type": "fill-in",
+            "answer": [
+                "pensize(3)"
+            ],
+            "explanation": "pensize()函数直接接收数字参数，不需要单位。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "用循环画三色条纹的代码片段： \ncolors = [\"red\", \"white\", \"blue\"] \nfor c in _______: \n    pencolor(c) \n    forward(100)",
+            "type": "fill-in",
+            "answer": [
+                "colors"
+            ],
+            "explanation": "循环变量c依次从colors列表中取出颜色值。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "Python中表示整数的类型叫什么？",
+            "type": "multiple-choice",
+            "options": [
+                "小数",
+                "字符串",
+                "整数",
+                "列表"
+            ],
+            "answer": 2,
+            "explanation": "整数是数学中的整颗数，例如5或-3，Python中用\"int\"类型表示。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "下面哪个代码能输出\"Hello\"？",
+            "type": "multiple-choice",
+            "options": [
+                "print(\"Hello\")",
+                "print(Hello)",
+                "print{'Hello'}",
+                "print[Hello]"
+            ],
+            "answer": 0,
+            "explanation": "字符串必须用引号包裹，只有A选项的写法正确。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "nums = [10,20,30]，nums[1]的值是？",
+            "type": "multiple-choice",
+            "options": [
+                "10",
+                "20",
+                "30",
+                "报错"
+            ],
+            "answer": 1,
+            "explanation": "列表索引从0开始，索引1对应第二个元素20。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "哪个函数可以把文字写入文件？",
+            "type": "multiple-choice",
+            "options": [
+                "read()",
+                "open()",
+                "write()",
+                "close()"
+            ],
+            "answer": 2,
+            "explanation": "write()是专门用来向文件写入内容的函数，需要先打开文件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "len(\"苹果\")的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": 1,
+            "explanation": "每个汉字在Python中被视为一个字符，\"苹果\"有两个汉字。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "file = open(\"test.txt\",\"w\")中的\"w\"表示？",
+            "type": "multiple-choice",
+            "options": [
+                "读取文件",
+                "写入文件",
+                "删除文件",
+                "复制文件"
+            ],
+            "answer": 1,
+            "explanation": "\"w\"是write的缩写，表示以写入模式打开文件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "print(\"5\" + 3)会正常输出8",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "字符串\"5\"不能直接和整数3相加，必须先把字符串转成整数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "列表的索引可以是负数",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "例如nums[-1]能取到最后一个元素，类似倒数第一的位置。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "colors = [\"红\",\"黄\",\"蓝\"]，colors[__]可以取到\"蓝\"",
+            "type": "fill-in",
+            "answer": [
+                "2"
+            ],
+            "explanation": "列表索引从0开始，0=红，1=黄，2=蓝。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "向文件写入内容时必须先执行______函数打开文件",
+            "type": "fill-in",
+            "answer": [
+                "open()"
+            ],
+            "explanation": "任何文件操作都需要先用open()建立连接，类似开门才能进房间。",
+            "preserveFormat": true
+        }
+    ]
+}

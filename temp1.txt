@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神奇喵猫Python训练营</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 页面特定的样式 */
+        body {
+            background-color: #1c1c1e !important; /* 强制应用背景颜色 */
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            flex-shrink: 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            color: var(--text-color);
+            margin-bottom: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* 标题流光效果 */
+        h1::before, h1::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            width: calc(100% + 60px);
+            height: calc(100% + 20px);
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 159, 10, 0.4) 35%,
+                rgba(191, 90, 242, 0.4) 50%,
+                rgba(64, 200, 224, 0.4) 65%,
+                transparent 100%
+            );
+            background-size: 250% 250%;
+            mix-blend-mode: screen;
+            z-index: 1;
+            animation: title-flow 6s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 40%;
+            filter: blur(8px);
+            transform: skew(-5deg, 2deg);
+        }
+        
+        h1::after {
+            width: calc(100% + 80px);
+            left: -40px;
+            top: -5px;
+            height: calc(100% + 15px);
+            filter: blur(12px);
+            opacity: 0.7;
+            animation-duration: 9s;
+            animation-direction: reverse;
+            mix-blend-mode: screen;
+            transform: skew(8deg, -3deg);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        @keyframes title-flow {
+            0% {
+                background-position: 0% 50%;
+                border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+            }
+            50% {
+                background-position: 100% 50%;
+                border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+            }
+            100% {
+                background-position: 0% 50%;
+                border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+            }
+        }
+        
+        /* 增加一个额外的光晕效果 */
+        .title-glow {
+            position: absolute;
+            width: 200%;
+            height: 150%;
+            top: -25%;
+            left: -50%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(255, 159, 10, 0.2) 0%,
+                rgba(191, 90, 242, 0.2) 30%,
+                rgba(64, 200, 224, 0.2) 60%,
+                transparent 80%
+            );
+            filter: blur(35px);
+            animation: title-glow 12s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes title-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.95) translateY(3px);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.05) translateY(-3px);
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        /* 添加头部操作区样式 */
+        .header-actions {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .wrong-answers-button {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(255, 69, 58, 0.2), rgba(191, 90, 242, 0.2));
+            border: 1px solid rgba(255, 69, 58, 0.3);
+            border-radius: 12px;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .wrong-answers-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 69, 58, 0.2);
+        }
+        
+        .wrong-answers-button::before {
+            content: '⚠️';
+            font-size: 1.1em;
+        }
+        
+        /* 修改大容器样式 */
+        .levels-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0 1px 30px 0; /* 增加与屏幕下方的边距 */
+            position: relative;
+            flex: 1;
+            min-height: 0; /* 允许容器缩小 */
+            isolation: isolate;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            overflow-y: auto; /* 只允许垂直方向滚动 */
+            overflow-x: hidden; /* 禁止水平滚动 */
+            width: 100%; /* 确保宽度不超出父容器 */
+        }
+        
+        /* 修改大容器渐变边框动画效果 */
+        .levels-container::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            z-index: -1;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 159, 10, 0.8) 25%,
+                rgba(191, 90, 242, 0.8) 50%,
+                rgba(64, 200, 224, 0.8) 75%,
+                transparent 100%
+            );
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            opacity: 0.5;
+            /* 移除动画 */
+        }
+
+        .levels-container::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            z-index: -2;
+            border-radius: 20px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(64, 200, 224, 0.5) 25%,
+                rgba(255, 159, 10, 0.5) 50%,
+                rgba(191, 90, 242, 0.5) 75%,
+                transparent 100%
+            );
+            filter: blur(20px);
+            opacity: 0.2;
+            /* 移除动画 */
+        }
+
+        /* 移除边框流动动画 */
+        @keyframes border-flow {
+            0% {
+                transform: translateX(0%); /* 固定位置，不再移动 */
+            }
+            100% {
+                transform: translateX(0%); /* 固定位置，不再移动 */
+            }
+        }
+        
+        /* 优化内容区域样式 */
+        .levels-container > * {
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+            border-radius: 20px;
+        }
+
+        /* 调整卡片渐变效果 */
+        .level-card::before {
+            opacity: 0.03;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .level-card:hover::before {
+            opacity: 0.08;
+        }
+        
+        @keyframes border-glow {
+            0% { opacity: 0.12; }
+            100% { opacity: 0.18; }
+        }
+
+        /* 修改网格容器样式 */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 25px;
+            min-height: 100%;
+            overflow: visible;
+            padding-right: 25px; /* 统一左右内边距 */
+            width: 100%; /* 确保宽度不超出父容器 */
+            box-sizing: border-box; /* 确保padding不会导致超出容器 */
+        }
+        
+        /* 优化滚动条样式 */
+        .levels-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .levels-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 4px;
+        }
+        
+        .levels-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.5), rgba(255, 55, 95, 0.5));
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .levels-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.8), rgba(255, 55, 95, 0.8));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        /* 调整卡片大小以适应三行布局 */
+        .level-card {
+            background: rgba(28, 28, 30, 0.9) !important; /* 卡片背景调暗 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 250px; /* 固定卡片高度 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden; /* 确保蒙层不会溢出 */
+        }
+        
+        /* 重置卡片中内容的z-index */
+        .level-card > * {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .level-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%
+            );
+            border-radius: 16px;
+            opacity: 0.5;
+        }
+
+        .level-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 状态指示器样式 */
+        .level-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .level-status .score {
+            padding-left: 8px;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .level-status .score.high {
+            color: var(--status-completed);
+            text-shadow: 0 0 5px rgba(50, 215, 75, 0.5);
+        }
+        
+        .level-status .score.low {
+            color: #FF454A;
+        }
+        
+        .level-status.locked {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--status-locked);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .level-status.locked::before {
+            content: '🔒';
+            font-size: 1em;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+        }
+        
+        .level-status.unlocked {
+            background: rgba(255, 159, 10, 0.25);
+            color: var(--status-available);
+            border: 1px solid rgba(255, 159, 10, 0.5);
+            text-shadow: 0 0 5px rgba(255, 159, 10, 0.6);
+            animation: glow-orange 2s infinite alternate;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .level-status.unlocked::before {
+            content: '🎯';
+            font-size: 1em;
+            filter: drop-shadow(0 0 2px rgba(255, 159, 10, 0.5));
+        }
+        
+        .level-status.completed {
+            background: rgba(50, 215, 75, 0.25);
+            color: var(--status-completed);
+            border: 1px solid rgba(50, 215, 75, 0.5);
+            text-shadow: 0 0 5px rgba(50, 215, 75, 0.6);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .level-status.completed::before {
+            content: '✅';
+            font-size: 1em;
+            filter: drop-shadow(0 0 2px rgba(50, 215, 75, 0.5));
+        }
+        
+        .level-status.completed .completed-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background: rgba(50, 215, 75, 0.8);
+            border-radius: 50%;
+            margin-right: 5px;
+            font-size: 0.85em;
+            box-shadow: 0 0 8px rgba(50, 215, 75, 0.6);
+            text-shadow: none;
+            color: white;
+            animation: pulse-checkmark 2s infinite alternate;
+        }
+        
+        @keyframes pulse-checkmark {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        
+        /* 修改序号样式 */
+        .level-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 根据模块调整关卡序号颜色 */
+        .level-card[data-module="1"] .level-number {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.2), rgba(255, 69, 58, 0.2));
+            border-color: rgba(255, 159, 10, 0.3);
+        }
+        .level-card[data-module="2"] .level-number {
+            background: linear-gradient(135deg, rgba(64, 156, 255, 0.2), rgba(100, 210, 255, 0.2));
+            border-color: rgba(64, 156, 255, 0.3);
+        }
+        .level-card[data-module="3"] .level-number {
+            background: linear-gradient(135deg, rgba(48, 209, 88, 0.2), rgba(102, 212, 207, 0.2));
+            border-color: rgba(48, 209, 88, 0.3);
+        }
+        .level-card[data-module="4"] .level-number {
+            background: linear-gradient(135deg, rgba(191, 90, 242, 0.2), rgba(142, 142, 220, 0.2));
+            border-color: rgba(191, 90, 242, 0.3);
+        }
+        .level-card[data-module="5"] .level-number {
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.2), rgba(255, 159, 10, 0.2));
+            border-color: rgba(255, 214, 10, 0.3);
+        }
+        
+        /* 调整内容布局 */
+        .level-card-content {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.05)
+            );
+            padding: 15px;
+            padding-top: 30px; /* 增加顶部内边距，让内容整体下移 */
+            border-radius: 12px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .level-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 12px;
+            margin-top: 20px; /* 减小标题上边距，因为已经通过padding-top增加了整体内边距 */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-light);
+            opacity: 0.9;
+            margin-bottom: auto;
+            max-height: 120px; /* 限制描述最大高度 */
+            overflow-y: auto; /* 如果内容过多则允许滚动 */
+        }
+        
+        /* 自定义描述部分的滚动条 */
+        .level-description::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .level-description::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+        
+        .level-description::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        
+        .level-description::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 不同模块卡片的渐变色 */
+        .level-card[data-module="1"]::before {
+            background: var(--gradient-1);
+        }
+        .level-card[data-module="2"]::before {
+            background: var(--gradient-2);
+        }
+        .level-card[data-module="3"]::before {
+            background: var(--gradient-3);
+        }
+        .level-card[data-module="4"]::before {
+            background: var(--gradient-4);
+        }
+        .level-card[data-module="5"]::before {
+            background: var(--gradient-5);
+        }
+        
+        /* 当前关卡 */
+        .level-card.current {
+            box-shadow: 0 0 0 2px var(--status-available);
+        }
+        
+        .level-card.current::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #FF9F0A, #FF375F);
+            border-radius: 16px;
+            z-index: -1;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.03);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* 发散光波 */
+        .level-card.current::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(
+                circle at center,
+                rgba(255, 159, 10, 0.2) 0%,
+                rgba(255, 55, 95, 0.1) 30%,
+                transparent 70%
+            );
+            animation: wave 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes wave {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.2);
+            }
+        }
+        
+        /* 锁定关卡 */
+        .level-card.locked {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 10v-4c0-3.313-2.687-6-6-6s-6 2.687-6 6v4h-3v14h18v-14h-3zm-10-4c0-2.206 1.794-4 4-4s4 1.794 4 4v4h-8v-4zm11 16h-14v-10h14v10z" fill="gold"/></svg>') 12 12, not-allowed;
+        }
+        
+        .level-card.completed {
+            box-shadow: 0 8px 30px rgba(50, 215, 75, 0.15); /* 减少外发光 */
+            border: 2px solid rgba(50, 215, 75, 0.4); /* 减少边框亮度 */
+            background: linear-gradient(145deg, rgba(50, 215, 75, 0.12), rgba(40, 160, 60, 0.12)) !important; /* 降低亮度 */
+            position: relative;
+            transform: translateY(-2px);
+        }
+        
+        .level-card.completed::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="%2332D74B" stroke="white" stroke-width="2"/><path d="M20 30 L28 38 L40 22" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            z-index: 10;
+            transform: rotate(15deg);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(15deg) translateY(-5px); }
+            100% { transform: rotate(15deg) translateY(0px); }
+        }
+        
+        .level-card.completed:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(50, 215, 75, 0.4);
+        }
+
+        /* 美化锁定关卡解锁规则文字 */
+        .lock-message {
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 1rem;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: shine 3s ease-in-out infinite;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        
+        @keyframes shine {
+            0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+            50% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+        }
+        
+        .lock-message::before {
+            content: '✨';
+            margin-right: 8px;
+        }
+        
+        .lock-message::after {
+            content: '✨';
+            margin-left: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .levels-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .level-card {
+                height: 220px; /* 中等屏幕下的固定高度 */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .levels-container {
+                padding: 20px;
+            }
+            
+            .levels-grid {
+                gap: 16px;
+                padding: 16px;
+            }
+            
+            .level-card {
+                height: 200px; /* 小屏幕下的固定高度 */
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .levels-container {
+                height: auto; /* 移除固定高度限制，允许容器适应内容 */
+            }
+            
+            .level-card {
+                height: 180px; /* 超小屏幕下的固定高度 */
+            }
+            
+            .level-description {
+                max-height: 80px; /* 超小屏幕下降低描述最大高度 */
+                font-size: 0.85rem; /* 减小字体大小 */
+            }
+        }
+
+        /* 卡片悬停蒙版 */
+        .level-card .hover-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .level-card:hover .hover-overlay {
+            opacity: 1;
+        }
+
+        /* 蒙版按钮样式 */
+        .overlay-button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: linear-gradient(135deg, #FF9F0A, #FF375F);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .overlay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 159, 10, 0.3);
+        }
+        
+        /* 错题链接样式 */
+        .overlay-wrong-answers-link {
+            display: none; /* 隐藏错题集图标 */
+        }
+        
+        .wrong-answers-link {
+            font-size: 0.85rem;
+            color: #FF454A;
+            margin-top: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wrong-answers-link:hover {
+            transform: translateY(-2px);
+            text-decoration: underline;
+        }
+
+        /* 按钮样式 */
+        .level-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .retry-btn, .wrong-answers-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .retry-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+        
+        .wrong-answers-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .retry-btn:hover, .wrong-answers-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 修复其他可能丢失的样式 */
+        .level-number {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;

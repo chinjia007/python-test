@@ -1,0 +1,262 @@
+{
+    "title": "函数定义",
+    "questions": [
+        {
+            "id": 1,
+            "question": "导入Pillow库的正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "import pillow",
+                "from PIL import Image",
+                "import PIL as Image",
+                "from Image import PIL"
+            ],
+            "answer": 1,
+            "explanation": "Pillow库的模块名是PIL，正确语法是`from PIL import Image`",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "给图片添加模糊滤镜需要用的函数是？",
+            "type": "multiple-choice",
+            "options": [
+                "Image.blur()",
+                "ImageFilter.BLUR",
+                "Image.add_filter(\"blur\")",
+                "Image.effect_blur()"
+            ],
+            "answer": 1,
+            "explanation": "ImageFilter.BLUR是预定义的滤镜对象",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "保存图片时动态命名的关键函数是？",
+            "type": "multiple-choice",
+            "options": [
+                "filename = \"pic_\" + str(i)",
+                "save(f\"pic_{i}.jpg\")",
+                "format(i)",
+                "save(\"pic.jpg\", format=i)"
+            ],
+            "answer": 1,
+            "explanation": "f-string可以直接在文件名中插入变量",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "用subplots()创建2行图片的正确参数是？",
+            "type": "multiple-choice",
+            "options": [
+                "nrows=2",
+                "rows=2",
+                "figsize=2",
+                "subplot(2)"
+            ],
+            "answer": 0,
+            "explanation": "nrows表示行数，ncols表示列数",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "处理完图片后必须调用的方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "show()",
+                "display()",
+                "save()",
+                "done()"
+            ],
+            "answer": 2,
+            "explanation": "save()方法才能永久保存修改",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "批量处理10张图片最适合的结构是？",
+            "type": "multiple-choice",
+            "options": [
+                "if...else",
+                "for循环",
+                "while循环",
+                "try...except"
+            ],
+            "answer": 1,
+            "explanation": "for循环适合已知次数的批量操作",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "修改图片后需要重新打开才能看到效果",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "所有修改都在内存中进行，不需要重新打开",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "save()方法的format参数要写在文件名前面",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "正确写法：save(\"输出.jpg\", format=\"JPEG\")",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "用PIL打开图片的代码片段：______ = Image.open(\"cat.jpg\")",
+            "type": "fill-in",
+            "answer": [
+                "img"
+            ],
+            "explanation": "需要把打开的图片赋值给变量才能后续操作",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "在一张画布显示4张图片的代码：\nfig, axs = plt.subplots(nrows=2, ______=2)",
+            "type": "fill-in",
+            "answer": [
+                "ncols"
+            ],
+            "explanation": "nrows和ncols需要成对使用",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "制作缩略图时thumbnail()方法最大的特点是？",
+            "type": "multiple-choice",
+            "options": [
+                "图片会变形",
+                "保持原图比例缩小",
+                "只能缩小不能放大",
+                "需要指定精确尺寸"
+            ],
+            "answer": 1,
+            "explanation": "thumbnail方法会根据给定的最大尺寸，按原图比例自动调整，保持图片不变形",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "获取图片格式应该用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "img.format",
+                "img.size",
+                "img.mode",
+                "img.type"
+            ],
+            "answer": 0,
+            "explanation": "图片对象的format属性直接存储着图片格式信息，如JPEG、PNG等",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "下面哪个代码能正确获取图片尺寸？",
+            "type": "multiple-choice",
+            "options": [
+                "width, height = img.dimensions",
+                "width, height = img.getsize()",
+                "width, height = img.size",
+                "width = img.width"
+            ],
+            "answer": 2,
+            "explanation": "图片对象的size属性返回包含宽高的元组，如(800,600)",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "剪裁图片需要使用crop()方法时，参数格式是？",
+            "type": "multiple-choice",
+            "options": [
+                "(x1,y1,x2,y2)",
+                "[x,y,width,height]",
+                "{left,top,right,bottom}",
+                "直接输入像素值"
+            ],
+            "answer": 0,
+            "explanation": "crop方法需要传入包含左上角和右下角坐标的四元组",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "将图片顺时针旋转90度应该用哪个参数？",
+            "type": "multiple-choice",
+            "options": [
+                "rotate(90)",
+                "rotate(90, expand=True)",
+                "transpose(ROTATE_90)",
+                "以上都可以"
+            ],
+            "answer": 3,
+            "explanation": "三种方式都能实现旋转，但transpose更适合标准角度旋转",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "将图片保存为PNG格式的关键代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "img.save(\"a.png\")",
+                "img.save(\"a.jpg\", format=\"PNG\")",
+                "img.save(\"a.png\", format=\"PNG\")",
+                "img.export(\"a.png\")"
+            ],
+            "answer": 0,
+            "explanation": "文件名后缀.png会自动识别格式，无需额外参数",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "convert(\"L\")方法可以把图片变成黑白",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "\"L\"模式表示灰度图像，去除了颜色信息",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "图片水平翻转会改变图片的尺寸",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "翻转操作只是镜像处理，不会改变图片的宽高尺寸",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "将图片顺时针旋转45度且自动调整画布大小的代码：img.rotate(________)",
+            "type": "fill-in",
+            "answer": [
+                "45",
+                "expand=True"
+            ],
+            "explanation": "expand参数设为True时，会自动扩展画布适应旋转后的图片",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "垂直翻转图片应该使用transpose(________)",
+            "type": "fill-in",
+            "answer": [
+                "FLIP_TOP_BOTTOM"
+            ],
+            "explanation": "FLIP_TOP_BOTTOM实现垂直翻转，FLIP_LEFT_RIGHT是水平翻转",
+            "preserveFormat": true
+        }
+    ]
+}

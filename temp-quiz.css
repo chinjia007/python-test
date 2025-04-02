@@ -1,0 +1,21 @@
+/* 这是一个临时文件，用于存储quiz.html中的样式，但删除了重复的旧.back-button定义 */
+
+/* 修改后的样式 */
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF9F0A, #FF375F);
+    transition: width 0.3s ease;
+}
+
+/* 鎬荤粨椤甸潰鏍峰紡 */
+.quiz-summary {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+} 

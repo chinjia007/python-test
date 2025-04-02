@@ -1,0 +1,43 @@
+{
+  "level": 1,
+  "title": "Python简介",
+  "description": "了解Python的历史、特性和应用场景。",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Python是一种什么类型的编程语言？",
+      "options": [
+        "低级编程语言",
+        "高级编程语言",
+        "汇编语言",
+        "机器语言"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Python是一种高级编程语言，它的语法简洁、易读，可以让开发者专注于解决问题而不是理解语言本身的复杂性。"
+    },
+    {
+      "id": 2,
+      "question": "Python的名字来源于什么？",
+      "options": [
+        "发明者的宠物蛇",
+        "一种神秘的古代符号",
+        "英国喜剧团体Monty Python",
+        "希腊神话中的Python巨蟒"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Python的创始人Guido van Rossum是英国喜剧团体Monty Python的粉丝，因此他将这个编程语言命名为Python。"
+    },
+    {
+      "id": 3,
+      "question": "Python最初是在哪一年发布的？",
+      "options": [
+        "1985年",
+        "1991年",
+        "2000年",
+        "2005年"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Python最初由Guido van Rossum在1991年发布，至今已有30多年的历史。"
+    }
+  ]
+} 

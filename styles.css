@@ -1,0 +1,845 @@
+:root {
+    /* 亮色主题配色 */
+    --background-light: #FFFFFF;      /* 背景白色 */
+    --card-bg-light: #F8F9FA;         /* 卡片背景色 */
+    --text-color-light: #1A1A1A;      /* 主文本色 - 更深的黑色 */
+    --text-light-light: #4A4A4A;      /* 次要文本色 - 更深的灰色 */
+    --border-color-light: #E5E5E5;    /* 边框色 - 更明显的灰色 */
+    --hover-bg-light: #F0F0F0;        /* 悬停背景色 */
+    --shadow-light: rgba(0, 0, 0, 0.1); /* 阴影颜色 */
+    
+    /* 暗色主题配色 */
+    --background-dark: #000000;      /* 背景黑色 */
+    --card-bg: #141414;              /* 卡片背景色 */
+    --text-color: #FFFFFF;           /* 主文本色 */
+    --text-light: rgba(255, 255, 255, 0.6);  /* 次要文本色 */
+    --border-color: rgba(255, 255, 255, 0.1); /* 边框色 */
+    
+    /* 状态颜色 */
+    --status-available: #FF9F0A;     /* 可学习 - 橙色 */
+    --status-completed: #32D74B;     /* 已完成 - 绿色 */
+    --status-locked: rgba(255, 255, 255, 0.3);  /* 已锁定 - 灰色 */
+    
+    /* 渐变色调整 */
+    --gradient-1: linear-gradient(135deg, #FF4B91 0%, #FF9F0A 100%);
+    --gradient-2: linear-gradient(135deg, #32D74B 0%, #40C8E0 100%);
+    --gradient-3: linear-gradient(135deg, #BF5AF2 0%, #FF375F 100%);
+    --gradient-4: linear-gradient(135deg, #40C8E0 0%, #5E5CE6 100%);
+    --gradient-5: linear-gradient(135deg, #FF375F 0%, #FF9F0A 100%);
+    
+    /* 颜色变量 */
+    --primary-color: #FF9F0A;
+    --secondary-color: #FF375F;
+    --accent-color: #BF5AF2;
+    --accent-color-2: #40C8E0;
+    --accent-color-3: #32D74B;
+    
+    /* 深色主题颜色 */
+    --background: #1c1c1e;
+    --card-bg: rgba(28, 28, 30, 0.8);
+    --text-color: #ffffff;
+    --text-light: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* 状态颜色 */
+    --status-available: #FF9F0A;
+    --status-completed: #32D74B;
+    --status-locked: #8E8E93;
+    
+    /* 渐变 */
+    --gradient-1: linear-gradient(135deg, #FF9F0A, #FF375F);
+    --gradient-2: linear-gradient(135deg, #BF5AF2, #FF375F);
+    --gradient-3: linear-gradient(135deg, #40C8E0, #BF5AF2);
+    --gradient-4: linear-gradient(135deg, #32D74B, #40C8E0);
+    --gradient-5: linear-gradient(135deg, #FF9F0A, #40C8E0);
+}
+
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+}
+
+body {
+    line-height: 1.6;
+    padding: 30px;
+}
+
+/* 主题切换按钮样式 */
+.theme-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle::before {
+    content: '🌞';
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle.dark::before {
+    content: '🌙';
+}
+
+/* 亮色主题样式 */
+body.light-theme {
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+}
+
+body.light-theme .levels-container,
+body.light-theme .question,
+body.light-theme .option,
+body.light-theme .feedback,
+body.light-theme .explanation,
+body.light-theme .question-review,
+body.light-theme .option-review,
+body.light-theme .summary-header,
+body.light-theme .level-card {
+    background: var(--card-bg-light);
+    border-color: var(--border-color-light);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+body.light-theme .subtitle,
+body.light-theme .text-light,
+body.light-theme .level-description {
+    color: var(--text-light-light);
+}
+
+body.light-theme .option,
+body.light-theme .option-review {
+    background: var(--card-bg-light);
+    border-color: var(--border-color-light);
+}
+
+body.light-theme .option:hover,
+body.light-theme .option-review:hover {
+    background: var(--hover-bg-light);
+    border-color: #D0D0D0;
+}
+
+body.light-theme .option::before,
+body.light-theme .option-review::before {
+    background: var(--hover-bg-light);
+    color: var(--text-color-light);
+}
+
+body.light-theme .option.selected,
+body.light-theme .option-review.selected {
+    background: rgba(255, 159, 10, 0.1);
+    border-color: var(--status-available);
+}
+
+body.light-theme .option.correct,
+body.light-theme .option-review.correct {
+    background: rgba(50, 215, 75, 0.1);
+    border-color: var(--status-completed);
+}
+
+body.light-theme .option.incorrect,
+body.light-theme .option-review.incorrect {
+    background: rgba(255, 69, 58, 0.1);
+    border-color: #FF454A;
+}
+
+body.light-theme .feedback.correct {
+    background: rgba(50, 215, 75, 0.1);
+    border-color: var(--status-completed);
+}
+
+body.light-theme .feedback.incorrect {
+    background: rgba(255, 69, 58, 0.1);
+    border-color: #FF454A;
+}
+
+body.light-theme .explanation {
+    background: var(--card-bg-light);
+    border-color: var(--border-color-light);
+    color: var(--text-light-light);
+}
+
+body.light-theme .explanation strong {
+    color: var(--text-color-light);
+}
+
+body.light-theme .theme-toggle {
+    background: var(--card-bg-light);
+    border-color: var(--border-color-light);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+body.light-theme .progress-bar {
+    background: var(--hover-bg-light);
+}
+
+body.light-theme .question-status.correct {
+    background: rgba(50, 215, 75, 0.1);
+    border-color: var(--status-completed);
+}
+
+body.light-theme .question-status.incorrect {
+    background: rgba(255, 69, 58, 0.1);
+    border-color: #FF454A;
+}
+
+body.light-theme .quiz-summary::-webkit-scrollbar-track {
+    background: var(--hover-bg-light);
+}
+
+body.light-theme .quiz-summary::-webkit-scrollbar-thumb {
+    background: var(--status-available);
+}
+
+/* 确保所有文字在亮色主题下清晰可见 */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme .question-title,
+body.light-theme .question-number,
+body.light-theme .level-number,
+body.light-theme .level-title {
+    color: var(--text-color-light);
+}
+
+body.light-theme .level-status {
+    color: var(--text-light-light);
+}
+
+body.light-theme .level-card.locked {
+    background: var(--hover-bg-light);
+}
+
+body.light-theme .level-card.locked .level-status {
+    color: var(--text-light-light);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--status-available);
+    border-radius: 4px;
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+    background: var(--hover-bg-light);
+}
+
+/* 动态背景渐变效果 */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-color);
+    background: linear-gradient(-45deg, 
+        rgba(255, 159, 10, 0.15), 
+        rgba(255, 55, 95, 0.15), 
+        rgba(191, 90, 242, 0.15), 
+        rgba(64, 200, 224, 0.15)
+    );
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* 添加移动光斑效果 */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.light-spot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: moveAround 20s linear infinite;
+}
+
+.light-spot:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 159, 10, 0.2), transparent 70%);
+    top: 10%;
+    left: 20%;
+    animation-duration: 25s;
+    animation-delay: -5s;
+}
+
+.light-spot:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 55, 95, 0.2), transparent 70%);
+    bottom: 15%;
+    right: 20%;
+    animation-duration: 30s;
+    animation-delay: -2s;
+}
+
+.light-spot:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(191, 90, 242, 0.2), transparent 70%);
+    bottom: 30%;
+    left: 10%;
+    animation-duration: 22s;
+    animation-delay: -12s;
+}
+
+.light-spot:nth-child(4) {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(64, 200, 224, 0.2), transparent 70%);
+    top: 25%;
+    right: 15%;
+    animation-duration: 28s;
+    animation-delay: -8s;
+}
+
+@keyframes moveAround {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(5%, 10%);
+    }
+    50% {
+        transform: translate(10%, 5%);
+    }
+    75% {
+        transform: translate(5%, -5%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* 调整容器样式以适应渐变背景 */
+.container, .quiz-container {
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(28, 28, 30, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+/* 增强级光斑交互效果 */
+.light-spot {
+    transition: transform 0.5s ease-out;
+}
+
+.level-card:hover ~ .background-effects .light-spot:nth-child(1) {
+    transform: scale(1.1) translate(2%, 2%);
+}
+
+.level-card:hover ~ .background-effects .light-spot:nth-child(2) {
+    transform: scale(1.1) translate(-2%, -2%);
+}
+
+/* 调整卡片以配合新背景 */
+.level-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: rgba(40, 40, 45, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.4s ease;
+}
+
+.level-card:hover {
+    background-color: rgba(50, 50, 55, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* 改进渐变动画 */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.level-card::before {
+    animation: gradientFlow 6s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* 调整quiz页面元素 */
+.quiz-question, .quiz-summary {
+    background-color: rgba(40, 40, 45, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* 增强按钮视觉效果 */
+.next-button, .overlay-button, .submit-button, .retry-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: gradientFlow 4s ease infinite;
+    border: none;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 55, 95, 0.2);
+    transition: all 0.3s ease;
+}
+
+.next-button:hover, .overlay-button:hover, .submit-button:hover, .retry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 55, 95, 0.3);
+}
+
+/* 背景光斑效果 */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.light-spot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    background: var(--gradient-1);
+    animation: float 20s ease-in-out infinite alternate;
+}
+
+.light-spot:nth-child(1) {
+    width: 500px;
+    height: 500px;
+    top: -10%;
+    left: -10%;
+    background: var(--gradient-2);
+    animation-duration: 25s;
+}
+
+.light-spot:nth-child(2) {
+    width: 600px;
+    height: 600px;
+    top: 60%;
+    right: -20%;
+    background: var(--gradient-4);
+    animation-duration: 30s;
+    animation-delay: 2s;
+}
+
+.light-spot:nth-child(3) {
+    width: 400px;
+    height: 400px;
+    bottom: -10%;
+    left: 30%;
+    background: var(--gradient-3);
+    animation-duration: 22s;
+    animation-delay: 5s;
+}
+
+.light-spot:nth-child(4) {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    right: 25%;
+    background: var(--gradient-5);
+    animation-duration: 28s;
+    animation-delay: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    50% {
+        transform: translateY(-40px) translateX(20px) scale(1.05);
+    }
+    100% {
+        transform: translateY(30px) translateX(-40px) scale(0.95);
+    }
+}
+
+/* 容器样式 */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--status-available);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--status-completed);
+}
+
+/* 按钮通用样式 */
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* 关卡卡片样式 */
+.level-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.level-card.locked {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.level-card.completed {
+    border: 2px solid var(--status-completed);
+    background: linear-gradient(145deg, rgba(50, 215, 75, 0.15), rgba(40, 160, 60, 0.15));
+}
+
+/* 返回按钮 */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 标题样式 */
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+/* 代码格式化样式 */
+code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.95em;
+    background-color: rgba(40, 40, 45, 0.6);
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #E5E5E5;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.4;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* IDE风格的代码块 */
+pre {
+    background-color: rgba(30, 30, 35, 0.8);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+pre code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.95em;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    color: #E5E5E5;
+    white-space: pre;
+    border-radius: 0;
+    line-height: 1.5;
+    display: block;
+    letter-spacing: 0.02em;
+    tab-size: 4;
+}
+
+/* Python关键字高亮 */
+.keyword {
+    color: #FF2D55; /* 红色 */
+    font-weight: bold;
+}
+
+/* 字符串高亮 */
+.string {
+    color: #32D74B; /* 绿色 */
+}
+
+/* 数字高亮 */
+.number {
+    color: #FFD60A; /* 黄色 */
+}
+
+/* 注释高亮 */
+.comment {
+    color: #8E8E93; /* 灰色 */
+    font-style: italic;
+}
+
+/* 特殊函数高亮 */
+.turtle-function {
+    color: #BF5AF2; /* 紫色 */
+    font-weight: bold;
+}
+
+/* 题目编辑器中的代码预览样式强化 */
+.question-preview pre {
+    background-color: rgba(22, 22, 24, 0.9);
+    border-radius: 8px;
+    padding: 14px;
+    margin: 12px 0;
+    border-left: 3px solid #FF9F0A;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.question-preview code {
+    color: #10B1FE;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+/* 添加对答题页面特定的代码字体样式 */
+.question code,
+.option code,
+.explanation code,
+.question-review code,
+.option-review code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.95em;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+}
+
+/* 确保代码块在总结页面有正确的字体 */
+.summary-content code,
+.wrong-answer-content code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* 轻主题下的代码样式调整 */
+body.light-theme code {
+    background-color: rgba(240, 240, 245, 0.8);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme pre {
+    background-color: rgba(245, 245, 250, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme pre code {
+    color: #333;
+}
+
+/* 确保IDE样式的代码块中的字体也正确设置 */
+.ide-code-block .code-content,
+.ide-code-block .code-content code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+
+/* 为所有英文、标点和数字应用编程字体 */
+.question,
+.option,
+.explanation,
+.question-review,
+.option-review,
+.summary-content,
+.wrong-answer-content,
+.feedback {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* 使用选择器将英文、数字和标点符号设置为编程字体 */
+.question:not(:lang(zh)),
+.option:not(:lang(zh)),
+.explanation:not(:lang(zh)),
+.question-review:not(:lang(zh)),
+.option-review:not(:lang(zh)),
+.summary-content:not(:lang(zh)),
+.wrong-answer-content:not(:lang(zh)),
+.feedback:not(:lang(zh)),
+.question span:not(:lang(zh)),
+.option span:not(:lang(zh)),
+.explanation span:not(:lang(zh)),
+.question-review span:not(:lang(zh)),
+.option-review span:not(:lang(zh)),
+.summary-content span:not(:lang(zh)),
+.wrong-answer-content span:not(:lang(zh)),
+.feedback span:not(:lang(zh)) {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* 直接使用ASCII字符选择器覆盖所有英文字母、数字和标点符号 */
+.question [class*="ascii"],
+.option [class*="ascii"],
+.explanation [class*="ascii"],
+.question-review [class*="ascii"],
+.option-review [class*="ascii"],
+.summary-content [class*="ascii"],
+.wrong-answer-content [class*="ascii"],
+.feedback [class*="ascii"] {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* 使用自定义字体处理 */
+@font-face {
+    font-family: 'Mixed Font';
+    src: local('Consolas'), local('Monaco'), local('Courier New'), local('Source Code Pro'), local('Fira Code'), local('JetBrains Mono'), local(monospace);
+    unicode-range: U+0020-007F, U+00A0-00FF; /* ASCII和扩展ASCII范围 */
+}
+
+.question,
+.option,
+.explanation,
+.question-review,
+.option-review,
+.summary-content,
+.wrong-answer-content,
+.feedback {
+    font-family: 'Mixed Font', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 应用编程字体到标记的拉丁字符 */
+.latin-font {
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    display: inline;
+}
+
+/* 代码选项专用样式 */
+.code-option {
+    background-color: rgba(40, 40, 45, 0.6);
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Source Code Pro', 'Fira Code', 'JetBrains Mono', monospace;
+    white-space: pre;
+    overflow-x: auto;
+    color: #E5E5E5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.code-option code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    font-family: inherit;
+    white-space: inherit;
+    display: block;
+}
+
+/* 亮色主题下的代码选项样式 */
+body.light-theme .code-option {
+    background-color: rgba(245, 245, 250, 0.9);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+} 

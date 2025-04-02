@@ -1,0 +1,261 @@
+{
+    "title": "字符串操作",
+    "questions": [
+        {
+            "id": 1,
+            "question": "想要把\"Hello\"和\"World\"连起来变成\"HelloWorld\"，该选哪个？",
+            "type": "multiple-choice",
+            "options": [
+                "print(\"Hello\"+\" World\")",
+                "print(\"Hello\"+\"World\")",
+                "print(\"Hello\", \"World\")",
+                "print(\"Hello\"-\"World\")"
+            ],
+            "answer": 1,
+            "explanation": "加号可以把字符串直接连起来，B选项没有多余空格",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "s = \"Hello\"，想拿到第一个字母\"H\"，正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "s[1]",
+                "s(0)",
+                "s.first",
+                "s[0]"
+            ],
+            "answer": 3,
+            "explanation": "Python索引从0开始，第一个字符的位置是[0]",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "len(\"Python\")的计算结果是多少？",
+            "type": "multiple-choice",
+            "options": [
+                "5",
+                "7",
+                "6",
+                "报错"
+            ],
+            "answer": 2,
+            "explanation": "字符串有6个字母，P-y-t-h-o-n",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "s = \"apple\"，s[-1]会得到什么？",
+            "type": "multiple-choice",
+            "options": [
+                "a",
+                "p",
+                "l",
+                "e"
+            ],
+            "answer": 3,
+            "explanation": "-1表示倒数第一个字符，也就是最后的字母e",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "如何让字符串\"123\"变成\"321\"？",
+            "type": "multiple-choice",
+            "options": [
+                "s[::-1]",
+                "s.reverse()",
+                "s.sort()",
+                "s[-0]"
+            ],
+            "answer": 0,
+            "explanation": "切片操作[::-1]可以倒着取所有字符",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "执行代码 print((\"Cat\"+\"Dog\")[::-1]) 会输出什么？",
+            "type": "multiple-choice",
+            "options": [
+                "tacoD",
+                "goDtaC",
+                "DogCat",
+                "tacgoD"
+            ],
+            "answer": 1,
+            "explanation": "先拼接成\"CatDog\"，再反转得到goDtaC",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "字符串的索引从1开始，第一个字符是s[1]",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "Python索引从0开始，第一个字符是s[0]",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "s = \"python\"，s[-7] 可以取到字符'p'",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "字符串只有6个字符，-7超过索引范围会报错",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "计算\"sun\"+\"flower\"的总长度，代码是len(______)",
+            "type": "fill-in",
+            "answer": [
+                "\"sun\"+\"flower\" 或 \"sunflower\""
+            ],
+            "explanation": "拼接后是9个字母，len(\"sunflower\")=9",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "将s = \"star\"反转的代码是s[____]",
+            "type": "fill-in",
+            "answer": [
+                "::-1"
+            ],
+            "explanation": "完整的切片写法是s[start:end:step]",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "字符串s = \"ABCDE\"，s[2:4]的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "BC",
+                "CD",
+                "BCD",
+                "DE"
+            ],
+            "answer": 1,
+            "explanation": "切片规则。切片包含开始索引2（对应字母C），不包含结束索引4（对应字母E），所以结果是CD。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "print(\"Hello\\nWorld\") 的输出结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "HelloWorld",
+                "Hello World",
+                "Hello\nWorld",
+                "Hello\\nWorld"
+            ],
+            "answer": 2,
+            "explanation": "换行符。\\n是换行符，会让后面的内容从新的一行开始显示。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "想要反转字符串\"apple\"，正确的切片写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "apple[::0]",
+                "apple[::-1]",
+                "apple[-1:]",
+                "apple[4:0]"
+            ],
+            "answer": 1,
+            "explanation": "倒序切片。[::-1]表示从后往前逐个取字符，实现反转效果。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "s = \"hello\"，s.find(\"l\")的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "answer": 1,
+            "explanation": "字符串查询。find()方法返回第一个匹配字符的位置，第一个\"l\"在索引2处。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "变量x=3，执行x += 2后，x的值是？",
+            "type": "multiple-choice",
+            "options": [
+                "3",
+                "5",
+                "6",
+                "23"
+            ],
+            "answer": 1,
+            "explanation": "变量自增。x += 2等同于x = x + 2，3+2=5。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "字符串s = \"Python\"，统计字母\"t\"出现的次数用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "s.index(\"t\")",
+                "s.count(\"t\")",
+                "s.find(\"t\")",
+                "s.replace(\"t\")"
+            ],
+            "answer": 1,
+            "explanation": "字符串统计。count()方法可以统计指定字符出现的次数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "切片s[0:3]包含索引0、1、2的字符。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "切片规则。切片规则是包含开始值，不包含结束值，所以0到3对应前3个字符。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "字符串反转只能通过切片[::-1]实现。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "倒序切片。还可以用循环或其他方法实现反转，但[::-1]是最简洁的方式。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "补全代码：将字符串s倒序输出 s = \"hello\" print(________)",
+            "type": "fill-in",
+            "answer": [
+                "s[::-1]"
+            ],
+            "explanation": "倒序切片。[::-1]表示从最后一个字符开始反向取所有字符。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "补全代码：让变量num每次循环增加3 \nnum = 0 \nfor _ in range(3): \n    num ________ \nprint(num)",
+            "type": "fill-in",
+            "answer": [
+                "+= 3"
+            ],
+            "explanation": "变量自增。+=是自增运算符，num += 3等同于num = num + 3。",
+            "preserveFormat": true
+        }
+    ]
+}

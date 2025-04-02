@@ -1,0 +1,263 @@
+{
+    "title": "集合",
+    "questions": [
+        {
+            "id": 1,
+            "question": "sorted()函数对列表操作后会返回什么？",
+            "type": "multiple-choice",
+            "options": [
+                "修改原列表",
+                "生成新列表",
+                "返回元组",
+                "返回字符串"
+            ],
+            "answer": 1,
+            "explanation": "sorted()函数不会修改原列表，而是生成一个新的排好序的列表，就像给书架上乱放的书重新按顺序摆放到新书架。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "想要删除列表第3个位置的元素（索引为2），应该用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "pop(3)",
+                "pop(2)",
+                "remove(3)",
+                "delete(2)"
+            ],
+            "answer": 1,
+            "explanation": "pop()的参数是索引值，索引从0开始，第3个元素的索引是2。就像图书馆书架的编号是0号开始数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "执行`a, b = b, a`后会发生什么？",
+            "type": "multiple-choice",
+            "options": [
+                "交换a和b的值",
+                "a和b都变成b的值",
+                "报错",
+                "没有任何变化"
+            ],
+            "answer": 0,
+            "explanation": "这种写法是Python特有的交换方式，相当于把两个变量值对调，就像互换两个盒子里的小球。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "insert()方法插入元素的正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "list.insert(位置, 元素)",
+                "list.insert(元素, 位置)",
+                "list.add(位置, 元素)",
+                "list.put(元素, 位置)"
+            ],
+            "answer": 0,
+            "explanation": "insert()第一个参数是位置（索引），第二个是要插入的元素，就像在队伍里指定位置插队一个人。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "sorted([5,2,8])的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "[8,5,2]",
+                "[2,5,8]",
+                "(2,5,8)",
+                "\"258\""
+            ],
+            "answer": 1,
+            "explanation": "sorted()默认从小到大排序，且返回值是列表，就像把数字按身高从矮到高排队。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "执行`nums = [7,3,9]; nums.pop(); nums.pop(0)`后，nums的值是？",
+            "type": "multiple-choice",
+            "options": [
+                "[3]",
+                "[7]",
+                "[9]",
+                "[]"
+            ],
+            "answer": 0,
+            "explanation": "第一次pop()删除最后一个元素9，剩下[7,3]；再pop(0)删除第一个元素7，最终剩[3]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "pop()方法如果不写参数，默认删除最后一个元素",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "pop()默认参数是-1，也就是最后一个元素，就像拿掉积木最上面一块。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "insert(2,10)表示在第10个位置插入数字2",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "第一个参数是位置，第二个是元素，所以应该是位置2插入10，就像在队伍第3个人的位置插入新同学。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "用中间变量交换x和y的代码： \ntemp = x \nx = y \n____ = temp",
+            "type": "fill-in",
+            "answer": [
+                "y"
+            ],
+            "explanation": "先把x的值存到temp，再把y赋值给x，最后把temp还给y，就像用空碗倒换两杯饮料。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "在列表开头插入数字5的代码：list.______(0,5)",
+            "type": "fill-in",
+            "answer": [
+                "insert"
+            ],
+            "explanation": "索引0表示第一个位置，insert()方法在这里就像在队伍最前面加一个人。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "下面哪个代码会输出\"相同\"？",
+            "type": "multiple-choice",
+            "options": [
+                "print(\"apple\" == \"APPLE\")",
+                "print(\"Python\" is \"Python\")",
+                "print(\"123\" == 123)",
+                "print(\"猫\" in \"黑猫警长\")"
+            ],
+            "answer": 1,
+            "explanation": "B选项的`is`比较内存地址，但Python会对相同字符串优化存储，所以输出True。A选项大小写不同，C选项类型不同，D选项是包含关系。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "y以下双重循环会运行多少次内层循环？\nfor i in range(3): \n    for j in range(2):",
+            "type": "multiple-choice",
+            "options": [
+                "3次",
+                "5次",
+                "6次",
+                "2次"
+            ],
+            "answer": 2,
+            "explanation": "外层循环3次，每次内层循环2次，总次数是3×2=6次。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "想让列表从大到小排列，该用哪个代码？",
+            "type": "multiple-choice",
+            "options": [
+                "sorted([3,1,4])",
+                "sorted([3,1,4], reverse=False)",
+                "sorted([3,1,4], reverse=True)",
+                "[3,1,4].sort()"
+            ],
+            "answer": 2,
+            "explanation": "reverse=True表示逆序排列，C正确。D虽然能排序但会直接修改原列表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "判断\"草莓\"是否在水果列表中，正确的是？",
+            "type": "multiple-choice",
+            "options": [
+                "if 草莓 in fruits:",
+                "if \"草莓\" not in fruits:",
+                "if fruits has \"草莓\":",
+                "if \"草莓\" in fruits:"
+            ],
+            "answer": 3,
+            "explanation": "D是正确语法，A缺少引号，B是否定句，C语法错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "两个变量`a = \"hello\"`和`b = \"hello\"`，它们的关系是？",
+            "type": "multiple-choice",
+            "options": [
+                "a == b为False",
+                "a is b为False",
+                "内存地址不同",
+                "a == b为True"
+            ],
+            "answer": 3,
+            "explanation": "Python会优化相同字符串的内存，所以值相等且`is`也返回True，但本题D更准确。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "如何快速获得字符串的逆序？",
+            "type": "multiple-choice",
+            "options": [
+                "s.reverse()",
+                "s[::-1]",
+                "sorted(s, reverse=True)",
+                "s.sort()"
+            ],
+            "answer": 1,
+            "explanation": "字符串不可变，不能用reverse()，切片`s[::-1]`是常用逆序方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "sorted()函数会直接修改原列表",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "sorted()返回新列表，原列表不变，修改列表要用sort()方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "`if \"a\" not in \"apple\":`这个判断条件成立",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "\"a\"在\"apple\"中，所以not in判断为False。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "双重循环中，外层变量常用___表示，内层常用___表示",
+            "type": "fill-in",
+            "answer": [
+                "i、j"
+            ],
+            "explanation": "约定俗成用i表示外层循环，j表示内层循环，方便阅读。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "代码`sorted(\"python\", reverse=True)[:3]`的结果是___（用字母回答）",
+            "type": "fill-in",
+            "answer": [
+                "['y'",
+                "'t'",
+                "'p']"
+            ],
+            "explanation": "sorted(\"python\")按字母顺序排列为['h','n','o','p','t','y']，reverse=True后逆序为['y','t','p','o','n','h']，取前3个是y,t,p。",
+            "preserveFormat": true
+        }
+    ]
+}

@@ -1,0 +1,261 @@
+{
+    "title": "列表与元组",
+    "questions": [
+        {
+            "id": 1,
+            "question": "判断素数的核心方法是检查数字能否被什么数整除？",
+            "type": "multiple-choice",
+            "options": [
+                "所有自然数",
+                "1和它本身",
+                "2到它平方根之间的整数",
+                "所有偶数"
+            ],
+            "answer": 2,
+            "explanation": "只需要检查2到该数平方根之间的整数，如果能被其中一个整除就不是素数，这样能减少计算量。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "time.time()函数的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "显示当前时间",
+                "获取系统时间戳（单位秒）",
+                "暂停程序运行",
+                "计算CPU使用率"
+            ],
+            "answer": 1,
+            "explanation": "time.time()返回从1970年1月1日到现在的秒数，常用来计算程序运行时间差。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "函数中return语句的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "终止函数运行",
+                "向调用者返回数据",
+                "打印结果到屏幕",
+                "保存数据到文件"
+            ],
+            "answer": 1,
+            "explanation": "return会将结果传递给调用函数的代码，但不会自动显示结果。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "优化素数判断程序时，以下哪种方法能提高效率？",
+            "type": "multiple-choice",
+            "options": [
+                "增加更多的循环",
+                "检查更大的数字范围",
+                "只检查奇数",
+                "用print代替return"
+            ],
+            "answer": 2,
+            "explanation": "偶数除了2之外都不是素数，检查时跳过偶数可以节省一半计算量。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "计算程序运行时间的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "end_time - start_time",
+                "start_time / end_time",
+                "time.sleep(1)",
+                "print(time.time())"
+            ],
+            "answer": 0,
+            "explanation": "记录开始和结束时间戳后，相减即可得到程序运行时间。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "函数中没有return语句时会返回什么？",
+            "type": "multiple-choice",
+            "options": [
+                "0",
+                "None",
+                "空字符串",
+                "报错"
+            ],
+            "answer": 1,
+            "explanation": "Python规定没有return语句的函数默认返回None，表示\"没有值\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "所有函数都必须有return语句",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "函数可以没有return语句，比如只执行操作不返回结果的情况。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "计算程序时间必须用time库的perf_counter()函数",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "time.time()也可以计算时间差，但perf_counter()精度更高。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "补全素数判断条件： \nif n > 1: \n    for i in range(2, int(n**0.5)+1): \n        if ________ : \n            return False",
+            "type": "fill-in",
+            "answer": [
+                "n % i == 0"
+            ],
+            "explanation": "当n能被i整除时（余数为0），说明不是素数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "计算函数运行时间的代码片段： start = time.______()",
+            "type": "fill-in",
+            "answer": [
+                "time"
+            ],
+            "explanation": "正确写法是time.time()，需要先导入time库。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "穷举法的核心思想是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "随机猜测答案",
+                "在范围内逐个验证所有可能",
+                "只验证最可能的答案",
+                "直接跳过复杂计算"
+            ],
+            "answer": 1,
+            "explanation": "穷举法需要逐个尝试所有可能性，直到找到正确解，类似逐一试钥匙开锁的过程。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "哪个问题最适合用方程思想解决？",
+            "type": "multiple-choice",
+            "options": [
+                "打印九九乘法表",
+                "鸡兔同笼问题（已知头脚数求数量）",
+                "生成随机密码",
+                "画一个彩色星星"
+            ],
+            "answer": 1,
+            "explanation": "鸡兔同笼需设立变量建立方程组（如x+y=头数，2x+4y=脚数），适合方程思想求解。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "print(\"{}的年龄是{}岁\".format(\"小明\", 10)) 输出结果是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "小明的年龄是10岁",
+                "10的年龄是小明岁",
+                "报错",
+                "小明10的年龄是岁"
+            ],
+            "answer": 0,
+            "explanation": "format()方法按参数顺序填充，第一个参数对应第一个占位符，第二个参数对应第二个占位符。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "循环中遇到 break 会发生什么？",
+            "type": "multiple-choice",
+            "options": [
+                "重启循环",
+                "跳过当前循环的剩余代码继续下一轮",
+                "立刻结束整个循环",
+                "报错"
+            ],
+            "answer": 2,
+            "explanation": "break会直接终止当前循环，类似捉迷藏找到人后立即结束游戏。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "用穷举法找出所有三位数中能被3整除的数，循环范围应该怎么写？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in range(100, 999)",
+                "for i in range(100, 1000)",
+                "for i in range(99, 1000)",
+                "for i in range(100, 1001)"
+            ],
+            "answer": 1,
+            "explanation": "三位数范围是100到999，但Python的range不包含结束值，因此需写为range(100, 1000)。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "以下代码可能解决什么问题？ \nfor a in range(1, 5): \n    for b in range(1, 5): \n        for c in range(1, 5): \n            if a + b + c == 10: \n                print(a, b, c)",
+            "type": "multiple-choice",
+            "options": [
+                "找出三个数之和小于10的组合",
+                "列出所有1到4的三位数",
+                "找出三个数之和等于10的组合",
+                "计算1+2+3+4的值"
+            ],
+            "answer": 2,
+            "explanation": "三层循环遍历1-4的所有组合，当和为10时输出，属于穷举法求特定条件组合。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "穷举法必须验证范围内的所有情况，即使已经找到答案。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "若允许提前终止，可通过break跳出循环，无需遍历所有情况。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "方程思想只能用数学公式解决，不能用循环实现。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "例如鸡兔同笼问题既可用方程求解，也可通过循环穷举验证可能的解。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "补全代码，让输出结果为“5只青蛙3条腿”： \nb = 3 \nprint(\"5只青蛙{}条腿\".format(____))",
+            "type": "fill-in",
+            "answer": [
+                "b"
+            ],
+            "explanation": "format()需按顺序传入变量a和b，填充到字符串的占位符中。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "补全代码，找到第一个能被7整除的数后立刻停止循环： \nfor num in range(1, 100): \n    if num % 7 == 0: \n        print(num) \n        ______",
+            "type": "fill-in",
+            "answer": [
+                "break"
+            ],
+            "explanation": "break用于立即终止循环，找到符合条件的数后无需继续遍历后续数值。",
+            "preserveFormat": true
+        }
+    ]
+}

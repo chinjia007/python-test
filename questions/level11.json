@@ -1,0 +1,261 @@
+{
+    "title": "条件语句",
+    "questions": [
+        {
+            "id": 1,
+            "question": "打开文件的基本语法是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "open(\"data.txt\")",
+                "open file \"data.txt\"",
+                "open(\"data.txt\", read)",
+                "file.open(\"data.txt\")"
+            ],
+            "answer": 0,
+            "explanation": "Python使用open()函数打开文件，最基本的用法是直接传文件名，模式默认为读模式（\"r\"）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "以下哪个模式可以写入文件且不覆盖原有内容？",
+            "type": "multiple-choice",
+            "options": [
+                "\"r\"",
+                "\"w\"",
+                "\"a\"",
+                "\"x\""
+            ],
+            "answer": 2,
+            "explanation": "\"a\"是追加模式，写入内容时会保留原有内容并在末尾添加新内容；\"w\"模式则会清空文件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "读取文件全部内容的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "file.read(10)",
+                "file.readline()",
+                "file.read()",
+                "file.readlines(1)"
+            ],
+            "answer": 2,
+            "explanation": "read()方法不带参数时会读取整个文件内容，readline()只读一行，readlines()读取所有行并返回列表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "文件操作完成后必须做什么？",
+            "type": "multiple-choice",
+            "options": [
+                "保存文件",
+                "关闭文件",
+                "删除文件",
+                "重命名文件"
+            ],
+            "answer": 1,
+            "explanation": "使用close()方法关闭文件可以释放系统资源，防止数据丢失或文件损坏。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "路径D:\\code\\test.txt在Python中可能报错，因为？",
+            "type": "multiple-choice",
+            "options": [
+                "路径太长",
+                "反斜杠需要转义",
+                "文件名错误",
+                "没有写文件后缀"
+            ],
+            "answer": 1,
+            "explanation": "反斜杠\\在字符串中是转义符号，应写成D:\\\\code\\\\test.txt或用原始字符串r\"D:\\code\\test.txt\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "用\"w\"模式打开已存在的文件会？",
+            "type": "multiple-choice",
+            "options": [
+                "报错",
+                "清空文件内容",
+                "在文件末尾追加内容",
+                "不做任何操作"
+            ],
+            "answer": 1,
+            "explanation": "\"w\"模式会清空文件内容再写入新数据，类似用新画覆盖黑板。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "用\"r\"模式打开文件时可以修改文件内容。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "\"r\"是只读模式，尝试写入会报错，就像只能看不能改的作业本。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "readline()方法每次读取一行内容。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "readline()会按顺序读取文件的一行，再次调用则读下一行。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "向文件中写入文字的方法是______。",
+            "type": "fill-in",
+            "answer": [
+                "write()"
+            ],
+            "explanation": "write()方法用于将字符串写入文件，如file.write(\"Hello\")。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "要确保文件正确关闭，应该使用______语句。",
+            "type": "fill-in",
+            "answer": [
+                "with"
+            ],
+            "explanation": "with open(...) as file:可以自动关闭文件，避免忘记close()。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "想把\"苹果 香蕉 橘子\"变成列表，应该用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "split()",
+                "join()",
+                "replace()",
+                "read()"
+            ],
+            "answer": 0,
+            "explanation": "split()可以把字符串按空格（或指定符号）分割成列表，比如split(\" \")会得到[\"苹果\",\"香蕉\",\"橘子\"]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "哪个方法能把列表[\"a\",\"b\",\"c\"]合并成字符串\"a-b-c\"？",
+            "type": "multiple-choice",
+            "options": [
+                "split(\"-\")",
+                "join(\"-\")",
+                "replace(\"-\",\"\")",
+                "write(\"-\")"
+            ],
+            "answer": 1,
+            "explanation": "join()需要用字符串调用，比如\"-\".join(list)会将列表元素用\"-\"连接成字符串。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "执行以下代码会输出什么？\ntext = \"Hello,World\"\nprint(text.replace(\",\",\".\"))",
+            "type": "multiple-choice",
+            "options": [
+                "Hello.World",
+                "Hello,World",
+                "Hello-World",
+                "Helloworld"
+            ],
+            "answer": 0,
+            "explanation": "replace(\",\",\".\")会把逗号替换成句号，原字符串变为\"Hello.World\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "JSON格式的数据最像Python中的哪种结构？",
+            "type": "multiple-choice",
+            "options": [
+                "数字",
+                "字典或列表",
+                "字符串",
+                "函数"
+            ],
+            "answer": 1,
+            "explanation": "JSON数据由键值对（类似字典）或数组（类似列表）构成，比如{\"name\": \"小明\", \"age\": 12}。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "把Python字典保存到JSON文件，正确的代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "json.save(data, file)",
+                "json.dump(data, file)",
+                "json.write(data)",
+                "data.to_json()"
+            ],
+            "answer": 1,
+            "explanation": "json.dump()可以将Python对象（如字典）直接写入文件，其他选项语法错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "从JSON文件读取数据时，应该用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "json.loads()",
+                "json.read()",
+                "json.load()",
+                "file.read()"
+            ],
+            "answer": 2,
+            "explanation": "json.load()可以从文件对象中直接读取并解析JSON数据，返回Python对象。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "split()方法返回的结果一定是一个列表。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "无论是否分割成功，split()始终返回列表，例如\"abc\".split(\",\")会得到[\"abc\"]。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "JSON文件只能存储简单的数字和文字，不能存储列表。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "JSON支持复杂结构，比如嵌套的字典和列表，例如{\"scores\": [90, 85, 95]}。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "把字符串\"2023 08 15\"中的空格替换成逗号，代码应为：text = \"2023 08 15\".______(\" \", \",\")",
+            "type": "fill-in",
+            "answer": [
+                "replace"
+            ],
+            "explanation": "replace(old, new)的第一个参数是要替换的内容，第二个是替换后的内容。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "将列表[\"红色\",\"蓝色\",\"绿色\"]用\"-\"连接成字符串，代码应为：______.join([\"红色\",\"蓝色\",\"绿色\"])",
+            "type": "fill-in",
+            "answer": [
+                "\"-\""
+            ],
+            "explanation": "join()方法需要通过连接符字符串调用，例如\"-\".join(list)。",
+            "preserveFormat": true
+        }
+    ]
+}

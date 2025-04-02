@@ -1,0 +1,261 @@
+{
+    "title": "while循环",
+    "questions": [
+        {
+            "id": 1,
+            "question": "哪个选项是合法的变量名？",
+            "type": "multiple-choice",
+            "options": [
+                "2apple",
+                "apple-2",
+                "_apple",
+                "for"
+            ],
+            "answer": 2,
+            "explanation": "变量名不能以数字开头（A错），不能有特殊符号（B错），\"for\"是保留字（D错），下划线开头的变量名合法（C对）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "print(3 + 4 * 2)会输出什么？",
+            "type": "multiple-choice",
+            "options": [
+                "14",
+                "11",
+                "10",
+                "报错"
+            ],
+            "answer": 1,
+            "explanation": "先算乘法4*2=8，再算3+8=11。运算符优先级遵循先乘除后加减。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "哪个数据类型用来存储小数？",
+            "type": "multiple-choice",
+            "options": [
+                "int",
+                "str",
+                "float",
+                "list"
+            ],
+            "answer": 2,
+            "explanation": "float用于存储小数，int是整数，str是字符串，list是列表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "哪个循环会执行3次？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in range(3):",
+                "for i in range(2):",
+                "for i in range(4):",
+                "for i in range(0):"
+            ],
+            "answer": 0,
+            "explanation": "range(3)生成0、1、2三个数字，循环执行3次。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "判断奇数的正确表达式是？",
+            "type": "multiple-choice",
+            "options": [
+                "num % 2 == 0",
+                "num / 2 == 1",
+                "num // 2 == 0",
+                "num % 2 == 1"
+            ],
+            "answer": 3,
+            "explanation": "奇数除以2的余数为1，因此表达式为num % 2 == 1。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "哪个方法可以给列表添加元素？",
+            "type": "multiple-choice",
+            "options": [
+                ".insert()",
+                ".append()",
+                ".add()",
+                ".push()"
+            ],
+            "answer": 1,
+            "explanation": "append()方法用于在列表末尾添加元素，insert()需指定位置，add/push是其他语言的方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "缩进在Python中只是为了让代码好看，不影响运行",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "缩进是Python的语法规则，决定代码块的归属，影响程序逻辑。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "\"hello\".upper()会变成\"HELLO\"",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "upper()方法将所有字母转换为大写，结果为\"HELLO\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "用______关键字来定义函数",
+            "type": "fill-in",
+            "answer": [
+                "def"
+            ],
+            "explanation": "定义函数需以def开头，这是Python的固定语法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "补全代码：输出1到5的数字 \nfor i in ______(1,6): \n    print(i)",
+            "type": "fill-in",
+            "answer": [
+                "range"
+            ],
+            "explanation": "range(1,6)生成1到5的序列，range函数遵循左闭右开区间规则。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "Python中哪个符号用来表示\"等于\"？",
+            "type": "multiple-choice",
+            "options": [
+                "=",
+                "==",
+                "->",
+                ":="
+            ],
+            "answer": 1,
+            "explanation": "\"==\"用于判断两个值是否相等，\"=\"是赋值符号，就像数学里的等号和编程里的等号用法不同",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "想要重复执行5次某个操作，应该用哪个循环结构？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in 5:",
+                "for i in range(5):",
+                "while 5:",
+                "loop 5 times:"
+            ],
+            "answer": 1,
+            "explanation": "range(5)会生成0-4共5个数字，就像体育老师喊\"预备～跑5圈\"时，计算机用这种方式计数",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "哪个是正确的列表表示方法？",
+            "type": "multiple-choice",
+            "options": [
+                "(1,2,3)",
+                "[1;2;3]",
+                "{1,2,3}",
+                "[1,2,3]"
+            ],
+            "answer": 3,
+            "explanation": "方括号是列表的标志，就像储物柜的格子，每个位置可以存放不同的物品",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "定义函数时使用的关键字是？",
+            "type": "multiple-choice",
+            "options": [
+                "def",
+                "function",
+                "define",
+                "func"
+            ],
+            "answer": 0,
+            "explanation": "def是define的缩写，就像给一段代码起名字，方便重复使用",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "打开文件后必须进行的操作是？",
+            "type": "multiple-choice",
+            "options": [
+                "删除文件",
+                "关闭文件",
+                "重命名文件",
+                "移动文件"
+            ],
+            "answer": 1,
+            "explanation": "就像用完水龙头要关紧，操作完文件必须关闭，防止数据丢失",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "处理程序错误的语句结构是？",
+            "type": "multiple-choice",
+            "options": [
+                "try...except",
+                "check...fix",
+                "test...catch",
+                "if...else"
+            ],
+            "answer": 0,
+            "explanation": "try像勇敢的尝试，except像安全网，当代码出问题时能保护程序不崩溃",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "字符串可以用单引号或双引号包裹",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "'hello'和\"hello\"都是合法的，就像给文字穿不同颜色的外套",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "以下代码会输出数字3：print(\"1\"+\"2\")",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "输出的是\"12\"，加号连接字符串就像把两张纸条粘在一起",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "把整数转换为字符串的函数是______()",
+            "type": "fill-in",
+            "answer": [
+                "str"
+            ],
+            "explanation": "str()就像翻译官，能把数字变成对应的文字形式",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "要获取列表长度应该用len(____)",
+            "type": "fill-in",
+            "answer": [
+                "列表变量名"
+            ],
+            "explanation": "len()是测量工具，能告诉你有多少个物品在列表这个储物柜里",
+            "preserveFormat": true
+        }
+    ]
+}

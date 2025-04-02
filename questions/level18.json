@@ -1,0 +1,261 @@
+{
+    "title": "作用域",
+    "questions": [
+        {
+            "id": 1,
+            "question": "RGB颜色模式中每个颜色的取值范围是？",
+            "type": "multiple-choice",
+            "options": [
+                "0-100",
+                "0-255",
+                "1-256",
+                "0-999"
+            ],
+            "answer": 1,
+            "explanation": "RGB颜色由红、绿、蓝三个通道组成，每个通道的取值范围是0到255，0表示没有颜色，255表示最亮颜色。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "将彩色图片转为灰度图时，主要需要处理哪个参数？",
+            "type": "multiple-choice",
+            "options": [
+                "像素的RGB值",
+                "图片的分辨率",
+                "图片的尺寸",
+                "文件格式"
+            ],
+            "answer": 0,
+            "explanation": "灰度图通过计算RGB值的加权平均（如0.3R+0.59G+0.11B）得到亮度值，所以需要修改每个像素的RGB值。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "想用Python获取图片的像素数据，应该用哪个库？",
+            "type": "multiple-choice",
+            "options": [
+                "math",
+                "PIL（Pillow）",
+                "random",
+                "time"
+            ],
+            "answer": 1,
+            "explanation": "PIL库（Pillow）中的Image.open()可以加载图片，pixels = img.load()能获取像素数据。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "素描风格效果通常需要对图片做什么操作？",
+            "type": "multiple-choice",
+            "options": [
+                "调整颜色饱和度",
+                "提取边缘和降低细节",
+                "放大图片尺寸",
+                "增加噪点"
+            ],
+            "answer": 1,
+            "explanation": "素描效果通过边缘检测算法（如Sobel算子）提取轮廓，并模糊其他区域来模拟手绘线条。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "以下哪行代码可以修改坐标为(10,20)的像素为红色？",
+            "type": "multiple-choice",
+            "options": [
+                "pixels[10,20] = (255,0,0)",
+                "pixels[20,10] = (0,255,0)",
+                "pixels.set(10,20, \"red\")",
+                "pixels(10,20).color = red"
+            ],
+            "answer": 0,
+            "explanation": "Pillow库中像素坐标用(x,y)表示，红色对应RGB值(255,0,0)，赋值语句需用元组格式。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "灰度计算公式0.3*R + 0.59*G + 0.11*B中，绿色占比最大是因为？",
+            "type": "multiple-choice",
+            "options": [
+                "绿色更鲜艳",
+                "人眼对绿色最敏感",
+                "计算机屏幕限制",
+                "历史遗留问题"
+            ],
+            "answer": 1,
+            "explanation": "人眼对绿色敏感度最高，所以绿色通道的权重（0.59）最大，使灰度图更符合视觉体验。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "Python中可以用PIL.Image库直接读取JPEG格式的图片。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "Pillow库支持JPEG、PNG等常见格式，Image.open(\"image.jpg\")可正确加载文件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "所有素描风格转换都需要将图片先转为黑白。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "部分素描算法会保留浅色背景，并非全黑白（例如叠加原始亮度值）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "计算像素(200,100,50)的灰度值（保留整数）：______",
+            "type": "fill-in",
+            "answer": [
+                "125"
+            ],
+            "explanation": "0.3*200 + 0.59*100 + 0.11*50 = 60 + 59 + 5.5 = 124.5，四舍五入为125。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "用Python遍历图片所有像素的双层循环变量通常用______和______表示行列。",
+            "type": "fill-in",
+            "answer": [
+                "y"
+            ],
+            "explanation": "外层循环通常是宽度（x轴），内层是高度（y轴），例如： for x in range(width): for y in range(height): pixels[x,y] = ...",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "RGBA颜色模式中的\"A\"代表什么？",
+            "type": "multiple-choice",
+            "options": [
+                "红色强度",
+                "绿色强度",
+                "蓝色强度",
+                "透明度"
+            ],
+            "answer": 3,
+            "explanation": "RGBA中A是Alpha的缩写，控制透明度。0是完全透明，255是完全不透明。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "想要在图片上添加\"笑脸\"文字，应该用哪个库的函数？",
+            "type": "multiple-choice",
+            "options": [
+                "matplotlib.pyplot",
+                "PIL.ImageDraw",
+                "numpy",
+                "pandas"
+            ],
+            "answer": 1,
+            "explanation": "PIL库的ImageDraw模块提供Draw.text()方法，专门用于在图片上写字。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "显示中文文字时出现方框乱码，可能缺少什么操作？",
+            "type": "multiple-choice",
+            "options": [
+                "没设置字体大小",
+                "没指定中文字体文件",
+                "没调整透明度",
+                "没保存为PNG格式"
+            ],
+            "answer": 1,
+            "explanation": "需要指定支持中文的字体文件路径（如simhei.ttf），否则系统无法识别汉字。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "RGBA中透明度值的范围是？",
+            "type": "multiple-choice",
+            "options": [
+                "0-100",
+                "0-255",
+                "0-1",
+                "1-10"
+            ],
+            "answer": 1,
+            "explanation": "RGBA每个通道都是0-255的整数，A=0时完全透明，A=255完全不透明。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "保存带有透明图层的图片应该用什么格式？",
+            "type": "multiple-choice",
+            "options": [
+                "JPG",
+                "BMP",
+                "PNG",
+                "GIF"
+            ],
+            "answer": 2,
+            "explanation": "PNG格式支持Alpha通道，JPG和BMP会丢失透明信息。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "调整文字位置的参数名是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "xy",
+                "font",
+                "fill",
+                "size"
+            ],
+            "answer": 0,
+            "explanation": "ImageDraw.text(xy, text)中xy是元组，表示文字左上角坐标。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "在透明图层上叠加图片时，下层内容会被完全覆盖",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "透明区域会显示下层内容，只有不透明部分才会覆盖。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "添加中文文字不需要额外安装字体文件",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "必须指定中文字体文件路径，否则默认字体可能不支持中文。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "保存透明背景的代码中，savefig()需要设置______参数为True",
+            "type": "fill-in",
+            "answer": [
+                "transparent"
+            ],
+            "explanation": "matplotlib中plt.savefig(\"img.png\", transparent=True)可保留透明背景。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "设置字体大小的参数是______（填参数名）",
+            "type": "fill-in",
+            "answer": [
+                "font_size"
+            ],
+            "explanation": "PIL中通过font=ImageFont.truetype(\"font.ttf\", font_size=20)设置字号。",
+            "preserveFormat": true
+        }
+    ]
+}

@@ -1,0 +1,262 @@
+{
+    "title": "异常处理",
+    "questions": [
+        {
+            "id": 1,
+            "question": "生成词云图最基础的库叫什么？",
+            "type": "multiple-choice",
+            "options": [
+                "pandas",
+                "wordcloud",
+                "matplotlib",
+                "jieba"
+            ],
+            "answer": 1,
+            "explanation": "wordcloud是专门生成词云的库，matplotlib用于绘图，jieba用于分词，pandas用于数据处理。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "用结巴分词时，要把句子拆成词语需要调用什么方法？",
+            "type": "multiple-choice",
+            "options": [
+                "split()",
+                "cut()",
+                "divide()",
+                "break()"
+            ],
+            "answer": 1,
+            "explanation": "jieba.cut()是分词的核心方法，其他选项是Python字符串操作或不存在的方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "统计词语出现次数最适合的数据类型是？",
+            "type": "multiple-choice",
+            "options": [
+                "列表",
+                "字典",
+                "元组",
+                "集合"
+            ],
+            "answer": 1,
+            "explanation": "字典可以用键值对保存\"词语:次数\"，其他类型无法直接统计频率。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "删除文本中的\"的\"、\"啊\"等词属于什么操作？",
+            "type": "multiple-choice",
+            "options": [
+                "数据去重",
+                "数据清洗",
+                "单词统计",
+                "分词"
+            ],
+            "answer": 1,
+            "explanation": "清除无意义词语属于数据清洗，去重是删除重复数据。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "设置词云最多显示20个词应该用哪个参数？",
+            "type": "multiple-choice",
+            "options": [
+                "max_words",
+                "width",
+                "font_path",
+                "background_color"
+            ],
+            "answer": 0,
+            "explanation": "max_words控制最大显示词数，其他参数控制尺寸、字体等样式。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "想要词云按词语频率自动调整大小，应该开启哪个功能？",
+            "type": "multiple-choice",
+            "options": [
+                "颜色渐变",
+                "字体加粗",
+                "比例缩放",
+                "阴影效果"
+            ],
+            "answer": 2,
+            "explanation": "比例缩放（scale参数）让高频词显示更大。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "制作词云前需要先删除特殊符号和数字。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "特殊符号和数字会影响分词结果，必须提前清理。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "结巴分词会自动过滤所有停用词，不需要手动处理。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "结巴分词没有内置停用词功能，需要自行加载停用词表过滤。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "用于存储需要过滤的无意义词语的文件叫做______表。",
+            "type": "fill-in",
+            "answer": [
+                "停用词"
+            ],
+            "explanation": "停用词表专门保存\"的\"、\"是\"等需要忽略的词语。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "让词云中相同词语不重复出现需要调用______方法。",
+            "type": "fill-in",
+            "answer": [
+                "去重"
+            ],
+            "explanation": "pandas的drop_duplicates()或集合去重都能实现该功能。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "用列表生成式生成[2,4,6,8]，正确的写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "[x for x in range(2,9)]",
+                "[x*2 for x in range(1,5)]",
+                "[x for x in range(2,8,2)]",
+                "[x+2 for x in range(4)]"
+            ],
+            "answer": 1,
+            "explanation": "B选项用range(1,5)生成1-4的数，每个数乘2得到2,4,6,8，其他选项范围或计算错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "画鸢尾花数据集散点图需要用到哪个库？",
+            "type": "multiple-choice",
+            "options": [
+                "numpy",
+                "matplotlib",
+                "pandas",
+                "requests"
+            ],
+            "answer": 1,
+            "explanation": "matplotlib是Python中专门用于绘制图表（如散点图）的库。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "鸢尾花数据集属于什么问题类型？",
+            "type": "multiple-choice",
+            "options": [
+                "拼图问题",
+                "分类问题",
+                "数学计算",
+                "文字游戏"
+            ],
+            "answer": 1,
+            "explanation": "通过花的不同特征（如花瓣长度）判断品种，属于典型的分类问题。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "用列表生成式筛选偶数，正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "[x for x in range(10) if x%2==1]",
+                "[x%2 for x in range(10)]",
+                "[x for x in range(10) if x%2==0]",
+                "[x*2 for x in range(10)]"
+            ],
+            "answer": 2,
+            "explanation": "x%2==0表示能被2整除的数，即偶数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "人工智能中，以下哪个属于分类问题？",
+            "type": "multiple-choice",
+            "options": [
+                "计算全班平均分",
+                "用温度预测冰淇淋销量",
+                "判断图片中是猫还是狗",
+                "生成一首诗歌"
+            ],
+            "answer": 2,
+            "explanation": "分类问题的核心是“判断属于哪一类”，如图片识别。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "列表生成式[x**2 for x in [3,1,4]]的结果是？",
+            "type": "multiple-choice",
+            "options": [
+                "[9,1,16]",
+                "[6,2,8]",
+                "[3,1,4]",
+                "[3,1,16]"
+            ],
+            "answer": 0,
+            "explanation": "x**2表示对每个元素平方，3²=9，1²=1，4²=16。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "使用列表生成式必须先用import导入库。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "列表生成式是Python基础语法，无需额外导入库。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "散点图只能显示两个特征的关系。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "散点图用横纵坐标表示两个变量，多维数据需其他图表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "用列表生成式生成1-5的平方列表，补全代码： nums = ________",
+            "type": "fill-in",
+            "answer": [
+                "[x**2 for x in range(1",
+                "6)]"
+            ],
+            "explanation": "range(1,6)生成1-5，每个数平方后组成列表。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "绘制鸢尾花散点图的代码片段： \nplt.scatter(x_data, y_data)  # 画散点图 \nplt.xlabel(\"花瓣长度\") \nplt.________(\"花瓣宽度\")",
+            "type": "fill-in",
+            "answer": [
+                "ylabel"
+            ],
+            "explanation": "scatter()是散点图函数，xlabel和ylabel设置坐标轴标签。",
+            "preserveFormat": true
+        }
+    ]
+}

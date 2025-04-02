@@ -1,0 +1,313 @@
+{
+    "title": "类与对象",
+    "questions": [
+        {
+            "id": 1,
+            "question": "下列哪个选项是正确的变量命名方式？",
+            "type": "multiple-choice",
+            "options": [
+                "2apples",
+                "for",
+                "student_name",
+                "my-name"
+            ],
+            "answer": 2,
+            "explanation": "变量名不能以数字开头（A错），不能用关键字（B错），不能用短横线（D错），下划线是允许的。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "执行 for i in range(3): 后，i的值最终是多少？",
+            "type": "multiple-choice",
+            "options": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ],
+            "answer": 2,
+            "explanation": "range(3)生成0,1,2三个数，循环结束时i保留最后一个值2。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "哪个关键字用于定义函数？",
+            "type": "multiple-choice",
+            "options": [
+                "def",
+                "function",
+                "define",
+                "fun"
+            ],
+            "answer": 0,
+            "explanation": "Python中使用def关键字声明函数，例如def my_function():",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "下列哪个运算符表示\"不等于\"？",
+            "type": "multiple-choice",
+            "options": [
+                "=",
+                "!=",
+                "<>",
+                "~="
+            ],
+            "answer": 1,
+            "explanation": "Python中\"不等于\"用!=表示，其他符号在Python中无效。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "int(3.8)的结果是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "3.8",
+                "4",
+                "3",
+                "报错"
+            ],
+            "answer": 2,
+            "explanation": "int()函数将浮点数直接取整，不进行四舍五入。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "在Python中，代码缩进不影响程序运行。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "Python依靠缩进来区分代码块，缩进错误会导致程序无法运行。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "while True会创建无限循环。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "True是永真条件，循环会一直执行直到遇到break。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "\"hello\"*3的结果是\"hellohellohello\"。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "字符串乘以数字会重复拼接，3次拼接正确。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "#符号用于写多行注释。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "#只能注释单行，多行注释使用三个引号'''...'''",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "函数参数必须指定数据类型。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "Python是动态类型语言，函数参数不需要声明数据类型。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "补全循环代码：for __ in range(5):",
+            "type": "fill-in",
+            "answer": [
+                "i"
+            ],
+            "explanation": "循环变量常用i表示，也可以使用其他合法变量名。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "定义函数时接收参数的括号内要写______。",
+            "type": "fill-in",
+            "answer": [
+                "参数"
+            ],
+            "explanation": "函数定义时括号内填写形式参数，如def func(a,b):",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "print(2 + 3 * 4)的输出结果是______。",
+            "type": "fill-in",
+            "answer": [
+                "14"
+            ],
+            "explanation": "遵循运算优先级，先算乘法3*4=12，再加2得14。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "把数字5和字符串\"号\"拼接：str(5) + ______",
+            "type": "fill-in",
+            "answer": [
+                "\"号\""
+            ],
+            "explanation": "数字需要先转为字符串才能拼接，完整表达式为str(5)+\"号\"",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "访问列表第一个元素的索引是______。",
+            "type": "fill-in",
+            "answer": [
+                "0"
+            ],
+            "explanation": "Python列表索引从0开始，例如list[0]表示第一个元素。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "Python中用什么关键字创建类？",
+            "type": "multiple-choice",
+            "options": [
+                "function",
+                "def",
+                "class",
+                "object"
+            ],
+            "answer": 2,
+            "explanation": "`class`是专门用来声明类的关键字，就像用`def`定义函数一样。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "小狗类的属性可能是？",
+            "type": "multiple-choice",
+            "options": [
+                "名字和年龄",
+                "跑和叫",
+                "print()",
+                "输入密码"
+            ],
+            "answer": 0,
+            "explanation": "属性是对象的特征（名字/年龄），而B是动作（方法），C/D是函数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "如何创建类的实例？",
+            "type": "multiple-choice",
+            "options": [
+                "Dog()",
+                "new Dog",
+                "create Dog",
+                "Dog.create"
+            ],
+            "answer": 0,
+            "explanation": "类名后加括号`()`即可创建实例，比如`my_dog = Dog()`。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "方法必须包含哪个参数？",
+            "type": "multiple-choice",
+            "options": [
+                "self",
+                "this",
+                "me",
+                "不需要"
+            ],
+            "answer": 0,
+            "explanation": "Python规定类方法的第一个参数必须是`self`，用来表示对象自己。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "继承的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "复制代码",
+                "重复造轮子",
+                "复用已有类的功能",
+                "删除父类"
+            ],
+            "answer": 2,
+            "explanation": "继承就像遗传，子类可以直接使用父类的属性和方法，不用重复写。",
+            "preserveFormat": true
+        },
+        {
+            "id": 21,
+            "question": "子类重写父类方法时会发生什么？",
+            "type": "multiple-choice",
+            "options": [
+                "父类方法被删除",
+                "子类使用自己的新方法",
+                "必须调用super()",
+                "程序报错"
+            ],
+            "answer": 1,
+            "explanation": "当子类定义了同名方法，就会覆盖父类的方法，用自己的版本。",
+            "preserveFormat": true
+        },
+        {
+            "id": 22,
+            "question": "每个类都必须有__init__方法",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "没有__init__时，Python会提供默认的空构造方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 23,
+            "question": "子类不能访问父类的属性",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "子类可以直接使用父类的属性和方法，就像自己有的一样。",
+            "preserveFormat": true
+        },
+        {
+            "id": 24,
+            "question": "定义方法时漏写了____参数，会导致无法访问对象属性",
+            "type": "fill-in",
+            "answer": [
+                "self"
+            ],
+            "explanation": "缺少self时，方法无法通过`self.属性名`访问对象的数据。",
+            "preserveFormat": true
+        },
+        {
+            "id": 25,
+            "question": "让Puppy类继承Dog类的代码是`class Puppy(____):`",
+            "type": "fill-in",
+            "answer": [
+                "Dog"
+            ],
+            "explanation": "括号里写父类名，表示继承关系，子类自动拥有父类能力。",
+            "preserveFormat": true
+        }
+    ]
+}

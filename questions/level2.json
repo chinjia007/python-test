@@ -1,0 +1,262 @@
+{
+    "title": "变量与赋值",
+    "questions": [
+        {
+            "id": 1,
+            "question": "哪个选项能正确写出重复3次的for循环开头？",
+            "type": "multiple-choice",
+            "options": [
+                "for i at range(3)",
+                "for i in range(3):",
+                "for i == range(3)",
+                "for i from 1 to 3"
+            ],
+            "answer": 1,
+            "explanation": "for循环必须以in连接变量和范围，且结尾有冒号。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "循环中的 i 是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "固定的数字",
+                "每次循环自动变化的计数器",
+                "程序的错误提示",
+                "循环外的变量"
+            ],
+            "answer": 1,
+            "explanation": "i会依次取0,1,2（range(3)时），像自动翻页的日历。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "下面哪段代码会打印3次\"加油\"？",
+            "type": "multiple-choice",
+            "options": [
+                "```python\nfor i in range(3)\nprint(\"加油\")",
+                "```python\nfor i in range(3):\n    print(\"加油\")",
+                "```python\nfor i in range(3):\nprint(\"加油\")",
+                "```python\nfor i in range(3):\nprint(\"加油\")\n    print(\"加油\")"
+            ],
+            "answer": 1,
+            "explanation": "循环体必须缩进4个空格，A缺冒号，C/D缩进错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "range(5)会让循环执行多少次？",
+            "type": "multiple-choice",
+            "options": [
+                "4次",
+                "5次",
+                "6次",
+                "随机次数"
+            ],
+            "answer": 1,
+            "explanation": "range(5)生成0-4共5个数字，像数手指一样数5下。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "想让画笔移动最快，该用哪个命令？",
+            "type": "multiple-choice",
+            "options": [
+                "speed(10)",
+                "speed(1)",
+                "speed(0)",
+                "speed(-1)"
+            ],
+            "answer": 2,
+            "explanation": "speed(0)是最快速度，就像火箭冲刺。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "执行后屏幕会显示什么？\n\nfor i in range(3):\n    for j in range(2):\n        print(\"*\", end=\"\")",
+            "type": "multiple-choice",
+            "options": [
+                "**",
+                "***",
+                "******",
+                "*****"
+            ],
+            "answer": 2,
+            "explanation": "外层循环3次，每次内层循环2次，共打印6个星号。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "循环体不缩进也能正常运行",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "不缩进会导致语法错误，就像不按顺序排队会混乱。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "循环结束后，变量i不能再使用",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "循环结束后i保留最后的值，比如range(3)后i=2。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "for k in range(3): 这个循环会执行______次",
+            "type": "fill-in",
+            "answer": [
+                "3"
+            ],
+            "explanation": "range(3)生成0,1,2三个数，就像数\"第1圈、第2圈、第3圈\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "让画笔以最慢速度移动应该写speed(_____)",
+            "type": "fill-in",
+            "answer": [
+                "1"
+            ],
+            "explanation": "speed()的参数中，1是最慢速度，数字越大反而越慢。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "坐标系的原点在画布哪个位置？",
+            "type": "multiple-choice",
+            "options": [
+                "左上角",
+                "右下角",
+                "正中心",
+                "随机位置"
+            ],
+            "answer": 2,
+            "explanation": "Python的turtle坐标系原点(0,0)默认在画布正中央，x轴向右，y轴向上延伸。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "x轴的正方向指向哪里？",
+            "type": "multiple-choice",
+            "options": [
+                "左边",
+                "右边",
+                "上边",
+                "下边"
+            ],
+            "answer": 1,
+            "explanation": "坐标系中x轴向右为正方向，y轴向上为正方向，类似数学坐标系。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "goto(0,0)的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "清空画布",
+                "画一个点",
+                "移动画笔到原点",
+                "旋转画笔"
+            ],
+            "answer": 2,
+            "explanation": "goto(x,y)能让画笔移动到指定坐标，如果此时落笔状态会留下移动轨迹。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "单位长度 1 等于几个像素？",
+            "type": "multiple-choice",
+            "options": [
+                "10",
+                "50",
+                "100",
+                "1"
+            ],
+            "answer": 3,
+            "explanation": "Python中默认 1 个单位长度对应1个像素，但可以通过代码缩放比例。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "哪个函数能画出实心圆点？",
+            "type": "multiple-choice",
+            "options": [
+                "circle()",
+                "dot()",
+                "shape()",
+                "stamp()"
+            ],
+            "answer": 1,
+            "explanation": "dot(20)能直接画出直径20像素的实心圆，比circle()更高效。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "抬笔后移动画笔会？",
+            "type": "multiple-choice",
+            "options": [
+                "留下轨迹",
+                "改变颜色",
+                "隐藏画笔",
+                "不留下轨迹"
+            ],
+            "answer": 3,
+            "explanation": "penup()抬笔后移动不会绘制线条，pendown()落笔才会留下痕迹。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "坐标(-50,30)表示原点左边50单位，上边30单位的位置",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "x坐标为负表示原点左侧，y坐标为正表示原点上方。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "dot(5)和dot(5,\"red\")都是合法的写法",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "dot()可以只写大小，也可以同时指定颜色，如dot(大小, 颜色)。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "隐藏画笔的命令是______",
+            "type": "fill-in",
+            "answer": [
+                "hideturtle()"
+            ],
+            "explanation": "hideturtle()可以让箭头光标消失，保持画面干净。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "要画直径30像素的蓝色圆点，应该写______",
+            "type": "fill-in",
+            "answer": [
+                "dot(30",
+                "\"blue\")"
+            ],
+            "explanation": "dot()第一个参数是直径，第二个参数是颜色名称的字符串。",
+            "preserveFormat": true
+        }
+    ]
+}

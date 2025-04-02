@@ -1,0 +1,241 @@
+{
+  "title": "Python简介",
+  "questions": [
+    {
+      "id": 1,
+      "question": "小海龟先直行50步，再左转90度，正确的代码顺序是？",
+      "type": "multiple-choice",
+      "options": [
+        "left(90) → forward(50)",
+        "forward(50) → left(90)",
+        "两行代码顺序不影响结果",
+        "必须写在同一行"
+      ],
+      "answer": 1,
+      "explanation": "程序默认从上到下执行，先前进再转向。"
+    },
+    {
+      "id": 2,
+      "question": "如何正确添加注释“画正方形”？",
+      "type": "multiple-choice",
+      "options": [
+        "//画正方形",
+        "#画正方形",
+        "/*画正方形*/",
+        "注释：画正方形"
+      ],
+      "answer": 1,
+      "explanation": "Python中用#开头的内容是注释，不会被执行。"
+    },
+    {
+      "id": 3,
+      "question": "left(90)会让小海龟转向哪个方向？",
+      "type": "multiple-choice",
+      "options": [
+        "右转90度",
+        "左转90度",
+        "前进90步",
+        "后退90步"
+      ],
+      "answer": 1,
+      "explanation": "left()是左转函数，参数是角度值。"
+    },
+    {
+      "id": 4,
+      "question": "以下代码运行后，小海龟的移动路线是？\n\nforward(30)\nleft(90)\nforward(20)",
+      "type": "multiple-choice",
+      "options": [
+        "先直行30步，再直行20步",
+        "先左转90度，再直行30步",
+        "先直行30步，左转90度后直行20步",
+        "原地不动"
+      ],
+      "answer": 2,
+      "explanation": "代码按顺序执行：前进→转向→再前进。"
+    },
+    {
+      "id": 5,
+      "question": "forward()的参数应该是什么类型？",
+      "type": "multiple-choice",
+      "options": [
+        "字符串（如\"50\"）",
+        "整数或小数（如50或50.5）",
+        "颜色名称（如\"red\"）",
+        "角度值（如90）"
+      ],
+      "answer": 1,
+      "explanation": "forward()需要数字表示步长，如forward(50)。"
+    },
+    {
+      "id": 6,
+      "question": "以下代码画出的图形是？\n\nforward(50)\nleft(120)\nforward(50)\nleft(120)\nforward(50)",
+      "type": "multiple-choice",
+      "options": [
+        "正方形",
+        "三角形",
+        "圆形",
+        "直线"
+      ],
+      "answer": 1,
+      "explanation": "每次左转120度，三次后形成闭合三角形。"
+    },
+    {
+      "id": 7,
+      "question": "注释中的代码会被计算机执行。",
+      "type": "true-false",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": false,
+      "explanation": "注释仅用于说明，不会被执行。"
+    },
+    {
+      "id": 8,
+      "question": "left(90)和right(270)会让小海龟面向同一方向。",
+      "type": "true-false",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": true,
+      "explanation": "左转90度等效于右转270度（360-90=270）。"
+    },
+    {
+      "id": 9,
+      "question": "让海龟前进100步的函数是__________。",
+      "type": "fill-in",
+      "answer": [
+        "forward(100)"
+      ],
+      "explanation": "forward()控制前进，参数是步数。"
+    },
+    {
+      "id": 10,
+      "question": "程序默认的执行顺序是从__________到__________。（两个答案用顿号隔开）",
+      "type": "fill-in",
+      "answer": [
+        "上、下"
+      ],
+      "explanation": "代码按书写顺序逐行执行，不可跳跃。"
+    },
+    {
+      "id": 11,
+      "question": "Python中的变量就像什么？",
+      "type": "multiple-choice",
+      "options": [
+        "数学公式",
+        "储物盒",
+        "密码锁",
+        "橡皮擦"
+      ],
+      "answer": 1,
+      "explanation": "变量是存储数据的容器，就像储物盒可以存放不同物品，变量也可以存储不同数据。"
+    },
+    {
+      "id": 12,
+      "question": "哪个变量名是正确的？",
+      "type": "multiple-choice",
+      "options": [
+        "3students",
+        "user-name",
+        "user_name",
+        "for"
+      ],
+      "answer": 2,
+      "explanation": "变量名不能以数字开头（A错），不能含短横线（B错），不能是关键字（D错）。"
+    },
+    {
+      "id": 13,
+      "question": "print(\"Hello\")的作用是？",
+      "type": "multiple-choice",
+      "options": [
+        "输入文字",
+        "在屏幕显示Hello",
+        "保存文件",
+        "计算数字"
+      ],
+      "answer": 1,
+      "explanation": "print()函数能把括号里的内容输出到屏幕上。"
+    },
+    {
+      "id": 14,
+      "question": "3 + 4 * 5等于？",
+      "type": "multiple-choice",
+      "options": [
+        "35",
+        "23",
+        "19",
+        "17"
+      ],
+      "answer": 1,
+      "explanation": "先算乘法4*5=20，再加3得到23，遵循先乘除后加减的运算顺序。"
+    },
+    {
+      "id": 15,
+      "question": "哪个变量名最规范？",
+      "type": "multiple-choice",
+      "options": [
+        "BookPrice",
+        "bookprice",
+        "book_price",
+        "BOOK"
+      ],
+      "answer": 2,
+      "explanation": "Python建议用下划线连接的小写字母命名变量，使代码更规范易读。"
+    },
+    {
+      "id": 16,
+      "question": "执行下面代码会显示什么？\n\nage = 5\nage = 8\nprint(age)",
+      "type": "multiple-choice",
+      "options": [
+        "5",
+        "8",
+        "58",
+        "报错"
+      ],
+      "answer": 1,
+      "explanation": "变量可以被重新赋值，最后一次赋值的值会被保留并输出。"
+    },
+    {
+      "id": 17,
+      "question": "变量创建后就不能修改",
+      "type": "true-false",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": false,
+      "explanation": "变量可以随时修改存储的值，就像可重复使用的便签纸。"
+    },
+    {
+      "id": 18,
+      "question": "print()可以同时输出文字和变量",
+      "type": "true-false",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": true,
+      "explanation": "print()支持同时输出字符串和变量，例如print(\"分数：\", score)。"
+    },
+    {
+      "id": 19,
+      "question": "请写出一个合法的水果数量变量名______",
+      "type": "fill-in",
+      "answer": [
+        "fruit_count"
+      ],
+      "explanation": "变量名应使用小写字母和下划线组合，清楚表达用途，其他符合规则的命名也可。"
+    },
+    {
+      "id": 20,
+      "question": "让程序输出\"我有3个苹果\"（变量apple=3），补全代码：\n\nprint(______)",
+      "type": "fill-in",
+      "answer": [
+        "\"我有{}个苹果\".format(apple)"
+      ],
+      "explanation": "使用字符串格式化方法，{}作为占位符，format()将变量填入对应位置，也可用f-string实现。"
+    }
+  ]
+}

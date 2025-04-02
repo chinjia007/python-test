@@ -1,0 +1,261 @@
+{
+    "title": "文件处理",
+    "questions": [
+        {
+            "id": 1,
+            "question": "Python中想要正确捕获用户输入时的错误，应该用以下哪个结构？",
+            "type": "multiple-choice",
+            "options": [
+                "if-else",
+                "for循环",
+                "try-except",
+                "while循环"
+            ],
+            "answer": 2,
+            "explanation": "try-except就像给程序戴了安全帽，当用户输入错误时，程序不会崩溃，而是执行except里的代码。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "要让程序每隔2秒显示一次时间，应该用哪个模块的函数？",
+            "type": "multiple-choice",
+            "options": [
+                "random.randint(2)",
+                "time.sleep(2)",
+                "math.sqrt(2)",
+                "print(\"2秒\")"
+            ],
+            "answer": 1,
+            "explanation": "time.sleep(2)会让程序暂停2秒，其他选项都不是用来控制时间的。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "如果按钮被禁用后需要重新启用，应该修改它的什么属性？",
+            "type": "multiple-choice",
+            "options": [
+                "color",
+                "text",
+                "state",
+                "size"
+            ],
+            "answer": 2,
+            "explanation": "按钮的state属性控制状态，比如设为\"normal\"启用，\"disabled\"禁用。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "以下哪个代码可以正确捕获除零错误？",
+            "type": "multiple-choice",
+            "options": [
+                "try: 1/0",
+                "try: 1/0 except: pass",
+                "try: 1/0 except ZeroDivisionError: pass",
+                "if 1/0: pass"
+            ],
+            "answer": 2,
+            "explanation": "B选项虽然能捕获错误，但C明确指定了错误类型，这样其他错误仍会暴露出来。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "想要在循环中实时更新界面内容，必须用到哪个关键词？",
+            "type": "multiple-choice",
+            "options": [
+                "break",
+                "continue",
+                "update()",
+                "pass"
+            ],
+            "answer": 2,
+            "explanation": "很多图形库用update()函数刷新界面，让变化立刻显示出来。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "以下哪个代码会让按钮永久禁用？",
+            "type": "multiple-choice",
+            "options": [
+                "button.state = \"normal\"",
+                "button.state = \"disabled\"",
+                "button.text = \"禁用\"",
+                "button.color = \"red\""
+            ],
+            "answer": 1,
+            "explanation": "state设为\"disabled\"会禁用按钮，直到手动改为\"normal\"。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "禁用按钮后必须用条件判断才能重新启用。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "直接修改按钮的state属性为\"normal\"即可，不需要条件判断。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "time.sleep(3)会让程序完全卡住3秒。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "time.sleep()会阻塞当前线程，期间程序无法做其他事情。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "让程序暂停0.5秒的代码是：________",
+            "type": "fill-in",
+            "answer": [
+                "time.sleep(0.5)"
+            ],
+            "explanation": "time.sleep()的参数可以是小数，表示不足1秒的时间。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "捕获用户输入非数字错误的完整代码： try: num = int(input()) except ______: print(\"输入的不是数字！\")",
+            "type": "fill-in",
+            "answer": [
+                "ValueError"
+            ],
+            "explanation": "int()转换失败会引发ValueError，必须匹配才能捕获。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "哪个选项可以让计算机重复做3次事情？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in range(3):",
+                "while 3 > 0:",
+                "repeat 3 times:",
+                "loop(3):"
+            ],
+            "answer": 0,
+            "explanation": "range(3)会生成0,1,2三个数字，循环就会执行3次，就像数三下开始游戏一样简单。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "print(\"3+4\")会输出什么？",
+            "type": "multiple-choice",
+            "options": [
+                "7",
+                "\"7\"",
+                "3+4",
+                "34"
+            ],
+            "answer": 2,
+            "explanation": "引号里的内容会原样输出，就像把作业题目抄写下来而不是计算结果。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "Python中可以用小数点表示小数，比如3.14",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "小数点数字自动识别为浮点数，就像数学中的整数和分数是不同类型。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "让程序暂停1秒的代码是time.______(1)",
+            "type": "fill-in",
+            "answer": [
+                "sleep"
+            ],
+            "explanation": "就像体育老师吹哨让全班暂停1秒后再继续活动。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "哪个是创建函数的正确方法？",
+            "type": "multiple-choice",
+            "options": [
+                "create def myfunc():",
+                "def myfunc():",
+                "function myfunc():",
+                "new myfunc():"
+            ],
+            "answer": 1,
+            "explanation": "def是定义函数的关键字，就像做手工前要先准备好工具盒。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "列表可以同时保存数字和字符串",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "列表就像书包，可以同时装课本（字符串）和铅笔盒（数字）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "把\"Hello\"和\"World\"拼在一起的代码：\"Hello\" ___ \"World\"",
+            "type": "fill-in",
+            "answer": [
+                "+"
+            ],
+            "explanation": "加号能把文字连起来，就像拼接乐高积木一样。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "哪个选项可以正确判断奇偶数？",
+            "type": "multiple-choice",
+            "options": [
+                "if num / 2 == 0:",
+                "if num % 2 == 0:",
+                "if num × 2 == 0:",
+                "if num // 2 == 0:"
+            ],
+            "answer": 1,
+            "explanation": "%计算余数，就像分糖果时剩下的那颗决定是否还能再分。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "哪个方法可以删除列表最后一个元素？",
+            "type": "multiple-choice",
+            "options": [
+                "pop()",
+                "remove()",
+                "delete()",
+                "erase()"
+            ],
+            "answer": 0,
+            "explanation": "pop()默认删除最后一个元素，就像从队伍末尾叫走一个同学。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "处理文件时，哪个模式可以追加内容？",
+            "type": "multiple-choice",
+            "options": [
+                "\"r\"",
+                "\"w\"",
+                "\"a\"",
+                "\"x\""
+            ],
+            "answer": 2,
+            "explanation": "\"a\"模式就像在笔记本后面继续写日记，不会擦除之前的内容。",
+            "preserveFormat": true
+        }
+    ]
+}

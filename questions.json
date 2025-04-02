@@ -1,0 +1,416 @@
+{
+    "version": "1.0",
+    "lastUpdated": "2024-03-21",
+    "questions": {
+        "1": {
+            "title": "Python简介",
+            "questions": [
+                {
+                    "id": "1_1",
+                    "question": "以下哪个不是Python的主要特点？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "简单易学，语法清晰",
+                        "跨平台性强，可移植性好",
+                        "编译执行，运行速度快",
+                        "面向对象，支持函数式编程"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "Python是<strong>解释型语言</strong>，不是编译执行的。Python代码在运行时由解释器逐行解释执行，这使得它的执行速度相对较慢，但带来了更好的跨平台性和开发效率。其他选项都是Python的特点：简单易学、跨平台性强、支持面向对象和函数式编程。"
+                },
+                {
+                    "id": "1_2",
+                    "question": "Python是什么类型的编程语言？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "编译型语言",
+                        "解释型语言",
+                        "汇编语言",
+                        "机器语言"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "Python是一种<strong>解释型语言</strong>。这意味着Python代码在运行时由解释器直接执行，不需要预先编译成机器码。这种特性使得Python具有良好的可移植性，同样的代码可以在不同的平台上运行，但执行速度相对较慢。"
+                },
+                {
+                    "id": "1_3",
+                    "question": "Python中的缩进规则要求必须使用4个空格进行缩进。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "这个说法是错误的。虽然PEP 8规范建议使用4个空格进行缩进，但这不是强制要求。Python中最重要的缩进规则是保持一致性，即在同一个代码块中使用相同的缩进方式。你可以使用任意数量的空格或Tab，只要在整个代码块中保持一致即可。"
+                },
+                {
+                    "id": "1_4",
+                    "question": "Python中的注释符号是什么？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "//",
+                        "#",
+                        "/* */",
+                        "--"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "在Python中，单行注释使用<strong>#符号</strong>。多行注释可以使用三个单引号或三个双引号。其他选项是其他编程语言的注释符号：// 用于C++/Java，/* */ 用于C/Java的多行注释，-- 用于SQL。"
+                },
+                {
+                    "id": "1_5",
+                    "question": "Python中如何定义多行字符串？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "使用单引号包裹",
+                        "使用双引号包裹",
+                        "使用三个单引号或三个双引号包裹",
+                        "使用反斜杠换行"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "在Python中，<strong>三个单引号或三个双引号</strong>可以用来定义多行字符串。这种方式可以保留字符串中的换行和空格，使得多行文本的编写更加方便。单引号和双引号只能定义单行字符串，使用反斜杠换行会被解释为连续的单行。"
+                },
+                {
+                    "id": "1_6",
+                    "question": "在Python中，变量名必须以字母或____开头。",
+                    "type": "fill_blank",
+                    "correctAnswer": "_",
+                    "explanation": "在Python中，变量名必须以字母或下划线（_）开头，不能以数字开头。变量名可以包含字母、数字和下划线，但第一个字符必须是字母或下划线。这是Python的命名规则之一，用于确保变量名的有效性和可读性。"
+                },
+                {
+                    "id": "1_7",
+                    "question": "Python中的标识符区分大小写。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python中的标识符（如变量名、函数名等）是区分大小写的。例如，'name'和'Name'是两个不同的标识符。这种设计使得Python的命名更加灵活，但也要求程序员在命名时保持一致性。"
+                },
+                {
+                    "id": "1_8",
+                    "question": "Python中如何表示一个空列表？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "None"
+                    ],
+                    "correctAnswer": 0,
+                    "explanation": "在Python中，空列表使用<strong>[]</strong>表示。()表示空元组，{}表示空字典，None表示空值。列表是Python中最常用的数据结构之一，可以存储任意类型的元素。"
+                },
+                {
+                    "id": "1_9",
+                    "question": "Python中的None表示什么？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "空字符串",
+                        "空列表",
+                        "空值或空对象",
+                        "0"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "在Python中，<strong>None</strong>是一个特殊的常量，表示空值或空对象。它不同于空字符串、空列表或数字0。None通常用于表示函数没有返回值或变量没有赋值的情况。"
+                },
+                {
+                    "id": "1_10",
+                    "question": "Python中的布尔值True和False的首字母必须大写。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "在Python中，布尔值True和False的首字母必须大写。这是Python的语法要求，小写的true和false不是有效的布尔值。这种设计使得布尔值在代码中更加醒目和易于识别。"
+                },
+                {
+                    "id": "1_11",
+                    "question": "Python中如何表示一个空字典？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "None"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "在Python中，空字典使用<strong>{}</strong>表示。[]表示空列表，()表示空元组，None表示空值。字典是Python中的一种映射类型，用于存储键值对。"
+                },
+                {
+                    "id": "1_12",
+                    "question": "Python中的字符串是不可变的。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "在Python中，字符串是不可变的（immutable）数据类型。这意味着一旦创建了一个字符串，就不能修改它的内容。如果需要修改字符串，必须创建一个新的字符串。这种设计使得字符串操作更加安全和可预测。"
+                },
+                {
+                    "id": "1_13",
+                    "question": "Python中如何表示一个空元组？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "None"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "在Python中，空元组使用<strong>()</strong>表示。[]表示空列表，{}表示空字典，None表示空值。元组是不可变的序列类型，一旦创建就不能修改。"
+                },
+                {
+                    "id": "1_14",
+                    "question": "Python中的变量必须先声明类型。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "这个说法是错误的。Python是一种动态类型语言，变量不需要预先声明类型。变量的类型是在赋值时自动确定的，并且可以在程序运行过程中改变。这种特性使得Python编程更加灵活和简洁。"
+                },
+                {
+                    "id": "1_15",
+                    "question": "Python中如何表示一个空集合？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "[]",
+                        "()",
+                        "{}",
+                        "set()"
+                    ],
+                    "correctAnswer": 3,
+                    "explanation": "在Python中，空集合使用<strong>set()</strong>表示。{}表示空字典，[]表示空列表，()表示空元组。集合是一种无序且不重复的元素集合。"
+                },
+                {
+                    "id": "1_16",
+                    "question": "Python中的变量名可以包含空格。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "这个说法是错误的。Python中的变量名不能包含空格。变量名只能包含字母、数字和下划线，并且必须以字母或下划线开头。如果需要表示多个单词，可以使用下划线连接，如'my_variable'。"
+                },
+                {
+                    "id": "1_17",
+                    "question": "Python中的数字类型包括哪些？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "整数、浮点数、复数",
+                        "整数、浮点数、字符串",
+                        "整数、浮点数、布尔值",
+                        "整数、浮点数、列表"
+                    ],
+                    "correctAnswer": 0,
+                    "explanation": "Python中的数字类型包括<strong>整数（int）、浮点数（float）和复数（complex）</strong>。整数是没有小数部分的数字，浮点数包含小数部分，复数包含实部和虚部。"
+                },
+                {
+                    "id": "1_18",
+                    "question": "Python中的字符串可以使用单引号或双引号定义。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "在Python中，字符串可以使用单引号或双引号定义，两种方式是完全等价的。这种设计使得在字符串中包含引号时更加方便，可以选择使用不同类型的引号来避免转义字符。"
+                },
+                {
+                    "id": "1_19",
+                    "question": "Python中的变量名可以以数字开头。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "这个说法是错误的。Python中的变量名不能以数字开头。变量名必须以字母或下划线开头，后面可以包含字母、数字和下划线。这种规则确保了变量名的可读性和有效性。"
+                },
+                {
+                    "id": "1_20",
+                    "question": "Python中的print()函数默认会在输出后添加换行符。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "在Python中，print()函数默认会在输出后添加换行符。如果不想要换行，可以使用end参数来指定结束字符，例如：print('Hello', end='')。"
+                }
+            ]
+        },
+        "2": {
+            "title": "变量与赋值",
+            "questions": [
+                {
+                    "id": "2_1",
+                    "question": "在Python中，以下哪个变量名是合法的？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "1name",
+                        "_name",
+                        "class",
+                        "my-name"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "在Python中，变量名必须以字母或下划线开头，不能以数字开头。'1name'以数字开头，'class'是Python的关键字，'my-name'包含连字符，这些都是不合法的。'_name'是合法的变量名。"
+                },
+                {
+                    "id": "2_2",
+                    "question": "Python中的变量赋值使用____符号。",
+                    "type": "fill_blank",
+                    "correctAnswer": "=",
+                    "explanation": "在Python中，使用等号（=）进行变量赋值。例如：x = 10。"
+                },
+                {
+                    "id": "2_3",
+                    "question": "Python支持多重赋值。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python支持多重赋值，例如：a, b = 1, 2。这种特性使得代码更简洁，也方便进行变量值的交换。"
+                },
+                {
+                    "id": "2_4",
+                    "question": "在Python中，以下哪个赋值语句是正确的？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = 1, 2, 3",
+                        "x = [1, 2, 3]",
+                        "x = {1, 2, 3}",
+                        "以上都是"
+                    ],
+                    "correctAnswer": 3,
+                    "explanation": "在Python中，这三种赋值方式都是正确的：x = 1, 2, 3 会创建一个元组，x = [1, 2, 3] 会创建一个列表，x = {1, 2, 3} 会创建一个集合。"
+                },
+                {
+                    "id": "2_5",
+                    "question": "Python中的变量必须先声明才能使用。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "Python是一种动态类型语言，变量不需要预先声明。变量在第一次赋值时自动创建，并且可以随时改变其类型。"
+                },
+                {
+                    "id": "2_6",
+                    "question": "在Python中，以下哪个变量名是Python的关键字？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "name",
+                        "class",
+                        "variable",
+                        "value"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "'class'是Python的关键字，不能用作变量名。其他选项都是合法的变量名。"
+                },
+                {
+                    "id": "2_7",
+                    "question": "Python中的变量名区分大小写。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python中的变量名是区分大小写的。例如，'Name'和'name'是两个不同的变量。"
+                },
+                {
+                    "id": "2_8",
+                    "question": "在Python中，以下哪个赋值语句会创建一个元组？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = [1, 2, 3]",
+                        "x = (1, 2, 3)",
+                        "x = {1, 2, 3}",
+                        "x = 1, 2, 3"
+                    ],
+                    "correctAnswer": 3,
+                    "explanation": "在Python中，当使用逗号分隔的值进行赋值时，会自动创建一个元组。所以 x = 1, 2, 3 会创建一个元组。"
+                },
+                {
+                    "id": "2_9",
+                    "question": "Python中的变量可以存储任何类型的数据。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python是一种动态类型语言，变量可以存储任何类型的数据，并且可以随时改变其类型。例如：x = 1; x = 'hello'; x = [1, 2, 3] 都是合法的。"
+                },
+                {
+                    "id": "2_10",
+                    "question": "在Python中，以下哪个变量名是合法的？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "my_variable",
+                        "myVariable",
+                        "MyVariable",
+                        "以上都是"
+                    ],
+                    "correctAnswer": 3,
+                    "explanation": "这三种命名方式都是合法的Python变量名。Python支持多种命名风格，但建议在同一个项目中保持一致的命名风格。"
+                },
+                {
+                    "id": "2_11",
+                    "question": "Python中的变量名可以包含特殊字符。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "Python中的变量名只能包含字母、数字和下划线，不能包含特殊字符。变量名必须以字母或下划线开头。"
+                },
+                {
+                    "id": "2_12",
+                    "question": "在Python中，以下哪个赋值语句会创建一个列表？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = [1, 2, 3]",
+                        "x = (1, 2, 3)",
+                        "x = {1, 2, 3}",
+                        "x = 1, 2, 3"
+                    ],
+                    "correctAnswer": 0,
+                    "explanation": "在Python中，使用方括号[]创建列表。圆括号()创建元组，花括号{}创建集合或字典。"
+                },
+                {
+                    "id": "2_13",
+                    "question": "Python中的变量名可以以数字开头。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "Python中的变量名不能以数字开头。变量名必须以字母或下划线开头，后面可以包含字母、数字和下划线。"
+                },
+                {
+                    "id": "2_14",
+                    "question": "在Python中，以下哪个赋值语句会创建一个集合？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = [1, 2, 3]",
+                        "x = (1, 2, 3)",
+                        "x = {1, 2, 3}",
+                        "x = 1, 2, 3"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "在Python中，使用花括号{}创建集合。方括号[]创建列表，圆括号()创建元组。"
+                },
+                {
+                    "id": "2_15",
+                    "question": "Python中的变量名可以包含空格。",
+                    "type": "true_false",
+                    "correctAnswer": false,
+                    "explanation": "Python中的变量名不能包含空格。如果需要表示多个单词，可以使用下划线连接，如'my_variable'。"
+                },
+                {
+                    "id": "2_16",
+                    "question": "在Python中，以下哪个赋值语句会创建一个字典？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = {1, 2, 3}",
+                        "x = {1: 'a', 2: 'b'}",
+                        "x = [1, 2, 3]",
+                        "x = (1, 2, 3)"
+                    ],
+                    "correctAnswer": 1,
+                    "explanation": "在Python中，使用花括号{}并包含键值对创建字典。{1, 2, 3}创建集合，[1, 2, 3]创建列表，(1, 2, 3)创建元组。"
+                },
+                {
+                    "id": "2_17",
+                    "question": "Python中的变量名可以包含中文。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python 3支持Unicode字符作为变量名，包括中文。但通常建议使用英文变量名，以提高代码的可读性和可维护性。"
+                },
+                {
+                    "id": "2_18",
+                    "question": "在Python中，以下哪个赋值语句会创建一个空列表？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = []",
+                        "x = ()",
+                        "x = {}",
+                        "x = None"
+                    ],
+                    "correctAnswer": 0,
+                    "explanation": "在Python中，使用空方括号[]创建空列表。空圆括号()创建空元组，空花括号{}创建空字典，None表示空值。"
+                },
+                {
+                    "id": "2_19",
+                    "question": "Python中的变量名可以包含下划线。",
+                    "type": "true_false",
+                    "correctAnswer": true,
+                    "explanation": "Python中的变量名可以包含下划线，但不能以数字开头。下划线通常用于分隔单词，如'my_variable'。"
+                },
+                {
+                    "id": "2_20",
+                    "question": "在Python中，以下哪个赋值语句会创建一个空字典？",
+                    "type": "multiple_choice",
+                    "options": [
+                        "x = []",
+                        "x = ()",
+                        "x = {}",
+                        "x = None"
+                    ],
+                    "correctAnswer": 2,
+                    "explanation": "在Python中，使用空花括号{}创建空字典。空方括号[]创建空列表，空圆括号()创建空元组，None表示空值。"
+                }
+            ]
+        }
+    }
+} 

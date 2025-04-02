@@ -1,0 +1,261 @@
+{
+    "title": "装饰器",
+    "questions": [
+        {
+            "id": 1,
+            "question": "想要在界面中显示图片，应该使用哪个方法？",
+            "type": "multiple-choice",
+            "options": [
+                "setText()",
+                "setPixmap()",
+                "addImage()",
+                "showPicture()"
+            ],
+            "answer": 1,
+            "explanation": "setPixmap()是专门用来在标签控件中显示图片的方法，其他选项是虚构的方法名。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "pillow库生成的图片要转成Qt能识别的格式，需要调用哪个函数？",
+            "type": "multiple-choice",
+            "options": [
+                "ImageQt.ImageQt()",
+                "convertToQt()",
+                "QtImage.fromPillow()",
+                "changeFormat()"
+            ],
+            "answer": 0,
+            "explanation": "ImageQt.ImageQt()能将Pillow的Image对象转为Qt可识别的图像格式，其他选项不存在。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "实现图片自动适应标签大小的设置是？",
+            "type": "multiple-choice",
+            "options": [
+                "setAutoResize(True)",
+                "setScaledContents(True)",
+                "adjustSize()",
+                "scaleToFit()"
+            ],
+            "answer": 1,
+            "explanation": "setScaledContents(True)能让图片自动缩放填充标签区域，其他选项是干扰项。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "从文件路径加载图片到Qt的正确代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "QtGui.QImage(\"cat.jpg\")",
+                "QtGui.QPixmap(\"cat.jpg\")",
+                "Image.open(\"cat.jpg\")",
+                "loadImage(\"cat.jpg\")"
+            ],
+            "answer": 1,
+            "explanation": "QPixmap专门用于加载和显示图片文件，其他选项或为错误类或为其他库的方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "将转换后的Qt图像设置到标签的正确流程是？",
+            "type": "multiple-choice",
+            "options": [
+                "先转QPixmap再setPixmap",
+                "直接调用setImage",
+                "用save()保存后再加载",
+                "调整颜色模式后显示"
+            ],
+            "answer": 0,
+            "explanation": "必须用QPixmap.fromImage()转为像素图格式才能用setPixmap显示，其他选项流程错误。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "为什么需要ImageQt.ImageQt()这一步？",
+            "type": "multiple-choice",
+            "options": [
+                "因为Qt无法直接打开文件",
+                "因为Pillow和Qt图像格式不同",
+                "为了压缩图片体积",
+                "为了旋转图片方向"
+            ],
+            "answer": 1,
+            "explanation": "Pillow的Image对象和Qt的QImage是不同格式，需要转换才能兼容。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "setScaledContents(True)设置后还需要手动调整图片大小",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "该设置会自动缩放图片，无需手动调整。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "可以直接用Pillow的Image对象调用setPixmap()显示图片",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "必须先用ImageQt转换为Qt格式，再用QPixmap.fromImage()处理。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "将Pillow图像转为QPixmap的完整代码是：QPixmap.______(ImageQt(pil_image))",
+            "type": "fill-in",
+            "answer": [
+                "fromImage"
+            ],
+            "explanation": "必须使用QPixmap.fromImage()方法将转换后的Qt图像转为像素图格式。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "想要让图片始终填满整个标签区域，应该调用set______(True)",
+            "type": "fill-in",
+            "answer": [
+                "ScaledContents"
+            ],
+            "explanation": "setScaledContents(True)是实现该功能的标准方法。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "为什么要用函数来写代码？",
+            "type": "multiple-choice",
+            "options": [
+                "让电脑运行更快",
+                "减少重复代码的编写",
+                "让屏幕显示更漂亮",
+                "必须用函数才能运行程序"
+            ],
+            "answer": 1,
+            "explanation": "函数可以把重复的操作封装起来，使用时直接调用即可，避免重复写同样的代码。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "下面哪个是\"功能分支\"的典型应用？",
+            "type": "multiple-choice",
+            "options": [
+                "print(\"Hello\")",
+                "if 成绩 >= 60: print(\"及格\")",
+                "for i in range(5):",
+                "def save_file():"
+            ],
+            "answer": 1,
+            "explanation": "if语句会根据条件决定执行不同的代码块，这就是程序的分支逻辑。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "保存文件时弹出选择保存位置的窗口，应该用哪个库？",
+            "type": "multiple-choice",
+            "options": [
+                "math",
+                "tkinter.filedialog",
+                "random",
+                "time"
+            ],
+            "answer": 1,
+            "explanation": "tkinter.filedialog模块专门提供文件操作相关的对话框功能。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "对一张图片先旋转再调整亮度，和先调整亮度再旋转，效果会？",
+            "type": "multiple-choice",
+            "options": [
+                "完全一样",
+                "顺序不同效果不同",
+                "只有旋转能生效",
+                "只有亮度能生效"
+            ],
+            "answer": 1,
+            "explanation": "图像处理操作顺序不同会导致像素值变化路径不同，最终效果也会有差异。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "函数里不写return语句时，默认返回值是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "0",
+                "空字符串",
+                "None",
+                "True"
+            ],
+            "answer": 2,
+            "explanation": "Python规定，函数如果没有return语句或return后无内容，默认返回None。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "导入模块的代码应该写在程序哪个位置？",
+            "type": "multiple-choice",
+            "options": [
+                "最开头",
+                "函数内部",
+                "最后一行",
+                "随便哪里都可以"
+            ],
+            "answer": 0,
+            "explanation": "按照Python编程规范，导入语句通常统一放在文件开头。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "一个函数可以既没有参数也没有返回值",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "例如def say_hello(): print(\"你好\")既不需要参数也不返回内容。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "每次使用文件对话框前都要重新导入tkinter库",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "只需要在最开始用import tkinter导入一次，后续可以直接使用。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "定义函数使用的关键字是______",
+            "type": "fill-in",
+            "answer": [
+                "def"
+            ],
+            "explanation": "Python使用def关键字声明函数，如def my_function():",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "如果函数里写了return但没跟具体值，比如return，实际返回的是______",
+            "type": "fill-in",
+            "answer": [
+                "None"
+            ],
+            "explanation": "单独的return语句等价于return None，表示空值返回。",
+            "preserveFormat": true
+        }
+    ]
+}

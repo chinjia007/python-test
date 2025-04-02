@@ -1,0 +1,261 @@
+{
+    "title": "循环控制",
+    "questions": [
+        {
+            "id": 1,
+            "question": "哪个选项能正确输出\"Hello!\"？",
+            "type": "multiple-choice",
+            "options": [
+                "print(Hello!)",
+                "print(\"Hello!\")",
+                "print(（Hello!）)",
+                "print[Hello!]"
+            ],
+            "answer": 1,
+            "explanation": "字符串必须放在引号里，只有B选项正确使用双引号包裹",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "哪个变量名是合法的？",
+            "type": "multiple-choice",
+            "options": [
+                "3students",
+                "student3",
+                "class",
+                "my-name"
+            ],
+            "answer": 1,
+            "explanation": "变量名不能以数字开头（A错）、不能使用保留字（C错）、不能包含减号（D错）",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "input()函数接收到的数据类型是？",
+            "type": "multiple-choice",
+            "options": [
+                "整数",
+                "小数",
+                "字符串",
+                "布尔值"
+            ],
+            "answer": 2,
+            "explanation": "input()默认返回字符串，需要用int()或float()转换",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "哪个循环会执行3次？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in range(3)",
+                "for i in range(2)",
+                "for i in range(4)",
+                "for i in range(3,6)"
+            ],
+            "answer": 0,
+            "explanation": "range(3)生成0,1,2三个数字，循环3次",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "哪个条件判断写法正确？",
+            "type": "multiple-choice",
+            "options": [
+                "if a > 5 and <10:",
+                "if a >5 && a<10:",
+                "if 5 < a <10:",
+                "if a>5 and a<10:"
+            ],
+            "answer": 3,
+            "explanation": "Python中必须明确写出完整比较条件，且用and连接",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "列表操作正确的是？",
+            "type": "multiple-choice",
+            "options": [
+                "list.insert(3)",
+                "list.add(5)",
+                "list.append(8)",
+                "list[5] = new"
+            ],
+            "answer": 2,
+            "explanation": "append是正确添加元素的方法，其他选项方法名错误",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "Python中可以用#符号写注释",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "#是单行注释符号，用于解释代码作用",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "break语句可以让循环立即停止",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "break会直接跳出当前循环，常用于满足条件时终止循环",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "把数字转为字符串的函数是______()",
+            "type": "fill-in",
+            "answer": [
+                "str"
+            ],
+            "explanation": "str()函数可以将数字等类型转换为字符串类型",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "定义函数使用的关键字是______",
+            "type": "fill-in",
+            "answer": [
+                "def"
+            ],
+            "explanation": "def是定义函数的关键字，后面接函数名和参数",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "哪个选项能正确打印\"Hello Frog\"？",
+            "type": "multiple-choice",
+            "options": [
+                "print(\"Hello Frog)",
+                "print(Hello Frog)",
+                "print(\"Hello Frog\")",
+                "print 'Hello Frog'"
+            ],
+            "answer": 2,
+            "explanation": "字符串必须用成对的引号包裹，选项C符合规范",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "存储动物数量的变量名哪个最规范？",
+            "type": "multiple-choice",
+            "options": [
+                "3animals",
+                "animal_count",
+                "AnimalCount",
+                "animal-count"
+            ],
+            "answer": 1,
+            "explanation": "变量名不能数字开头（A），建议小写字母加下划线（B），C是类名格式，D含非法符号",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "下面哪个数据类型能存储不同物种的灭绝年份？",
+            "type": "multiple-choice",
+            "options": [
+                "250",
+                "\"2023-05-20\"",
+                "[\"恐龙\", 65000000]",
+                "{\"物种\": \"渡渡鸟\", \"灭绝年\": 1681}"
+            ],
+            "answer": 3,
+            "explanation": "字典用键值对存储不同类型数据，最适合存储复合信息",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "统计5种鸟类的循环应该怎么写？",
+            "type": "multiple-choice",
+            "options": [
+                "for i in range(5):",
+                "while 5:",
+                "loop 5 times:",
+                "for 1-5:"
+            ],
+            "answer": 0,
+            "explanation": "range(5)生成0-4的循环，适合固定次数的循环",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "判断物种是否濒危的正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "if status == \"濒危\" then",
+                "if status = \"濒危\":",
+                "when status is 濒危",
+                "if status == \"濒危\":"
+            ],
+            "answer": 3,
+            "explanation": "Python使用==比较，字符串需要引号，冒号结尾",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "哪种方法可以添加新物种到列表？",
+            "type": "multiple-choice",
+            "options": [
+                "animals.insert(\"熊猫\")",
+                "animals.add(\"熊猫\")",
+                "animals.append(\"熊猫\")",
+                "animals += \"熊猫\""
+            ],
+            "answer": 2,
+            "explanation": "append()是添加元素的正确方法，其他选项语法错误",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "缩进在Python中只是为了让代码好看，不影响运行",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "Python用缩进表示代码块结构，错误缩进会导致程序报错",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "break语句可以跳过当前循环的剩余语句，直接开始下一次循环",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "break是直接退出整个循环，continue才是跳过本次循环",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "计算3种动物的平均寿命： \nlifetimes = [25, 30, 35] \naverage = ______ / 3",
+            "type": "fill-in",
+            "answer": [
+                "sum(lifetimes)"
+            ],
+            "explanation": "sum()函数可以快速计算列表元素总和",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "定义函数计算物种增长率： \ndef growth_rate(initial, final): \n    return (______ - initial) / initial * 100",
+            "type": "fill-in",
+            "answer": [
+                "final"
+            ],
+            "explanation": "增长率公式是（最终值-初始值）/初始值×100%",
+            "preserveFormat": true
+        }
+    ]
+}

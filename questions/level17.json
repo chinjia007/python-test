@@ -1,0 +1,261 @@
+{
+    "title": "参数与返回值",
+    "questions": [
+        {
+            "id": 1,
+            "question": "获取文件后缀名的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "filename.split(\".\")[0]",
+                "filename.split(\"/\")[-1]",
+                "filename.split(\".\")[-1]",
+                "filename.split(\"_\")[1]"
+            ],
+            "answer": 2,
+            "explanation": "split(\".\")把文件名按点分割，[-1]取最后一段就是后缀名，比如\"cat.jpg\"得到\"jpg\"",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "检查文件是否存在应该用哪个库？",
+            "type": "multiple-choice",
+            "options": [
+                "random",
+                "os",
+                "math",
+                "time"
+            ],
+            "answer": 1,
+            "explanation": "os.path.exists()方法专门用于检查文件或目录是否存在",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "判断图片文件类型的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "检查文件创建时间",
+                "检查文件大小",
+                "检查文件后缀名",
+                "检查文件内容"
+            ],
+            "answer": 2,
+            "explanation": "初级判断只需检查后缀名，如.jpg/.png等常见图片格式",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "递归遍历文件夹需要用到什么方法？",
+            "type": "multiple-choice",
+            "options": [
+                "os.listdir()",
+                "os.walk()",
+                "os.rename()",
+                "os.remove()"
+            ],
+            "answer": 1,
+            "explanation": "os.walk()会自动递归遍历所有子目录，适合处理嵌套文件夹",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "处理\"photo.tar.gz\"文件时，获取真实后缀应该？",
+            "type": "multiple-choice",
+            "options": [
+                "取第一个分割段",
+                "取最后两个分割段",
+                "取最后一个分割段",
+                "取中间分割段"
+            ],
+            "answer": 2,
+            "explanation": "即使有多个点，真实后缀始终是最后一段，这里.gz才是实际压缩格式",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "移动文件时可能触发的异常是？",
+            "type": "multiple-choice",
+            "options": [
+                "KeyboardInterrupt",
+                "FileNotFoundError",
+                "ZeroDivisionError",
+                "ValueError"
+            ],
+            "answer": 1,
+            "explanation": "当源文件不存在时会触发FileNotFoundError异常",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "shutil.move()可以用来移动文件",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "shutil库的move()方法专门用于移动或重命名文件",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "递归函数必须要有参数",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "递归函数可以不传参数，通过全局变量或类属性控制流程",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "归档图片到指定目录的函数需要导入的两个核心库是______和shutil",
+            "type": "fill-in",
+            "answer": [
+                "os"
+            ],
+            "explanation": "文件操作需要os处理路径，shutil处理移动/复制",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "递归归档函数中调用自身的代码应该写______",
+            "type": "fill-in",
+            "answer": [
+                "函数名()"
+            ],
+            "explanation": "在函数体内部通过函数名加括号实现自我调用，这是递归的典型特征",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "想把三个变量a,b,c同时赋值1,2,3，正确的写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "a=1; b=2; c=3",
+                "a,b,c = 1,2,3",
+                "a=1,2,3 → b,c",
+                "a & b & c = 1 & 2 & 3"
+            ],
+            "answer": 1,
+            "explanation": "Python允许用逗号分隔变量和值，实现一次性多变量赋值，就像同时拆开礼物盒一样方便",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "用PIL库处理图片时，新建空白图片的正确方法是？",
+            "type": "multiple-choice",
+            "options": [
+                "Image.new()",
+                "Image.create('RGB', (800,600))",
+                "Image.new('RGB', (800,600))",
+                "make_image(800,600)"
+            ],
+            "answer": 2,
+            "explanation": "Image.new()需要两个必要参数：模式（如'RGB'）和尺寸元组，就像准备画布需要知道尺寸和颜料类型",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "将多张小图排列成10×10的网格，总共需要多少张小图？",
+            "type": "multiple-choice",
+            "options": [
+                "10",
+                "20",
+                "100",
+                "200"
+            ],
+            "answer": 2,
+            "explanation": "10行×10列=100个位置，就像教室座位表有10排每排10个座位",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "循环语句中，range(0,100,10)会产生多少个数字？",
+            "type": "multiple-choice",
+            "options": [
+                "10",
+                "9",
+                "100",
+                "11"
+            ],
+            "answer": 0,
+            "explanation": "从0开始每隔10取数：0,10,20,...,90，共10个数，就像楼梯每隔10厘米一个台阶",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "处理图片时，image.paste()方法的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "复制图片",
+                "把图片粘贴到指定位置",
+                "裁剪图片",
+                "旋转图片"
+            ],
+            "answer": 1,
+            "explanation": "paste就像贴贴纸，可以把小图贴到大图的指定位置",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "计算图片位置时，(i%10)*80 这个算式的作用是？",
+            "type": "multiple-choice",
+            "options": [
+                "计算行号",
+                "计算列号",
+                "X坐标",
+                "Y坐标"
+            ],
+            "answer": 2,
+            "explanation": "%取余数确定列位置，乘以图片宽度得到X坐标，类似棋盘横向移动",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "安装Pillow库可以用命令pip install pillow",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "Pillow是Python常用的图像处理库，安装命令要小写",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "x,y = (5,8) 这种写法会报错",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "括号可以省略，等号两边数量匹配就能正确解包",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "用for循环遍历0-99，语句应该写for i in ______",
+            "type": "fill-in",
+            "answer": [
+                "range(100)"
+            ],
+            "explanation": "range(n)生成0到n-1的连续整数，共n个数字",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "计算第i张图片的y坐标公式通常是______",
+            "type": "fill-in",
+            "answer": [
+                "(i//10)*60"
+            ],
+            "explanation": "//10得到行号，乘以图片高度得到Y坐标，类似棋盘纵向移动",
+            "preserveFormat": true
+        }
+    ]
+}

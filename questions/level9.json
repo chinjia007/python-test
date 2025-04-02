@@ -1,0 +1,261 @@
+{
+    "title": "字典",
+    "questions": [
+        {
+            "id": 1,
+            "question": "哪个选项能正确创建存储学生年龄的字典？",
+            "type": "multiple-choice",
+            "options": [
+                "students = {小明:12, 小红:11}",
+                "students = {\"小明\"=12, \"小红\"=11}",
+                "students = {\"小明\":12, \"小红\":11}",
+                "students = [\"小明\":12, \"小红\":11]"
+            ],
+            "answer": 2,
+            "explanation": "字典必须用花括号{}，键值对用冒号分隔，字符串键需要加引号。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "现有字典scores = {\"数学\":95, \"语文\":88}，如何获取语文分数？",
+            "type": "multiple-choice",
+            "options": [
+                "scores[0]",
+                "scores[\"语文\"]",
+                "scores.get(88)",
+                "scores.values()[1]"
+            ],
+            "answer": 1,
+            "explanation": "字典通过键名访问值，字符串键必须加引号，索引不适用于字典。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "要向空字典colors添加键值对\"苹果\":\"red\"，应该用：",
+            "type": "multiple-choice",
+            "options": [
+                "colors.add(\"苹果\",\"red\")",
+                "colors[\"苹果\"] = \"red\"",
+                "colors.append(\"苹果\":\"red\")",
+                "colors.insert(\"苹果\",\"red\")"
+            ],
+            "answer": 1,
+            "explanation": "字典通过中括号赋值语法添加元素，其他方法属于列表操作。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "找出字典scores中的最高分，初始化max_value应该设置为：",
+            "type": "multiple-choice",
+            "options": [
+                "max_value = 0",
+                "max_value = scores[0]",
+                "max_value = scores.values()[0]",
+                "max_value = scores[list(scores.keys())[0]]"
+            ],
+            "answer": 3,
+            "explanation": "应取字典第一个元素的值初始化，直接取0可能导致错误（如有负数分数）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "计算字典values的平均值，正确的步骤是：",
+            "type": "multiple-choice",
+            "options": [
+                "用sum(values)/len(values)",
+                "遍历values.values()累加求和再除以元素个数",
+                "直接取values.mean()",
+                "把字典转成列表再计算"
+            ],
+            "answer": 1,
+            "explanation": "字典需要先获取所有值(values())，sum()和len()都需要显式计算。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "要同时获取字典scores中的姓名和分数，应该用：",
+            "type": "multiple-choice",
+            "options": [
+                "for name in scores:",
+                "for score in scores.values():",
+                "for name, score in scores:",
+                "for name, score in scores.items():"
+            ],
+            "answer": 3,
+            "explanation": "items()方法能同时获取键值对，其他选项只能获取单个元素。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "字典可以修改已存在的键对应的值",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "字典是可变数据类型，通过scores[\"键名\"] = 新值可直接修改。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "字典的键可以是数字1.5",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "字典键可以是任意不可变类型，包括整数、浮点数、字符串等。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "初始化最高分变量时，应该设为______（假设字典名为scores）",
+            "type": "fill-in",
+            "answer": [
+                "scores[第一个键名]"
+            ],
+            "explanation": "必须用字典中实际存在的值初始化，不能用固定值0。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "计算平均分时，累加分数应该写______（变量名为total）",
+            "type": "fill-in",
+            "answer": [
+                "total += score"
+            ],
+            "explanation": "遍历分数时需要逐个累加到total变量。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "小明用二分查找在字典里找单词，字典必须满足什么条件？",
+            "type": "multiple-choice",
+            "options": [
+                "页码随机排列",
+                "单词按字母顺序排列",
+                "每页只有1个单词",
+                "字典必须很厚"
+            ],
+            "answer": 1,
+            "explanation": "二分查找需要数据有序，就像查字典必须按字母顺序排列才能快速定位。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "哪个循环适合不知道具体要循环多少次的情况？",
+            "type": "multiple-choice",
+            "options": [
+                "for循环",
+                "while循环",
+                "两个都可以",
+                "两个都不行"
+            ],
+            "answer": 1,
+            "explanation": "当不确定循环次数时，比如等待用户输入正确密码，用while更合适。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "变量i初始是0，执行i += 3后i的值是？",
+            "type": "multiple-choice",
+            "options": [
+                "0",
+                "3",
+                "1",
+                "4"
+            ],
+            "answer": 1,
+            "explanation": "i += 3等同于i = i + 3，0+3=3。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "while循环的条件是True时会怎样？",
+            "type": "multiple-choice",
+            "options": [
+                "执行1次",
+                "执行指定次数",
+                "永远执行",
+                "报错"
+            ],
+            "answer": 2,
+            "explanation": "条件一直为真，就会形成无限循环。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "在有序列表[2,5,8,12,16]中用二分查找16，第一次比较的数是？",
+            "type": "multiple-choice",
+            "options": [
+                "2",
+                "8",
+                "12",
+                "16"
+            ],
+            "answer": 1,
+            "explanation": "中间位置是第3个数8（索引计算：(0+4)//2=2）。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "执行代码后输出的最后一个数字是？ \ni = 1 \nwhile i < 5: \n    print(i) i += 1 \nelse: \n    print(99)",
+            "type": "multiple-choice",
+            "options": [
+                "4",
+                "5",
+                "99",
+                "报错"
+            ],
+            "answer": 2,
+            "explanation": "当循环正常结束（非break）时，会执行else块。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "二分查找可以在无序的列表中正常工作",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "无序列表无法保证每次排除一半数据。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "while循环必须要有终止条件，否则会死循环",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "如果条件能自然变为False就不会死循环，例如i从10递减到0。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "补全代码实现1到10的累加 \ntotal = 0 \ni = 1 \nwhile ______: \n    total += i \n    i += 1 \nprint(total)",
+            "type": "fill-in",
+            "answer": [
+                "i <= 10"
+            ],
+            "explanation": "当i超过10时终止循环，实现1-10的累加。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "二分查找最多需要______次就能在1000个元素中找到目标",
+            "type": "fill-in",
+            "answer": [
+                "10"
+            ],
+            "explanation": "2^10=1024，所以最多10次就能覆盖1000个元素。",
+            "preserveFormat": true
+        }
+    ]
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题目加载测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .control-panel {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        select {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        .result {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #4CAF50;
+        }
+        .loading {
+            color: #999;
+            font-style: italic;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>题目加载测试</h1>
+    
+    <div class="control-panel">
+        <label for="level">选择关卡:</label>
+        <select id="level">
+            <option value="1">关卡1 - Python简介</option>
+            <option value="2">关卡2 - 变量与赋值</option>
+            <option value="3">关卡3 - 基本输入输出</option>
+            <option value="4">关卡4 - 运算符</option>
+            <option value="5">关卡5 - 注释与文档</option>
+        </select>
+        <button id="loadFromLevel">从level*.json加载</button>
+        <button id="loadFromQuestions">从questions.json加载</button>
+    </div>
+    
+    <div class="result">
+        <h2>加载结果</h2>
+        <div id="loadingStatus" class="loading">请点击上方按钮加载题目...</div>
+        <div id="questionsCount"></div>
+        <div id="questionsList"></div>
+        <h3>原始数据</h3>
+        <pre id="rawData"></pre>
+    </div>
+
+    <script>
+        document.getElementById('loadFromLevel').addEventListener('click', function() {
+            const level = document.getElementById('level').value;
+            loadQuestions(`questions/level${level}.json`);
+        });
+        
+        document.getElementById('loadFromQuestions').addEventListener('click', function() {
+            const level = document.getElementById('level').value;
+            loadQuestionsFromMain('questions.json', level);
+        });
+        
+        function loadQuestions(url) {
+            const loadingStatus = document.getElementById('loadingStatus');
+            const questionsCount = document.getElementById('questionsCount');
+            const questionsList = document.getElementById('questionsList');
+            const rawData = document.getElementById('rawData');
+            
+            loadingStatus.textContent = `正在从 ${url} 加载题目...`;
+            questionsList.innerHTML = '';
+            questionsCount.textContent = '';
+            rawData.textContent = '';
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`加载失败: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    loadingStatus.textContent = `成功从 ${url} 加载题目!`;
+                    rawData.textContent = JSON.stringify(data, null, 2);
+                    
+                    let questions = [];
+                    if (data.questions && Array.isArray(data.questions)) {
+                        questions = data.questions;
+                        questionsCount.textContent = `找到 ${questions.length} 道题目，标题: ${data.title || '未指定'}`;
+                    } else {
+                        loadingStatus.textContent = `数据格式错误: 找不到题目数组`;
+                        return;
+                    }
+                    
+                    // 显示题目列表
+                    questions.forEach((q, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'question';
+                        questionDiv.innerHTML = `
+                            <strong>${index + 1}. ${q.question}</strong><br>
+                            类型: ${q.type || 'multiple-choice'}<br>
+                            ${q.options ? '选项: ' + q.options.join(', ') + '<br>' : ''}
+                            正确答案: ${q.answer !== undefined ? q.answer : q.correctAnswer}<br>
+                            ${q.explanation ? '解释: ' + q.explanation : ''}
+                        `;
+                        questionsList.appendChild(questionDiv);
+                    });
+                })
+                .catch(error => {
+                    loadingStatus.textContent = `加载失败: ${error.message}`;
+                });
+        }
+        
+        function loadQuestionsFromMain(url, level) {
+            const loadingStatus = document.getElementById('loadingStatus');
+            const questionsCount = document.getElementById('questionsCount');
+            const questionsList = document.getElementById('questionsList');
+            const rawData = document.getElementById('rawData');
+            
+            loadingStatus.textContent = `正在从 ${url} 加载关卡 ${level} 的题目...`;
+            questionsList.innerHTML = '';
+            questionsCount.textContent = '';
+            rawData.textContent = '';
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`加载失败: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    loadingStatus.textContent = `成功从 ${url} 加载题目!`;
+                    
+                    let levelData = data.questions && data.questions[level];
+                    if (!levelData) {
+                        loadingStatus.textContent = `找不到关卡 ${level} 的题目数据`;
+                        return;
+                    }
+                    
+                    rawData.textContent = JSON.stringify(levelData, null, 2);
+                    
+                    let questions = levelData.questions;
+                    if (!Array.isArray(questions)) {
+                        loadingStatus.textContent = `数据格式错误: 找不到题目数组`;
+                        return;
+                    }
+                    
+                    questionsCount.textContent = `找到 ${questions.length} 道题目，标题: ${levelData.title || '未指定'}`;
+                    
+                    // 显示题目列表
+                    questions.forEach((q, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'question';
+                        questionDiv.innerHTML = `
+                            <strong>${index + 1}. ${q.question}</strong><br>
+                            类型: ${q.type || 'multiple-choice'}<br>
+                            ${q.options ? '选项: ' + q.options.join(', ') + '<br>' : ''}
+                            正确答案: ${q.answer !== undefined ? q.answer : q.correctAnswer}<br>
+                            ${q.explanation ? '解释: ' + q.explanation : ''}
+                        `;
+                        questionsList.appendChild(questionDiv);
+                    });
+                })
+                .catch(error => {
+                    loadingStatus.textContent = `加载失败: ${error.message}`;
+                });
+        }
+    </script>
+</body>
+</html> 

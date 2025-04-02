@@ -1,0 +1,261 @@
+{
+    "title": "注释与文档",
+    "questions": [
+        {
+            "id": 1,
+            "question": "下面哪个选项能正确判断数字是否为正数？",
+            "type": "multiple-choice",
+            "options": [
+                "if num > 0",
+                "if num < 0",
+                "if num == 0",
+                "if num != 0"
+            ],
+            "answer": 0,
+            "explanation": "num > 0表示“大于0”，符合正数的定义。",
+            "preserveFormat": true
+        },
+        {
+            "id": 2,
+            "question": "小明想用代码判断一个数是奇数还是偶数，正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "if num % 2 == 0: \n    偶数 \nelse: \n    奇数",
+                "if num // 2 == 0: \n    偶数 \nelse: \n    奇数",
+                "if num * 2 == 0: \n    偶数 \nelse: \n    奇数",
+                "if num + 2 == 0: \n    偶数 \nelse: \n    奇数"
+            ],
+            "answer": 0,
+            "explanation": "偶数能被2整除，num % 2计算余数，余0为偶数，否则为奇数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 3,
+            "question": "成绩等级判断：90分以上“A”，80-89分“B”，其他“C”。正确代码是？",
+            "type": "multiple-choice",
+            "options": [
+                "完整代码如下 \nif score >= 90: \n    print(\"A\") \nelif score >= 80: \n    print(\"B\") \nelse: \n    print(\"C\")",
+                "把elif换成if",
+                "删除else",
+                "交换elif和else顺序"
+            ],
+            "answer": 0,
+            "explanation": "elif会按顺序检查条件，第一个满足后跳过后续判断。",
+            "preserveFormat": true
+        },
+        {
+            "id": 4,
+            "question": "判断儿童是否满足过山车乘坐条件（年龄≥10岁且身高≥120cm），正确写法是？",
+            "type": "multiple-choice",
+            "options": [
+                "if age >= 10 and height >= 120",
+                "if age >= 10 or height >= 120",
+                "if age > 10 & height > 120",
+                "if age >= 10 && height >= 120"
+            ],
+            "answer": 0,
+            "explanation": "and表示“并且”，需同时满足两个条件。",
+            "preserveFormat": true
+        },
+        {
+            "id": 5,
+            "question": "下面哪段代码会输出“YES”？",
+            "type": "multiple-choice",
+            "options": [
+                "if 5 < 3 or 2 > 1: \n    print(\"YES\")",
+                "if 5 < 3 and 2 > 1: \n    print(\"YES\")",
+                "if 5 == 3 or 2 < 1: \n    print(\"YES\")",
+                "if not (5 > 3): \n    print(\"YES\")"
+            ],
+            "answer": 0,
+            "explanation": "or表示“或者”，只要有一个条件为真即成立。2>1为真，所以A成立。",
+            "preserveFormat": true
+        },
+        {
+            "id": 6,
+            "question": "关于判断嵌套，正确的是？",
+            "type": "multiple-choice",
+            "options": [
+                "在else里可以再写if",
+                "最多只能嵌套2层",
+                "elif不能嵌套使用",
+                "嵌套会降低代码效率"
+            ],
+            "answer": 0,
+            "explanation": "例如：先判断是否成年，再在成年组中判断身高是否达标。",
+            "preserveFormat": true
+        },
+        {
+            "id": 7,
+            "question": "elif必须和else一起使用",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "elif可以单独存在，例如只有if和elif的结构。",
+            "preserveFormat": true
+        },
+        {
+            "id": 8,
+            "question": "if (age >= 8) and (height > 130)可以简写为if age >=8 and height >130",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "括号不影响逻辑，但合理使用括号能提高可读性。",
+            "preserveFormat": true
+        },
+        {
+            "id": 9,
+            "question": "补全代码：根据温度输出状态（≥30为“热”，20-29为“舒适”，<20为“冷”） \ntemp = 25 \nif temp >= 30: \n    print(\"热\") \nelif temp >= 20: \n    print(\"舒适\") \nelse: \n    ________ ",
+            "type": "fill-in",
+            "answer": [
+                "print(\"冷\")"
+            ],
+            "explanation": "20-29的条件隐含在temp >=20且不满足temp >=30的情况中。",
+            "preserveFormat": true
+        },
+        {
+            "id": 10,
+            "question": "判断闰年规则：能被4整除但不能被100整除，或能被400整除。补全代码： \nyear = 2020 \nif (year % 4 ==0 and year %100 !=0) ________ year%400 ==0: \n    print(\"闰年\") ",
+            "type": "fill-in",
+            "answer": [
+                "or"
+            ],
+            "explanation": "公式为（能被4整除且不能被100整除）或能被400整除，对应and与or的组合。",
+            "preserveFormat": true
+        },
+        {
+            "id": 11,
+            "question": "在Python中，用哪个关键字创建自定义函数？",
+            "type": "multiple-choice",
+            "options": [
+                "def",
+                "function",
+                "create",
+                "void"
+            ],
+            "answer": 0,
+            "explanation": "def 是Python中定义函数的关键字，后面接函数名和参数。",
+            "preserveFormat": true
+        },
+        {
+            "id": 12,
+            "question": "下面哪个选项可以正确调用函数greet()？",
+            "type": "multiple-choice",
+            "options": [
+                "greet",
+                "greet()",
+                "\"greet\"()",
+                "call greet()"
+            ],
+            "answer": 1,
+            "explanation": "调用函数需要函数名后加括号 ()，例如 greet()。",
+            "preserveFormat": true
+        },
+        {
+            "id": 13,
+            "question": "以下函数中的message是什么？\ndef say(message): \n    print(message)",
+            "type": "multiple-choice",
+            "options": [
+                "函数名",
+                "参数",
+                "返回值",
+                "代码块"
+            ],
+            "answer": 1,
+            "explanation": "message是函数的参数，调用时需要传入具体值，如 say(\"你好\")。",
+            "preserveFormat": true
+        },
+        {
+            "id": 14,
+            "question": "int()函数的作用是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "把数据转成整数",
+                "把数据转成字符串",
+                "输出内容",
+                "计算数学题"
+            ],
+            "answer": 0,
+            "explanation": "int()可以将字符串或浮点数转为整数，例如 int(\"5\") 会得到整数5。",
+            "preserveFormat": true
+        },
+        {
+            "id": 15,
+            "question": "函数中return的作用是什么？",
+            "type": "multiple-choice",
+            "options": [
+                "输出结果到屏幕",
+                "结束函数并返回结果",
+                "继续执行后续代码",
+                "接收用户输入"
+            ],
+            "answer": 1,
+            "explanation": "return会终止函数执行，并将结果传递给调用者，例如 return 10。",
+            "preserveFormat": true
+        },
+        {
+            "id": 16,
+            "question": "以下函数的正确调用方式是？\ndef add(a, b): \n    return a + b",
+            "type": "multiple-choice",
+            "options": [
+                "add(3)",
+                "add(3,5)",
+                "add(\"3\",5)",
+                "add()"
+            ],
+            "answer": 1,
+            "explanation": "函数需要两个参数，必须按顺序传入两个值，如 add(3,5)。",
+            "preserveFormat": true
+        },
+        {
+            "id": 17,
+            "question": "函数定义后必须调用才会执行其中的代码。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": true,
+            "explanation": "函数中的代码只有在调用时才会运行，例如 greet() 会触发执行。",
+            "preserveFormat": true
+        },
+        {
+            "id": 18,
+            "question": "函数内部定义的变量可以在函数外部直接使用。",
+            "type": "true-false",
+            "options": [
+                "正确",
+                "错误"
+            ],
+            "answer": false,
+            "explanation": "函数内部定义的变量属于局部变量，只能在函数内部使用。",
+            "preserveFormat": true
+        },
+        {
+            "id": 19,
+            "question": "函数体需要以__________符号开始，表示代码属于函数的一部分。",
+            "type": "fill-in",
+            "answer": [
+                "冒号（:）"
+            ],
+            "explanation": "函数定义后要用冒号表示代码块的开始，例如 def func():。",
+            "preserveFormat": true
+        },
+        {
+            "id": 20,
+            "question": "自定义函数名__________（填“能”或“不能”）和Python内置函数（如print）同名。",
+            "type": "fill-in",
+            "answer": [
+                "能"
+            ],
+            "explanation": "可以同名，但会覆盖原有函数，可能导致错误，建议避免。",
+            "preserveFormat": true
+        }
+    ]
+}
