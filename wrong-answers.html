@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python答题挑战 - 错题集</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Python答题系统 - 错题本</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         :root {
@@ -727,6 +727,62 @@
             overflow: hidden;
             word-wrap: break-word; /* 确保长文本会自动换行 */
             width: 100%; /* 确保宽度不超过父容器 */
+        }
+        
+        /* 移动端优化 */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                padding: 8px 15px;
+            }
+            
+            .wrong-answers-container {
+                padding: 15px;
+            }
+            
+            .question-card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .option-review {
+                padding: 12px 15px 12px 50px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .header-title {
+                font-size: 1.5rem;
+            }
+            
+            .wrong-answers-container {
+                padding: 12px;
+            }
+            
+            .question-card {
+                padding: 12px;
+            }
+            
+            .option-review {
+                padding: 10px 12px 10px 45px;
+            }
+            
+            .option-review::before {
+                width: 28px;
+                height: 28px;
+                left: 8px;
+            }
+            
+            pre, code {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -1537,7 +1593,7 @@
                         question: item.questionKey || `题目 #${index + 1}`,
                         type: item.questionType || 
                               (typeof item.userAnswer === 'boolean' ? 'true_false' : 
-                               typeof item.userAnswer === 'number' ? 'multiple_choice' : 'fill_blank'),
+                               typeof item.userAnswer === 'number' ? 'multiple_choice' : 'fill-in'),
                         options: tempOptions,
                         correctAnswer: item.correctAnswer !== undefined ? item.correctAnswer : '数据缺失',
                         explanation: item.explanation || '该题暂无解析说明'
@@ -1677,12 +1733,12 @@
                     correctAnswer = `选项${question.correctAnswer}`;
                     userAnswerText = `选项${userAnswer}`;
                 }
-            } else if (question.type === 'true_false') {
+            } else if (question.type === 'true_false' || question.type === 'true-false') {
                 // 判断题
                 correctAnswer = question.correctAnswer ? '正确' : '错误';
                 userAnswerText = (userAnswer === true || userAnswer === 'true') ? '正确' : 
                                 (userAnswer === false || userAnswer === 'false') ? '错误' : '无效答案';
-            } else if (question.type === 'fill_blank') {
+            } else if (question.type === 'fill_blank' || question.type === 'fill-in') {
                 // 填空题
                 correctAnswer = question.correctAnswer || '数据缺失';
                 userAnswerText = userAnswer || '未作答';
@@ -2216,7 +2272,7 @@
                         question: item.questionKey || `题目 #${index + 1}`,
                         type: item.questionType || 
                               (typeof item.userAnswer === 'boolean' ? 'true_false' : 
-                               typeof item.userAnswer === 'number' ? 'multiple_choice' : 'fill_blank'),
+                               typeof item.userAnswer === 'number' ? 'multiple_choice' : 'fill-in'),
                         options: tempOptions,
                         correctAnswer: item.correctAnswer !== undefined ? item.correctAnswer : '数据缺失',
                         explanation: item.explanation || '该题暂无解析说明'

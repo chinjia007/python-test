@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>神奇喵喵Python训练营</title>
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -1637,6 +1637,123 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
             font-weight: 700;
             letter-spacing: 0.05em;
+        }
+
+        /* 移动端优化样式 */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+                white-space: nowrap; /* 强制一行显示 */
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .title-accent {
+                margin: 0 5px;
+                display: inline-block;
+            }
+            
+            /* 确保副标题在移动端更紧凑 */
+            .creative-subtitle {
+                margin-top: 5px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            
+            .sub-text {
+                font-size: 0.85rem;
+                padding: 3px 8px;
+                margin: 2px;
+            }
+            
+            .levels-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 20px; /* 增加一些空间使题目更居中 */
+            }
+            
+            .level-card {
+                height: auto;
+                padding: 20px;
+            }
+            
+            /* 隐藏错题集和题库编辑器按钮 */
+            .header-actions {
+                display: none;
+            }
+            
+            /* 移动顶部留白 */
+            header {
+                margin-top: 40px; /* 标题整体下移30px（从10px增加到40px） */
+                margin-bottom: 5px;
+                min-height: 50px;
+            }
+            
+            /* 内容区域调整 */
+            .levels-container {
+                margin-top: 5px;
+                padding: 15px;
+                min-height: auto;
+                max-height: 75vh;
+            }
+            
+            /* 隐藏背景元素 */
+            .background-effects, .geometric-elements {
+                display: none;
+            }
+            
+            /* 隐藏大标题容器 */
+            .container {
+                background: none;
+                border: none;
+                box-shadow: none;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .levels-container {
+                padding: 20px;
+            }
+            
+            .levels-grid {
+                gap: 16px;
+                padding: 16px;
+            }
+            
+            .level-card {
+                height: 200px; /* 小屏幕下的固定高度 */
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .levels-container {
+                height: auto; /* 移除固定高度限制，允许容器适应内容 */
+            }
+            
+            .level-card {
+                height: 180px; /* 超小屏幕下的固定高度 */
+            }
+            
+            .level-description {
+                max-height: 80px; /* 超小屏幕下降低描述最大高度 */
+                font-size: 0.85rem; /* 减小字体大小 */
+            }
         }
     </style>
 </head>

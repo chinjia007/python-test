@@ -842,4 +842,359 @@ body.light-theme .code-option {
     background-color: rgba(245, 245, 250, 0.9);
     color: #333;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 - 移动设备适配 */
+@media screen and (max-width: 768px) {
+    /* 基础样式调整 */
+    body {
+        padding: 15px;
+        overflow-x: hidden;
+    }
+    
+    /* 容器宽度调整 */
+    .container, .quiz-container {
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* 标题样式调整 */
+    h1 {
+        font-size: 2.5rem;
+        flex-wrap: nowrap;  /* 确保标题在一行 */
+        white-space: nowrap; /* 阻止折行 */
+        justify-content: center;
+    }
+    
+    header {
+        margin-top: 40px; /* 标题整体下移30px（从10px增加到40px） */
+        margin-bottom: 10px;
+        min-height: 50px;
+    }
+    
+    /* 隐藏大标题所在的容器背景 */
+    .background-effects, .geometric-elements {
+        display: none;
+    }
+    
+    /* 首页容器样式调整 - 移除背景和边框 */
+    body:not(.quiz-page) .container {
+        background: none;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    
+    /* 修改关卡容器高度 */
+    .levels-container {
+        padding: 15px;
+        margin-top: 0;
+        min-height: auto; /* 允许高度自适应内容 */
+        max-height: 75vh; /* 限制最大高度 */
+    }
+    
+    /* 副标题调整 */
+    .sub-text {
+        font-size: 0.9rem;
+        padding: 3px 8px;
+    }
+    
+    /* 导航按钮调整 */
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        transform: scale(0.5);
+        transform-origin: top left;
+    }
+    
+    /* 关卡卡片响应式调整 */
+    .level-card {
+        width: 100%;
+        margin: 0 0 15px 0;
+        padding: 15px;
+    }
+    
+    .levels-container {
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    /* 题目区域调整 - 移除之前的上边距设置 */
+    .question {
+        padding: 15px;
+        margin-top: 0; /* 移除上边距让题目靠近进度条 */
+        overflow-y: auto; /* 允许滚动查看 */
+    }
+    
+    /* 选项区域调整 */
+    .option {
+        padding: 12px 15px 12px 55px;
+    }
+    
+    /* 代码块适配 */
+    pre {
+        max-width: 100%;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+    
+    /* 按钮适配 */
+    .next-button, .overlay-button, .submit-button, .retry-button {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    
+    /* 主题切换按钮位置调整 */
+    .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* 子标题调整 */
+    .sub-text {
+        font-size: 1.1rem;
+        padding: 4px 10px;
+    }
+    
+    /* 代码选项适配 */
+    .code-option {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    /* IDE代码块适配 */
+    .ide-code-block .code-content {
+        font-size: 0.85rem;
+    }
+    
+    /* 手机端特别优化标题 */
+    .creative-subtitle {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    /* 答题页面关卡标题调整 */
+    .creative-level-title {
+        margin-top: 50px; /* 整体下移50px */
+        transform: scale(0.8); /* 缩小到80% */
+        transform-origin: center top;
+    }
+    
+    .level-title-text {
+        font-size: 0.8em; /* 字号缩小为原来的80% */
+    }
+    
+    /* 进度条与题目连接 */
+    .progress-container {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .question {
+        margin-top: 5px; /* 减小题目与进度条之间的间距 */
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    
+    /* 让进度条显示样式配合题目 */
+    .progress-bar {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+    /* 题目容器整体调整 */
+    .quiz-content {
+        margin-top: 0; /* 修改之前的设置 */
+        padding-top: 0; /* 确保没有上边距 */
+    }
+    
+    /* 修正之前的margin-top覆盖 */
+    .question {
+        margin-top: 5px; /* 确保这是最终值 */
+    }
+    
+    /* 答题页页面布局优化 */
+    body.quiz-page {
+        padding: 5px;
+        overflow: hidden; /* 防止整页滚动 */
+        height: 100vh;
+    }
+    
+    body.quiz-page .container {
+        padding: 5px;
+        height: calc(100vh - 10px);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* 答题页标题隐藏 */
+    body.quiz-page .creative-level-title {
+        display: none;
+    }
+    
+    /* 题目区域可滚动 */
+    body.quiz-page .quiz-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        overflow: hidden;
+        max-height: unset;
+        margin-top: 0px !important; /* 从-20px修改为0px，相当于下移20px */
+        position: relative;
+        z-index: 5;
+    }
+    
+    /* 固定进度条在顶部 */
+    body.quiz-page .progress-container {
+        position: sticky;
+        top: -10px; /* 从-30px修改为-10px，相当于下移20px */
+        z-index: 10;
+        background-color: rgba(28, 28, 30, 0.95);
+        border-radius: 10px 10px 0 0;
+        padding: 10px 10px 5px 10px;
+        margin: 0;
+    }
+    
+    /* 修正题目区域的内容显示 */
+    body.quiz-page .question {
+        margin-top: 0;
+        padding-top: 15px;
+        padding-bottom: 140px; /* 增加底部内边距，使容器向下拉高40px，从100px改为140px */
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        overflow-y: auto;
+        flex: 1;
+        max-height: unset;
+        background-color: rgba(44, 44, 46, 0.9);
+        position: relative;
+        z-index: 5;
+    }
+    
+    /* 答题页按钮固定在底部并增大尺寸 */
+    body.quiz-page .next-button, 
+    body.quiz-page .submit-button, 
+    body.quiz-page .retry-button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        padding: 15px 30px; /* 增加内边距 */
+        font-size: 1.4rem; /* 增大字体 */
+        border-radius: 16px; /* 增大圆角 */
+        min-width: 220px; /* 增加最小宽度 */
+        text-align: center; /* 确保文字居中 */
+        box-shadow: 0 5px 15px rgba(255, 55, 95, 0.3); /* 增强阴影效果 */
+    }
+    
+    /* 答题页容器样式 - 移除背景和边框 */
+    body.quiz-page .container {
+        background: none;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 5px;
+        height: calc(100vh - 10px);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* 隐藏关卡容器背景 */
+    body.quiz-page .levels-container {
+        background: none;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* 小屏幕手机设备适配 */
+@media screen and (max-width: 480px) {
+    /* 基础样式微调 */
+    body {
+        padding: 10px;
+    }
+    
+    /* 容器进一步调整 */
+    .container, .quiz-container {
+        padding: 10px;
+    }
+    
+    /* 标题更小 */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    /* 按钮进一步缩小 */
+    .next-button, .overlay-button, .submit-button, .retry-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    /* 选项区域进一步调整 */
+    .option {
+        padding: 10px 12px 10px 50px;
+    }
+    
+    /* 代码字体进一步缩小 */
+    pre, code {
+        font-size: 0.8rem;
+    }
+    
+    /* 提高点击区域大小 */
+    .option::before {
+        width: 30px;
+        height: 30px;
+        left: 10px;
+    }
+}
+
+/* 增强触摸设备交互 */
+@media (hover: none) and (pointer: coarse) {
+    /* 增大所有可点击元素的点击区域 */
+    button, .option, .level-card, .back-button, .theme-toggle {
+        min-height: 44px; /* Apple推荐的最小触摸目标尺寸 */
+    }
+    
+    /* 禁用悬停效果 */
+    .level-card:hover,
+    .back-button:hover,
+    .option:hover,
+    .next-button:hover, 
+    .overlay-button:hover, 
+    .submit-button:hover, 
+    .retry-button:hover {
+        transform: none;
+    }
+    
+    /* 激活状态替代悬停状态 */
+    .level-card:active,
+    .back-button:active,
+    .option:active,
+    .next-button:active, 
+    .overlay-button:active, 
+    .submit-button:active, 
+    .retry-button:active {
+        transform: translateY(2px);
+        transition: transform 0.1s;
+    }
 } 

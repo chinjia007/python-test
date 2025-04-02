@@ -2,13 +2,13 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Python答题系统</title>
     <link rel="stylesheet" href="styles.css">
     <!-- 添加代码格式化器 -->
     <script src="js/code-formatter.js"></script>
     <style>
-        /* 寮哄埗搴旂敤鑳屾櫙棰滆壊 */
+        /* 强制应用背景颜色 */
         body {
             background-color: var(--bg-color) !important;
             overflow-x: hidden;
@@ -146,19 +146,6 @@
             z-index: 1;
         }
         
-        .question-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-color);
-        }
-        
-        /* 调整选项容器的外边距 */
-        #optionsContainer {
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-        
         /* 强制隐藏所有空的HTML元素，防止出现空白区域 */
         .question-title:empty,
         .question-description:empty,
@@ -172,6 +159,25 @@
             min-height: 0 !important;
         }
         
+        /* 确保问题描述和标题清晰可见 */
+        .question-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 20;
+        }
+        
+        .question-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            position: relative;
+            z-index: 20;
+        }
+        
         /* 确保问题容器中不存在多余的空间 */
         #quizQuestion > *:empty {
             display: none !important;
@@ -179,6 +185,14 @@
             padding: 0 !important;
             height: 0 !important;
             visibility: hidden !important;
+        }
+        
+        /* 调整选项容器的外边距 */
+        #optionsContainer {
+            margin-top: 20px;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 20;
         }
         
         /* 閫夐」鏍峰紡 */
@@ -924,9 +938,129 @@
             padding: 2px 4px;
             border-radius: 3px;
         }
+        
+        /* 移动端优化样式 */
+        @media screen and (max-width: 768px) {
+            /* 隐藏标题增加题目空间 */
+            .creative-level-title {
+                display: none;
+            }
+            
+            .container {
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: calc(100vh - 10px);
+                background: none;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            
+            .levels-container {
+                padding: 0;
+                margin: 0;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                background: none;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            
+            /* 题目区域整体上移 */
+            .quiz-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                margin-top: 0px !important; /* 从-20px修改为0px，相当于下移20px */
+                overflow: hidden;
+                max-height: unset;
+                position: relative;
+                z-index: 5;
+            }
+            
+            /* 固定进度条在顶部 */
+            .progress-container {
+                position: sticky;
+                top: -10px; /* 从-30px修改为-10px，相当于下移20px */
+                z-index: 10;
+                background-color: rgba(28, 28, 30, 0.95);
+                border-radius: 10px 10px 0 0;
+                padding: 10px 10px 5px 10px;
+                margin: 0;
+            }
+            
+            .question {
+                margin-top: 0;
+                padding: 15px;
+                padding-bottom: 140px; /* 增加底部内边距，使容器向下拉高40px，从100px改为140px */
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                overflow-y: auto;
+                flex: 1;
+                max-height: unset;
+                background-color: rgba(44, 44, 46, 0.9);
+                position: relative;
+                z-index: 5;
+            }
+            
+            .back-button {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+                transform: scale(0.8);
+                transform-origin: top left;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .back-button:before {
+                margin-right: 4px;
+                font-size: 0.9rem;
+            }
+            
+            .option {
+                padding: 12px 15px 12px 55px;
+            }
+            
+            .next-button, .submit-button, .retry-button {
+                padding: 15px 30px; /* 增加内边距 */
+                font-size: 1.4rem; /* 增大字体 */
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 20;
+                border-radius: 16px; /* 增大圆角 */
+                min-width: 220px; /* 增加最小宽度 */
+                text-align: center; /* 确保文字居中 */
+                box-shadow: 0 5px 15px rgba(255, 55, 95, 0.3); /* 增强阴影效果 */
+            }
+            
+            pre, code {
+                font-size: 0.9rem;
+            }
+            
+            /* 进度条与题目连接 */
+            .progress-bar {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .back-button:before {
+                margin-right: 4px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="quiz-page">
     <div class="container">
         <!-- 将返回按钮放在container内部左上角 -->
         <a href="index.html" class="back-button">返回首页</a>
@@ -1548,9 +1682,9 @@
                 } else if (action === 'submit') {
                     // 提交答案
                     const question = questions[currentQuestionIndex];
-                    if (question.type === 'true_false') {
+                    if (question.type === 'true-false' || question.type === 'true_false') {
                         submitTrueFalseAnswer();
-                    } else if (question.type === 'fill_blank') {
+                    } else if (question.type === 'fill-in' || question.type === 'fill_blank') {
                         submitFillInAnswer();
                     } else {
                         submitAnswer();

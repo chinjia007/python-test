@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python答题挑战 - 总结</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Python答题系统 - 总结</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* 强制应用背景颜色 */
@@ -729,6 +729,72 @@
                 height: 4px;
             }
         }
+        
+        /* 移动端优化 */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .summary-header {
+                padding: 15px;
+            }
+            
+            .level-title {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                padding: 8px 15px;
+            }
+            
+            .summary-content {
+                padding: 15px;
+            }
+            
+            .question-review {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .option-review {
+                padding: 12px 15px 12px 50px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .summary-header {
+                padding: 12px;
+            }
+            
+            .level-title {
+                font-size: 1.5rem;
+            }
+            
+            .summary-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .summary-content {
+                padding: 12px;
+            }
+            
+            .question-review {
+                padding: 12px;
+            }
+            
+            .option-review {
+                padding: 10px 12px 10px 45px;
+            }
+            
+            .option-review::before {
+                width: 28px;
+                height: 28px;
+                left: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1028,7 +1094,7 @@
             reviewItem.appendChild(questionTitle);
             
             // 如果是选择题，显示选项
-            if (question.options && question.type !== 'true_false' && question.type !== 'fill_blank') {
+            if (question.options && question.type !== 'true_false' && question.type !== 'fill_blank' && question.type !== 'fill-in') {
                 const optionsContainer = document.createElement('div');
                 optionsContainer.className = 'review-options';
                 
@@ -1063,9 +1129,9 @@
             const userAnswerElem = document.createElement('div');
             userAnswerElem.className = 'user-answer';
             
-            if (question.type === 'true_false') {
+            if (question.type === 'true_false' || question.type === 'true-false') {
                 userAnswerElem.innerHTML = `你的答案: <strong>${userAnswer ? (userAnswer.answer ? '正确' : '错误') : '未作答'}</strong>`;
-            } else if (question.type === 'fill_blank') {
+            } else if (question.type === 'fill_blank' || question.type === 'fill-in') {
                 userAnswerElem.innerHTML = `你的答案: <strong>${userAnswer ? userAnswer.answer : '未作答'}</strong>`;
             } else {
                 // 多选题
@@ -1081,9 +1147,9 @@
             const correctAnswerElem = document.createElement('div');
             correctAnswerElem.className = 'correct-answer';
             
-            if (question.type === 'true_false') {
+            if (question.type === 'true_false' || question.type === 'true-false') {
                 correctAnswerElem.textContent = `正确答案: ${question.correctAnswer ? '正确' : '错误'}`;
-            } else if (question.type === 'fill_blank') {
+            } else if (question.type === 'fill_blank' || question.type === 'fill-in') {
                 correctAnswerElem.textContent = `正确答案: ${question.correctAnswer}`;
             } else {
                 // 多选题
