@@ -1,4 +1,4 @@
-# 神奇喵猫Python训练营 - Python答题挑战平台
+# 神奇喵喵Python训练营 - Python答题挑战平台
 
 ## 项目简介
 
